@@ -247,6 +247,9 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
 .proof .name{max-width:270px; min-width:0}
 /* the slot: holds a logo when one exists, the set name until then */
 .proof .mark{display:flex; align-items:center; min-height:52px; max-width:100%}
+/* one slot height per group: the marks differ in height, and without this the
+   name under each starts at a different line and the row reads ragged */
+.proof .grp.lead .mark{min-height:90px}
 .proof .name .en{
   font-family:var(--f-en-display); font-weight:400; color:var(--marble);
   letter-spacing:.06em; line-height:1.2;
@@ -270,6 +273,18 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
 /* A client's Arabic legal name is the ARABIC edition of that name, not a caption —
    in English the Latin mark already says who they are, so showing both is a leak. */
 html[lang="en"] .proof .name .ar{display:none}
+/* In English the Arabic name steps aside, and the logo has replaced the wordmark — so
+   nothing would name the company. This caption does, and only once a real logo is in:
+   with no logo the mark IS the name, and a caption would just repeat it. Sized and
+   coloured like its Arabic counterpart so the band reads the same in either language,
+   with the quiet tracking the section uses for Latin text. */
+.proof .name .cap-en{display:none}
+html[lang="en"] .proof .name.has-mark .cap-en{
+  display:block; margin-top:10px;
+  font-family:var(--f-en-ui, var(--f-ar-ui)); font-size:13.5px; line-height:1.55;
+  letter-spacing:.06em; color:var(--on-dark-2);
+}
+html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
 .proof .grp.lead .name .en{font-size:clamp(23px,2.8vw,34px)}
 .proof .grp.lead .name img{
   /* Sized by WIDTH, not height. A fixed height renders a dense wide mark at a fraction
@@ -278,7 +293,7 @@ html[lang="en"] .proof .name .ar{display:none}
      room its text needs, with the height capped so none dominates the row. */
   width:clamp(180px,26vw,240px); height:auto; max-height:72px;
 }
-.proof .grp.sec .mark{min-height:46px}
+.proof .grp.sec .mark{min-height:98px}
 .proof .grp.sec .name .en{font-size:clamp(17px,1.8vw,22px); letter-spacing:.07em}
 .proof .grp.sec .name img{
   /* the cap has to allow for a STACKED mark: CRBC puts its emblem above its name, so

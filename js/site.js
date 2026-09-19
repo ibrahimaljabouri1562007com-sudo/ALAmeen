@@ -128,7 +128,10 @@
         // the logo replaces a NAME, so its alt must carry that name in the language
         // being read — otherwise an English page announces Arabic to a screen reader
         const nameAr = slot.querySelector('.ar')?.textContent || '';
-        const nameEn = slot.querySelector('.en')?.textContent || '';
+        // the caption carries the company's full English name; .en inside the mark is
+        // only the short wordmark shown when no logo exists
+        const nameEn = slot.querySelector('.cap-en')?.textContent
+                    || slot.querySelector('.en')?.textContent || '';
         const setAlt = () => { img.alt = (LANG === 'en' ? (nameEn || nameAr) : (nameAr || nameEn)); };
         setAlt();
         document.addEventListener('langchange', setAlt);
@@ -137,6 +140,7 @@
           mark.replaceChildren(img);
           // a ground only where the artwork cannot be read without one
           if (entry.tile) mark.classList.add('has-logo');
+          slot.classList.add('has-mark');   // the caption names the logo, so it waits for one
           requestAnimationFrame(() => img.classList.add('in'));
         };
         (img.decode ? img.decode() : Promise.resolve()).then(show).catch(() => {
