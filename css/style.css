@@ -1,0 +1,735 @@
+/* =====================================================================
+   AL-AMIN — design tokens (the brand lives HERE; never hardcode a hex)
+   Palette read from the logo (gold on black) + the Baghdad hero
+   (ivory marble, dusk sky, lapis meander of the Ishtar Gate).
+   ===================================================================== */
+:root{
+  /* ink & marble */
+  --ink:        #17150F;   /* warm near-black — the logo's black */
+  --ink-2:      #24211A;
+  --marble:     #F4EFE4;   /* ivory marble */
+  --marble-2:   #E9E1D1;
+  --sand:       #C9B58E;   /* column shadow tone */
+  /* brand metals */
+  --gold:       #B8923A;   /* logo gold */
+  --gold-2:     #D9B65C;   /* highlight */
+  --gold-dim:   #8C6E2C;
+  --gold-ink:   #6F5520;   /* label gold on marble — passes AA at body size */
+  /* Babylon */
+  --lapis:      #1F3A78;   /* Ishtar Gate glazed brick */
+  --lapis-2:    #2B4C9B;
+  /* text on dark / on light */
+  --on-dark:    var(--marble);
+  --on-dark-2:  rgba(244,239,228,.72);
+  --on-light:   var(--ink);
+  --on-light-2: rgba(23,21,15,.66);
+
+  /* type */
+  --f-ar-display: "Amiri", "Noto Naskh Arabic", serif;             /* classical Naskh — matches the calligraphic logo */
+  --f-ar-ui:      "IBM Plex Sans Arabic", "Tajawal", system-ui, sans-serif;
+  --f-en-display: "Cormorant Garamond", "Times New Roman", serif;   /* tall, light, judicial */
+  --f-en-ui:      "IBM Plex Sans", system-ui, sans-serif;
+  --f-cuneiform:  "Segoe UI Historic", "Noto Sans Cuneiform", serif;
+
+  /* rhythm */
+  --max: 1280px;
+  --gutter: clamp(20px, 5vw, 72px);
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--marble); color:var(--on-light);
+  font-family:var(--f-ar-ui); font-size:17px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+:lang(en){font-family:var(--f-en-ui)}
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+.wrap{max-width:var(--max); margin-inline:auto; padding-inline:var(--gutter)}
+
+/* ---------- navigation: transparent over the hero, ivory, thin ---------- */
+.nav{
+  position:fixed; inset-inline:0; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:22px var(--gutter); color:var(--on-dark);
+  background:linear-gradient(to bottom, rgba(23,21,15,.55), rgba(23,21,15,0));
+  transition:background .4s var(--ease), padding .4s var(--ease);
+}
+.nav.solid{background:rgba(23,21,15,.92); padding-block:12px; backdrop-filter:blur(6px)}
+.brand{display:flex; align-items:center; gap:14px}
+.brand-icon{height:54px; width:auto}
+.brand-word{height:44px; width:auto; opacity:.95}
+.nav.solid .brand-icon{height:42px} .nav.solid .brand-word{height:34px}
+.nav-tools{display:flex; align-items:center; gap:14px}
+.burger{display:none; width:40px; height:40px; background:none; border:1px solid rgba(244,239,228,.35); border-radius:2px; cursor:pointer; position:relative}
+.burger span{position:absolute; inset-inline:10px; height:1px; background:var(--marble); transition:transform .35s var(--ease), top .35s var(--ease)}
+.burger span:first-child{top:15px} .burger span:last-child{top:24px}
+.menu-open .burger span:first-child{top:19px; transform:rotate(45deg)} .menu-open .burger span:last-child{top:19px; transform:rotate(-45deg)}
+.nav ul{display:flex; gap:34px; list-style:none; margin:0; padding:0; font-size:15px}
+.nav ul a{position:relative; padding-block:6px; opacity:.9}
+.nav ul a::after{
+  content:""; position:absolute; inset-inline:0; bottom:0; height:1px; background:var(--gold-2);
+  transform:scaleX(0); transform-origin:var(--origin, right); transition:transform .35s var(--ease);
+}
+.nav ul a:hover::after{transform:scaleX(1)}
+.lang{
+  border:1px solid rgba(244,239,228,.4); padding:6px 14px; border-radius:2px;
+  font-family:var(--f-en-ui); font-size:12px; letter-spacing:.2em;
+}
+
+/* ---------- hero: the entrance ---------- */
+.hero{
+  position:relative; min-height:100svh; display:grid; align-items:center;
+  color:var(--on-dark); overflow:hidden; isolation:isolate;
+}
+.hero .bg{
+  position:absolute; inset:0; z-index:-2;
+  background:url("../assets/hero-baghdad.jpg") center 40%/cover no-repeat;
+  animation:kenburns 26s var(--ease) both;
+  transform-origin:60% 45%;
+}
+@keyframes kenburns{from{transform:scale(1.10)} to{transform:scale(1.0)}}
+.hero .veil{ /* a scrim POOLED under the text block, not a gradient from the edge */
+  position:absolute; inset:0; z-index:-1;
+  background:
+    /* the pool — centred on the text block (right-of-centre in RTL) */
+    radial-gradient(115% 85% at 70% 50%,
+      rgba(23,21,15,.80) 0%, rgba(23,21,15,.66) 32%,
+      rgba(23,21,15,.30) 58%, rgba(23,21,15,.04) 78%, rgba(23,21,15,0) 92%),
+    /* floor + sky settle, keeps the sunset alive */
+    linear-gradient(to top, rgba(23,21,15,.55) 0%, rgba(23,21,15,.06) 42%, rgba(23,21,15,.22) 100%),
+    /* a whisper over everything so nothing glares */
+    rgba(23,21,15,.14);
+}
+.hero .inner{padding-block:140px 120px; max-width:760px}
+.eyebrow{
+  font-family:var(--f-en-display); font-size:clamp(15px,1.25vw,17px); font-weight:500;
+  letter-spacing:.26em; text-transform:uppercase;
+  color:var(--gold-2); margin:0 0 clamp(26px,2.6vw,36px); display:flex; align-items:center; gap:16px;
+}
+.hero .eyebrow{text-shadow:0 1px 10px rgba(23,21,15,.7); margin-bottom:clamp(34px,4vw,52px)}
+.eyebrow::before{content:""; width:clamp(34px,3.4vw,52px); height:2px; background:var(--gold-2); flex:none}
+.hero h1{
+  font-family:var(--f-ar-display); font-weight:400; margin:0 0 22px;
+  font-size:clamp(38px, 5.6vw, 72px); line-height:1.3; text-wrap:balance; letter-spacing:-.005em;
+  text-shadow:0 2px 28px rgba(23,21,15,.6), 0 1px 4px rgba(23,21,15,.45);
+}
+.hero h1 em{font-style:normal; color:var(--gold-2)}
+.hero p.lead{font-size:clamp(17px,1.4vw,20px); color:rgba(244,239,228,.86); max-width:520px; margin:0 0 38px;
+  text-shadow:0 1px 16px rgba(23,21,15,.65), 0 1px 3px rgba(23,21,15,.4)}
+.hero .cta{text-shadow:0 1px 12px rgba(23,21,15,.6)}
+.cta{
+  display:inline-flex; align-items:center; gap:14px;
+  font-family:var(--f-en-display); font-size:14px; letter-spacing:.3em; text-transform:uppercase; color:var(--on-dark);
+}
+.cta .ar{font-family:var(--f-ar-ui); letter-spacing:0; font-size:16px}
+.cta .arrow{width:34px; height:1px; background:var(--gold-2); transition:width .35s var(--ease)}
+.cta:hover .arrow{width:60px}
+.hero-actions{display:flex; gap:36px; align-items:center; flex-wrap:wrap}
+.cta.ghost{color:var(--on-dark-2)} .cta.ghost:hover{color:var(--on-dark)}
+
+/* staged reveal — the entrance is a sequence, not a dump */
+.reveal{opacity:0; transform:translateY(22px); animation:up 1.1s var(--ease) forwards}
+.reveal.d1{animation-delay:.35s} .reveal.d2{animation-delay:.6s} .reveal.d3{animation-delay:.9s} .reveal.d4{animation-delay:1.2s}
+@keyframes up{to{opacity:1; transform:none}}
+
+/* scroll hint */
+.scroll-hint{
+  position:absolute; bottom:28px; inset-inline-end:var(--gutter); color:var(--on-dark-2);
+  font-family:var(--f-en-display); font-size:11px; letter-spacing:.3em; text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+}
+.scroll-hint::after{content:""; width:1px; height:48px; background:linear-gradient(var(--gold-2), transparent); animation:drip 2.2s infinite}
+@keyframes drip{0%{transform:scaleY(0); transform-origin:top} 50%{transform:scaleY(1); transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0); transform-origin:bottom}}
+
+/* ---------- the frieze: cuneiform band + Ishtar meander ---------- */
+.frieze{
+  background:var(--ink); color:var(--gold); overflow:hidden; position:relative;
+  border-top:3px solid var(--lapis); border-bottom:3px solid var(--lapis);
+}
+.frieze .track{
+  display:flex; gap:64px; white-space:nowrap; padding:14px 0;
+  font-family:var(--f-cuneiform); font-size:26px; line-height:1; direction:ltr;
+  animation:slide 60s linear infinite; width:max-content;
+}
+.frieze .track span{opacity:.85}
+@keyframes slide{to{transform:translateX(-50%)}}
+.meander{ /* the lapis step pattern from the column bases */
+  height:10px; background:
+    repeating-linear-gradient(90deg, var(--lapis) 0 14px, transparent 14px 28px) top/100% 4px no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 14px, var(--lapis) 14px 28px) bottom/100% 4px no-repeat,
+    var(--marble);
+}
+
+/* ---------- أعمدة عملنا — three LITERAL columns (الدقة · السرعة · السرية) ---------- */
+.section{padding-block:clamp(72px,9vw,128px)}
+.section-head{max-width:720px; margin-bottom:56px}
+.section-head .eyebrow{color:var(--gold-dim)}
+.section-head .eyebrow::before{background:var(--gold)}
+.section h2{
+  font-family:var(--f-ar-display); font-weight:400; margin:0 0 14px;
+  font-size:clamp(30px,3.6vw,46px); line-height:1.3;
+}
+.section .sub{color:var(--on-light-2); font-size:18px; margin:0}
+
+.pillars-sec{background:var(--marble-2)}
+.pillars-sec .section-head{margin-inline:auto; text-align:center; max-width:640px}
+.pillars-sec .section-head .eyebrow{justify-content:center}
+.pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(22px,4vw,64px); align-items:end}
+.pillar{position:relative; text-align:center; width:100%; max-width:250px; margin-inline:auto}
+
+/* the column, drawn as the logo draws it: 3 stepped bars · gold flutes · 3 stepped bars */
+.pillar .col{display:block}
+.pillar .cap,.pillar .base{display:flex; flex-direction:column; align-items:center; gap:4px}
+.pillar .cap i,.pillar .base i{display:block; height:7px; background:var(--ink); border-radius:1px}
+/* capital steps INWARD going down */
+.pillar .cap i:nth-child(1){width:100%; clip-path:polygon(0 0,100% 0,96% 100%,4% 100%)}
+.pillar .cap i:nth-child(2){width:92%;  clip-path:polygon(0 0,100% 0,96% 100%,4% 100%)}
+.pillar .cap i:nth-child(3){width:84%}
+/* base mirrors it, stepping OUTWARD going down */
+.pillar .base i:nth-child(1){width:84%}
+.pillar .base i:nth-child(2){width:92%;  clip-path:polygon(4% 0,96% 0,100% 100%,0 100%)}
+.pillar .base i:nth-child(3){width:100%; clip-path:polygon(4% 0,96% 0,100% 100%,0 100%)}
+/* the fluted gold shaft */
+.pillar .shaft{
+  display:flex; justify-content:center; gap:clamp(4px,.7vw,7px);
+  width:84%; margin:9px auto; height:clamp(170px,21vw,260px);
+}
+.pillar .shaft i{
+  flex:1; background:linear-gradient(90deg,var(--gold-dim) 0%,var(--gold-2) 38%,var(--gold) 72%,var(--gold-dim) 100%);
+  border-radius:1px;
+}
+.pillar:nth-child(2) .shaft{height:clamp(205px,25vw,310px)}   /* the middle column stands taller */
+.pillar .word{
+  display:block; margin-top:24px; font-family:var(--f-ar-display); font-weight:400;
+  font-size:clamp(26px,3.2vw,40px); line-height:1.25; color:var(--ink);
+}
+.pillars.io .pillar{transition-delay:calc(var(--i,0)*.1s)}
+.pillars-sec .tail{
+  margin:clamp(48px,6vw,72px) auto 0; text-align:center; max-width:60ch;
+  color:var(--on-light); font-size:clamp(17px,1.35vw,20px); line-height:2.05;
+  padding-top:clamp(28px,3.5vw,40px); border-top:1px solid rgba(23,21,15,.14);
+}
+@media (max-width:760px){
+  .pillars{grid-template-columns:1fr; gap:34px}
+  .pillar{max-width:210px}
+  .pillar .shaft,.pillar:nth-child(2) .shaft{height:110px}
+}
+
+/* ---------- proof — الخبرة + the two company blocks (on ink, meander-framed) ---------- */
+.proof{background:var(--ink); color:var(--on-dark); position:relative; overflow:hidden}
+.proof .inner-wrap{padding-block:clamp(44px,6vw,72px)}
+.proof .grp{padding-top:clamp(26px,3.4vw,40px)}
+.proof .grp + .grp{padding-top:clamp(26px,3vw,36px)}
+.proof .grp-label{
+  font-family:var(--f-ar-ui); font-size:14px; color:var(--gold-2); margin:0 0 20px;
+  display:flex; align-items:center; gap:14px;
+}
+.proof .grp-label::after{content:""; height:1px; flex:1; background:linear-gradient(to left, rgba(217,182,92,.45), transparent)}
+.proof .names{display:flex; flex-wrap:wrap; gap:22px clamp(26px,4vw,56px); align-items:flex-start}
+.proof .name{max-width:270px}
+/* the slot: holds a logo when one exists, the set name until then */
+.proof .mark{display:flex; align-items:center; min-height:52px}
+.proof .name .en{
+  font-family:var(--f-en-display); font-weight:400; color:var(--marble);
+  letter-spacing:.06em; line-height:1.2;
+}
+.proof .name img{  /* flattened to one ivory silhouette so 5 brands read as one wall */
+  max-height:46px; width:auto; filter:brightness(0) invert(1); opacity:.86;
+  transition:opacity .3s var(--ease);
+}
+.proof .name:hover img{opacity:1}
+.proof .name .ar{display:block; font-size:14.5px; color:var(--on-dark-2); margin-top:8px; line-height:1.6}
+.proof .grp.lead .name .en{font-size:clamp(23px,2.8vw,34px)}
+.proof .grp.lead .name img{max-height:56px}
+.proof .grp.sec .mark{min-height:40px}
+.proof .grp.sec .name .en{font-size:clamp(16px,1.7vw,21px); color:var(--on-dark-2)}
+.proof .grp.sec .name img{max-height:34px; opacity:.72}
+.proof .grp.sec .name .ar{font-size:14px; opacity:.85}
+
+
+/* ---------- الخدمات — the nine, as a quiet index ---------- */
+.services-sec{background:var(--marble)}
+.services-list{list-style:none; margin:0; padding:0; border-top:1px solid var(--marble-2)}
+.services-list li{border-bottom:1px solid var(--marble-2)}
+.services-list a{
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:clamp(16px,3vw,36px);
+  padding:clamp(16px,2vw,24px) clamp(8px,2vw,20px); transition:background .35s var(--ease), padding .35s var(--ease);
+}
+.services-list a:hover{background:var(--marble-2); padding-inline-start:clamp(18px,3vw,38px)}
+.services-list .n{
+  font-family:var(--f-en-display); font-size:clamp(20px,1.9vw,26px); font-weight:500;
+  letter-spacing:0; color:var(--gold); min-width:34px;
+  font-variant-numeric:tabular-nums; line-height:1;
+}
+.services-list .t{font-family:var(--f-ar-display); font-size:clamp(20px,2.2vw,28px); line-height:1.35; color:var(--ink)}
+.services-list .go{width:26px; height:1px; background:var(--gold); transition:width .35s var(--ease)}
+.services-list a:hover .go{width:48px}
+
+/* ---------- scroll reveal ---------- */
+.io{opacity:0; transform:translateY(26px); transition:opacity .9s var(--ease), transform .9s var(--ease)}
+.io.in{opacity:1; transform:none}
+
+/* ---------- الأمين — the name ---------- */
+.amin-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:72px; align-items:center}
+.amin-word{position:relative; padding:40px 0}
+.amin-word .big{
+  font-family:var(--f-ar-display); font-size:clamp(96px,14vw,200px); line-height:1; color:var(--ink);
+  display:block; letter-spacing:-.01em;
+}
+.amin-word .big::after{content:""; display:block; width:120px; height:2px; background:var(--gold); margin-top:18px}
+.amin-word .def{display:block; margin-top:22px; font-family:var(--f-ar-display); font-size:22px; color:var(--on-light-2)}
+.amin-text h2{font-family:var(--f-ar-display); font-weight:400; font-size:clamp(30px,3.6vw,44px); margin:0 0 18px; line-height:1.3}
+.amin-text > p:not(.eyebrow):not(.principles-intro){font-size:18px; color:var(--on-light-2); margin:0 0 6px}
+.principles-intro{
+  font-family:var(--f-en-display); font-size:13px; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--gold-dim); margin:34px 0 4px;
+}
+.record{list-style:none; margin:0; padding:0; border-top:1px solid var(--marble-2)}
+.record li{
+  position:relative; padding-block:16px; padding-inline:26px 0;
+  border-bottom:1px solid var(--marble-2);
+  font-size:16px; line-height:1.85; color:var(--on-light);
+}
+.record li::before{
+  content:""; position:absolute; inset-inline-start:0; top:26px;
+  width:8px; height:8px; background:var(--gold); transform:rotate(45deg);
+}
+@media (max-width:900px){.amin-grid{grid-template-columns:1fr; gap:24px}}
+
+/* ---------- historic timeline (ours) + رؤيتنا opening beneath it ---------- */
+.heritage{background:var(--ink); color:var(--on-dark); position:relative; overflow:hidden}
+.heritage::before{
+  content:"𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 ";
+  position:absolute; inset:-20px; font-family:var(--f-cuneiform); font-size:64px; line-height:1.4;
+  color:var(--gold); opacity:.05; direction:ltr; word-break:break-all; pointer-events:none;
+}
+.heritage .wrap{position:relative}
+.heritage .section-head h2{color:var(--on-dark)} .heritage .section-head .sub{color:var(--on-dark-2)}
+.heritage .section-head .eyebrow{color:var(--gold-2)} .heritage .section-head .eyebrow::before{background:var(--gold-2)}
+.line{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:40px; position:relative}
+.line::before{content:""; position:absolute; top:22px; inset-inline:0; height:1px;
+  background:linear-gradient(to left, var(--gold), var(--lapis-2))}
+:root[lang="en"] .line::before{background:linear-gradient(to right, var(--gold), var(--lapis-2))}
+.line li{position:relative; padding-top:56px}
+.line li::before{content:""; position:absolute; top:17px; inset-inline-start:0; width:11px; height:11px; background:var(--ink); border:1px solid var(--gold); transform:rotate(45deg)}
+.line li.now::before{background:var(--gold); box-shadow:0 0 0 5px rgba(217,182,92,.14)}
+.line .yr{font-family:var(--f-en-display); font-weight:300; font-size:44px; line-height:1; color:var(--gold-2); display:block; margin-bottom:14px}
+.line .yr.ar{font-family:var(--f-ar-display); font-size:38px}
+.line .yr small{font-size:14px; letter-spacing:.3em; text-transform:uppercase; color:var(--on-dark-2); margin-inline-start:6px}
+.line h3{font-family:var(--f-ar-display); font-weight:400; font-size:24px; margin:0 0 10px; line-height:1.35}
+.line p{margin:0; font-size:15px; color:var(--on-dark-2)}
+.line li:nth-child(2){transition-delay:.1s} .line li:nth-child(3){transition-delay:.2s} .line li:nth-child(4){transition-delay:.3s}
+.vision-here{
+  margin-top:clamp(44px,6vw,72px); padding-top:clamp(30px,4vw,44px);
+  border-top:1px solid rgba(244,239,228,.16); max-width:900px; position:relative;
+}
+.vision-here .ar-label{
+  display:block; font-family:var(--f-ar-display); font-size:30px; color:var(--gold-2);
+  margin-bottom:16px; line-height:1;
+}
+.vision-here p{margin:0; font-family:var(--f-ar-display); font-size:clamp(20px,2.1vw,27px); line-height:1.9; color:var(--on-dark)}
+@media (max-width:900px){.line{grid-template-columns:1fr 1fr; gap:34px}}
+@media (max-width:560px){.line{grid-template-columns:1fr; gap:28px} .line::before{display:none}}
+
+/* ---------- رسالتنا — a quiet marble band right before the ask ---------- */
+.mission{background:var(--marble-2); border-top:1px solid var(--marble-2)}
+.mission-wrap{max-width:900px; margin-inline:auto; text-align:center; position:relative}
+.mission-wrap::before{
+  content:""; display:block; width:56px; height:2px; background:var(--gold); margin:0 auto 26px;
+}
+.mission-wrap .ar-label{
+  display:block; font-family:var(--f-ar-display); font-size:30px; color:var(--gold-dim);
+  margin-bottom:18px; line-height:1;
+}
+.mission-wrap p{
+  margin:0; font-family:var(--f-ar-display); font-size:clamp(21px,2.3vw,30px);
+  line-height:1.9; color:var(--ink);
+}
+
+/* ---------- consult — details first, form second ---------- */
+.consult{background:var(--ink); color:var(--on-dark); border-top:3px solid var(--lapis)}
+.consult .section-head{max-width:640px}
+.consult h2{font-family:var(--f-ar-display); font-weight:400; font-size:clamp(30px,3.6vw,44px); margin:0 0 14px; line-height:1.3}
+.consult .sub{color:var(--on-dark-2); font-size:18px; margin:0}
+.consult .eyebrow{color:var(--gold-2)} .consult .eyebrow::before{background:var(--gold-2)}
+
+/* the four direct routes — same gold-rule language as the proof band */
+.channels{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(18px,3vw,40px);
+  padding-bottom:clamp(26px,3vw,38px); border-bottom:1px solid rgba(244,239,228,.14);
+}
+.ch{border-top:2px solid var(--gold); padding-top:18px; display:flex; flex-direction:column; gap:7px}
+.ch.empty{display:none}
+.ch-k{
+  font-family:var(--f-ar-ui); font-size:15px; font-weight:600; color:var(--gold-2);
+  letter-spacing:0;
+}
+:root[lang="en"] .ch-k{font-family:var(--f-en-display); font-size:13px; letter-spacing:.2em; text-transform:uppercase}
+.ch-v{font-size:clamp(17px,1.6vw,20px); color:var(--marble); line-height:1.5; word-break:break-word}
+a.ch-v{border-bottom:1px solid transparent; align-self:flex-start; transition:border-color .3s, color .3s}
+a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
+.ch-v.second{font-size:16px; color:var(--on-dark-2)}
+.ch-note{font-size:14px; color:var(--on-dark-2); line-height:1.7}
+.ch-note .dot{color:var(--gold)}
+.ch-map{
+  font-size:14px; color:var(--gold-2); margin-top:4px; align-self:flex-start;
+  border-bottom:1px solid rgba(217,182,92,.4); transition:border-color .3s;
+}
+.ch-map:hover{border-bottom-color:var(--gold-2)}
+/* WhatsApp leads — it is how clients here actually make contact */
+.ch-wa{position:relative}
+.ch-wa .ch-k::after{content:"●"; color:#25D366; font-size:9px; margin-inline-start:8px; vertical-align:middle}
+
+/* the form */
+.form-block{padding-top:clamp(26px,3vw,38px); max-width:680px}
+.form-h{
+  font-family:var(--f-ar-display); font-weight:400; font-size:clamp(22px,2.2vw,28px);
+  color:var(--on-dark); margin:0 0 clamp(16px,1.8vw,22px); line-height:1.3;
+}
+:root[lang="en"] .form-h{font-family:var(--f-en-display)}
+
+/* the notice — visible, adjacent, never a tick box */
+.disclaimer{
+  border:1px dashed rgba(217,182,92,.45);           /* dashed = awaiting the firm's own wording */
+  border-inline-start:2px solid var(--gold-dim);
+  padding:16px 20px; background:rgba(244,239,228,.035);
+  margin-bottom:clamp(26px,3vw,36px);
+}
+.disclaimer .dc-k{
+  display:block; font-family:var(--f-ar-ui); font-size:14px; font-weight:600;
+  color:var(--gold-2); margin-bottom:8px;
+}
+:root[lang="en"] .disclaimer .dc-k{font-family:var(--f-en-display); letter-spacing:.2em; text-transform:uppercase; font-size:12px}
+.disclaimer p{margin:0; font-size:14px; line-height:1.9; color:var(--on-dark-2)}
+
+.form{display:grid; grid-template-columns:1fr 1fr; gap:18px 24px}
+/* the label is a quiet caption, not a heading — the field is what matters */
+.form label{display:grid; gap:2px; font-size:14px; color:rgba(244,239,228,.62); align-content:start}
+.form label .opt{font-style:normal; font-size:12px; color:rgba(244,239,228,.38); margin-inline-start:6px}
+.form .full{grid-column:1/-1}
+.form input,.form select,.form textarea{
+  width:100%; background:transparent; color:var(--on-dark); border:0;
+  border-bottom:1px solid rgba(244,239,228,.22);   /* quieter at rest, gold on focus */
+  padding:7px 0 9px; font:inherit; font-size:15.5px; border-radius:0; outline:none;
+  transition:border-color .3s;
+}
+.form select option{color:var(--ink)}
+.form input:focus,.form select:focus,.form textarea:focus{border-bottom-color:var(--gold-2)}
+.form textarea{
+  resize:none;            /* it sizes itself — a drag handle would fight the auto-grow */
+  overflow:hidden; min-height:40px; line-height:1.75;
+  transition:height .18s var(--ease);
+}
+.btn{
+  grid-column:1/-1; justify-self:start; background:var(--gold); color:var(--ink); border:0;
+  padding:12px 30px; font:inherit; font-size:15px; font-weight:500; cursor:pointer;
+  letter-spacing:.02em; margin-top:6px; transition:background .3s;
+}
+.btn:hover{background:var(--gold-2)}
+.form button[disabled]{opacity:.55; cursor:progress}
+.form-note{grid-column:1/-1; margin:0; font-size:14px; transition:color .3s}
+.form-note.good{color:var(--gold-2)} .form-note.bad{color:#E4A3A3}
+
+@media (max-width:980px){.channels{grid-template-columns:1fr 1fr; gap:26px 30px}}
+@media (max-width:640px){
+  .channels{grid-template-columns:1fr; gap:22px}
+  .form{grid-template-columns:1fr}
+  .disclaimer{padding:14px 16px}
+  .disclaimer p{font-size:14px}
+}
+
+/* ---------- footer ---------- */
+.foot{background:var(--marble); padding-top:56px}
+.foot-grid{display:grid; grid-template-columns:auto 1fr auto; gap:40px; align-items:center; padding-bottom:40px}
+.foot-logo{height:64px; width:auto}
+.foot-links{list-style:none; margin:0; padding:0; display:flex; gap:clamp(16px,2.2vw,28px); justify-content:center; font-size:15px; flex-wrap:wrap}
+.foot-links a{white-space:nowrap}
+.foot-links a{color:var(--on-light-2)} .foot-links a:hover{color:var(--ink)}
+.foot-copy{margin:0; font-size:14px; line-height:1.85; color:var(--on-light-2)}
+@media (max-width:820px){.foot-grid{grid-template-columns:1fr; text-align:center; gap:22px} .foot-logo{margin-inline:auto} .foot-links{flex-wrap:wrap}}
+
+/* ---------- theme board (dev page only) ---------- */
+.board{padding:80px var(--gutter); max-width:1100px; margin-inline:auto}
+.board h2{font-family:var(--f-ar-display); font-weight:400; font-size:34px; margin:0 0 8px}
+.board .k{font-family:var(--f-en-display); letter-spacing:.3em; text-transform:uppercase; font-size:12px; color:var(--gold-dim); margin:56px 0 20px}
+.sw{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px}
+.sw div{height:110px; border-radius:2px; padding:12px; font-family:var(--f-en-ui); font-size:12px; display:flex; flex-direction:column; justify-content:flex-end; box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.sw b{font-size:13px}
+.spec{display:grid; gap:18px}
+.spec > div{display:grid; grid-template-columns:200px 1fr; gap:24px; align-items:baseline; padding:18px 0; border-bottom:1px solid var(--marble-2)}
+.spec .lbl{font-family:var(--f-en-ui); font-size:12px; color:var(--on-light-2); letter-spacing:.08em}
+
+@media (prefers-reduced-motion:reduce){
+  .hero .bg,.reveal,.frieze .track,.scroll-hint::after{animation:none}
+  .reveal{opacity:1; transform:none}
+}
+@media (max-width:860px){
+  .burger{display:block}
+  .nav{padding-inline:16px}
+  .brand{gap:10px}
+  .brand-icon{height:40px} .brand-word{height:22px}
+  .nav.solid .brand-icon{height:36px} .nav.solid .brand-word{height:20px}
+  .lang{padding:5px 10px}
+  .menu{position:fixed; inset:0; background:rgba(23,21,15,.97); display:grid; place-items:center; opacity:0; pointer-events:none; transition:opacity .35s var(--ease)}
+  .menu ul{flex-direction:column; align-items:center; gap:28px; font-family:var(--f-ar-display); font-size:30px}
+  .menu-open .menu{opacity:1; pointer-events:auto}
+  .nav{z-index:30} .menu{z-index:25}
+  .hero .inner{padding-top:120px}
+}
+
+/* =====================================================================
+   SERVICE PAGES — /services/*.html  (generated by build/build_services.py)
+   ===================================================================== */
+
+/* a QUIET header band, deliberately not a second photo hero */
+.svc-head{
+  background:var(--ink); color:var(--on-dark); position:relative; overflow:hidden;
+  padding-block:clamp(120px,13vw,180px) clamp(44px,6vw,72px);
+}
+.svc-head::before{
+  content:"𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 ";
+  position:absolute; inset:-20px; font-family:var(--f-cuneiform); font-size:60px; line-height:1.4;
+  color:var(--gold); opacity:.045; direction:ltr; word-break:break-all; pointer-events:none;
+}
+.svc-head .wrap{position:relative}
+.svc-head h1{
+  font-family:var(--f-ar-display); font-weight:400; margin:0; line-height:1.28;
+  font-size:clamp(30px,4.4vw,56px); max-width:22ch; text-wrap:balance;
+}
+.svc-head .eyebrow{color:var(--gold-2); margin-bottom:18px}
+.svc-head .eyebrow::before{background:var(--gold-2)}
+
+/* breadcrumbs */
+.crumbs{
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+  font-size:clamp(15px,1.35vw,17px); color:var(--on-dark-2);
+  margin-bottom:clamp(30px,3.4vw,44px); line-height:1.6;
+}
+.crumbs a{
+  color:var(--gold-2); border-bottom:1px solid rgba(217,182,92,.4);
+  padding-bottom:2px; transition:color .3s, border-color .3s;
+}
+.crumbs a:hover{color:var(--marble); border-bottom-color:var(--marble)}
+.crumbs .sep{color:rgba(244,239,228,.35)}
+.crumbs [aria-current]{color:var(--marble)}
+
+/* the items of one service */
+.svc-body{background:var(--marble)}
+.svc-items{list-style:none; margin:0; padding:0; max-width:900px}
+.svc-items li{
+  display:grid; grid-template-columns:auto 1fr; gap:clamp(18px,3vw,34px); align-items:baseline;
+  padding:clamp(22px,2.8vw,32px) 0; border-bottom:1px solid var(--marble-2);
+}
+.svc-items li:first-child{border-top:1px solid var(--marble-2)}
+.svc-items .num{
+  font-family:var(--f-en-display); font-size:clamp(19px,1.8vw,25px); font-weight:500;
+  letter-spacing:.1em; color:var(--gold); min-width:56px; line-height:1.2;
+}
+.svc-items p{margin:0; font-size:clamp(18px,1.65vw,22px); line-height:2; color:var(--on-light)}
+
+/* sibling services + pager */
+.siblings-sec{background:var(--marble-2); padding-block:clamp(48px,6vw,76px)}
+.siblings-h{
+  font-family:var(--f-ar-display); font-weight:400; color:var(--ink);
+  font-size:clamp(22px,2.2vw,28px); line-height:1.35; margin:0 0 clamp(24px,2.8vw,34px);
+}
+:root[lang="en"] .siblings-h{font-family:var(--f-en-display)}
+.siblings-sec .services-list{border-top-color:rgba(23,21,15,.12)}
+.siblings-sec .services-list li{border-bottom-color:rgba(23,21,15,.12)}
+.siblings-sec .services-list a:hover{background:var(--marble)}
+.services-list .count{
+  font-family:var(--f-en-display); font-size:13px; letter-spacing:.14em; color:var(--gold-dim);
+  min-width:22px; text-align:center;
+}
+.services-list a:has(.count){grid-template-columns:auto 1fr auto auto}
+
+@media (max-width:620px){
+  .svc-cta{flex-direction:column; align-items:flex-start}
+}
+
+/* =====================================================================
+   BILINGUAL — typography is part of the language, not decoration.
+   letter-spacing breaks the joins between Arabic letters; uppercase does
+   nothing to Arabic but keeps the Latin sizing. So scope both by lang.
+   ===================================================================== */
+:root[lang="ar"] .eyebrow,
+:root[lang="ar"] .crumbs,
+:root[lang="ar"] .services-list .n,
+:root[lang="ar"] .cta,
+:root[lang="ar"] .lang,
+:root[lang="ar"] .scroll-hint{
+  font-family:var(--f-ar-ui); letter-spacing:0; text-transform:none;
+}
+:root[lang="ar"] .eyebrow{font-size:clamp(14px,1.25vw,16px)}
+:root[lang="ar"] .scroll-hint{font-size:13px}
+/* numerals stay tabular in BOTH languages so counters never jitter */
+.services-list .n,.svc-items .num,.line .yr,.pillar .num{font-variant-numeric:tabular-nums}
+/* Latin edition: the Arabic display face has no Latin — hand those back to the serif */
+:root[lang="en"] .hero h1,:root[lang="en"] .section h2,:root[lang="en"] .svc-head h1,
+:root[lang="en"] .amin-text h2,:root[lang="en"] .pillar .word,:root[lang="en"] .line h3,
+:root[lang="en"] .vision-here p,:root[lang="en"] .mission-wrap p,:root[lang="en"] .ar-label,
+:root[lang="en"] .amin-word .big,:root[lang="en"] .amin-word .def,
+:root[lang="en"] .services-list .t,:root[lang="en"] .pills a{
+  font-family:var(--f-en-display);
+}
+:root[lang="en"] .amin-word .big{font-size:clamp(64px,9vw,132px); letter-spacing:-.02em}
+:root[lang="en"] body{font-family:var(--f-en-ui)}
+:root[lang="en"] .hero h1{font-size:clamp(40px,5.4vw,74px); font-weight:300}
+:root[lang="en"] .svc-items p,:root[lang="en"] .record li{line-height:1.85}
+/* the toggle names the OTHER language, so it never translates itself */
+.lang{min-width:44px; text-align:center}
+
+/* ---------- siblings as pills (the exhaustive, self-maintaining pattern) ---------- */
+.pills{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:12px}
+.pills a{
+  display:block; padding:13px 22px; border:1px solid rgba(23,21,15,.18); border-radius:999px;
+  font-size:clamp(15px,1.35vw,17px); line-height:1.5; color:var(--on-light);
+  background:var(--marble); transition:background .3s var(--ease), border-color .3s, color .3s;
+}
+.pills a:hover{background:var(--ink); border-color:var(--ink); color:var(--on-dark)}
+
+/* ---------- "all services" link ---------- */
+.all-link{
+  display:inline-flex; align-items:center; gap:16px; margin-top:clamp(30px,3.4vw,44px);
+  font-size:clamp(16px,1.4vw,18px); color:var(--gold-dim);
+}
+.all-link .go{width:30px; height:1px; background:var(--gold); transition:width .35s var(--ease)}
+.all-link:hover{color:var(--ink)} .all-link:hover .go{width:54px}
+
+/* ---------- back to top ---------- */
+.to-top{
+  position:fixed; inset-inline-end:clamp(16px,2.4vw,32px); bottom:clamp(16px,2.4vw,32px);
+  width:48px; height:48px; border-radius:50%; background:var(--ink); border:1px solid var(--gold);
+  display:grid; place-items:center; z-index:18;
+  opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:opacity .35s var(--ease), transform .35s var(--ease), background .3s;
+}
+.to-top.show{opacity:1; pointer-events:auto; transform:none}
+.to-top:hover{background:var(--gold)}
+.to-top span{
+  width:11px; height:11px; border-top:2px solid var(--gold); border-inline-start:2px solid var(--gold);
+  transform:rotate(45deg); margin-top:4px; transition:border-color .3s;
+}
+.to-top:hover span{border-color:var(--ink)}
+
+/* ---------- contact lines + form states ---------- */
+
+:root[lang="ar"] 
+
+
+
+.form-note{transition:color .3s}
+.form-note.good{color:var(--gold-2)}
+.form-note.bad{color:#E0A0A0}
+.form button[disabled]{opacity:.55; cursor:progress}
+
+/* =====================================================================
+   DEVICE PASS — phones first, then anything wider.
+   ===================================================================== */
+@media (max-width:860px){
+  .hero{min-height:100svh}
+  .hero .inner{padding-block:clamp(110px,22vh,150px) clamp(70px,12vh,110px); max-width:none}
+  .hero .veil{background:
+    radial-gradient(135% 70% at 50% 46%, rgba(23,21,15,.86) 0%, rgba(23,21,15,.7) 42%,
+      rgba(23,21,15,.34) 70%, rgba(23,21,15,.06) 92%, rgba(23,21,15,0) 100%),
+    linear-gradient(to top, rgba(23,21,15,.6) 0%, rgba(23,21,15,.1) 44%, rgba(23,21,15,.26) 100%),
+    rgba(23,21,15,.18);}
+  .hero p.lead{max-width:none}
+  .hero-actions{gap:18px; flex-direction:column; align-items:flex-start}
+  .scroll-hint{display:none}
+  .svc-head{padding-block:clamp(104px,22vw,130px) clamp(34px,7vw,48px)}
+  .svc-items li{grid-template-columns:1fr; gap:8px}
+  .svc-items .num{min-width:0}
+  .to-top{width:42px; height:42px}
+}
+@media (max-width:560px){
+  .wrap{padding-inline:18px}
+  .nav{padding-inline:14px}
+  .proof .names{gap:18px 26px}
+  .proof .name{max-width:none; flex:1 1 100%}
+  .proof .grp.lead .name .en{font-size:26px}
+  .amin-word .big{font-size:clamp(76px,22vw,110px)}
+  .services-list a{gap:14px; padding-inline:4px}
+  .services-list .t{font-size:17px}
+  .pills a{padding:11px 18px; font-size:15px}
+  .foot-grid{gap:20px}
+  .vision-here p,.mission-wrap p{font-size:19px; line-height:1.85}
+  .line .yr{font-size:36px}
+}
+/* touch targets: nothing tappable smaller than 44px */
+@media (pointer:coarse){
+  /* every tappable thing clears 44px — WCAG target size */
+  .services-list a,.pills a,.crumbs a,.foot-links a,.menu a,
+  .cta,.lang,.ch-v,.ch-map,.all-link,.btn,.to-top,.brand{min-height:44px}
+  .menu a{display:flex; align-items:center; justify-content:center}
+  .crumbs a,.ch-v,.ch-map,.all-link,.foot-links a{display:inline-flex; align-items:center}
+  .cta{display:inline-flex; align-items:center}
+  .lang{display:inline-flex; align-items:center; justify-content:center; padding-inline:16px}
+  .burger{width:46px; height:46px}
+  .to-top{width:50px; height:50px}
+  /* a tapped link needs a visible response — there is no hover on touch */
+  .services-list a:active,.pills a:active{background:var(--marble-2)}
+}
+/* the fold-out menu must never be taller than the screen */
+@media (max-width:860px){
+  .menu{overflow-y:auto; padding-block:96px 40px}
+  .menu ul{gap:22px}
+}
+
+/* nothing readable drops below 14px on a phone */
+@media (max-width:560px){
+  .proof .name .ar,
+  .proof .grp.sec .name .ar{font-size:14.5px; line-height:1.7}
+  
+  .foot-copy{font-size:14px; line-height:1.8}
+  .crumbs{font-size:15px}
+  .form label{font-size:15px}
+  .all-link{font-size:16px}
+  .pillars-sec .tail{font-size:17px; line-height:1.95}
+}
+
+/* the eyebrow is a label, but it still must clear 14px on a phone */
+@media (max-width:560px){
+  .eyebrow{font-size:14px}
+  :root[lang="ar"] .eyebrow{font-size:15px}
+}
+
+/* Arabic diacritics rise above cap-height, so the label needs more air than Latin does */
+:root[lang="ar"] .eyebrow{margin-bottom:clamp(32px,3.4vw,46px)}
+:root[lang="ar"] .section-head .eyebrow{margin-bottom:clamp(28px,3vw,40px)}
+
+/* ---------- section labels: big enough to read, weighted enough to see ---------- */
+:root[lang="ar"] .eyebrow{
+  font-size:clamp(17px,1.5vw,20px); font-weight:600; letter-spacing:0; text-transform:none;
+}
+/* the Arabic UI face needs real weight at label size or it reads as a whisper */
+:root[lang="ar"] .section-head .eyebrow,
+:root[lang="ar"] .amin-text .eyebrow,
+:root[lang="ar"] .consult .eyebrow{font-weight:600}
+/* the small-caps label above the record list is the same kind of thing — match it */
+.principles-intro{
+  font-size:clamp(15px,1.25vw,17px); font-weight:500; letter-spacing:.22em; color:var(--gold-dim);
+}
+:root[lang="ar"] .principles-intro{
+  font-family:var(--f-ar-ui); font-size:clamp(17px,1.5vw,20px); font-weight:600;
+  letter-spacing:0; text-transform:none;
+}
+@media (max-width:560px){
+  .eyebrow{font-size:15px}
+  :root[lang="ar"] .eyebrow{font-size:17px}
+  .principles-intro,:root[lang="ar"] .principles-intro{font-size:16px}
+}
+
+/* labels sitting on a light ground need the darker gold to clear 4.5:1 */
+.section-head .eyebrow,
+.amin-text .eyebrow,
+.principles-intro,
+:root[lang="ar"] .principles-intro{color:var(--gold-ink)}
+.amin-text .eyebrow::before,
+.section-head .eyebrow::before{background:var(--gold)}
+
+/* footer separator — the same middot the hero eyebrow uses, so the site has ONE separator style */
+.foot-copy .dot{color:var(--gold); padding-inline:4px; font-weight:700}

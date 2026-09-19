@@ -1,0 +1,6 @@
+# originals kept beside fixed assets — local only
+*.bak
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
