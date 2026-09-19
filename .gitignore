@@ -1,6 +1,32 @@
-# originals kept beside fixed assets — local only
-*.bak
+# ── LOCAL ONLY ────────────────────────────────────────────────────────────────
+# The repo carries ONLY what the live site needs to run. Everything below is the
+# working set: sources, generators and internal docs. Keep it backed up yourself —
+# it is NOT in git. Without it the site still runs, but it cannot be regenerated.
+
+# internal docs
+_guide/
+CLAUDE.md
+
+# generators (the site ships their OUTPUT, not the tooling)
+build/
 __pycache__/
 *.pyc
+
+# copy SOURCES — the browser reads the data/*.js mirrors, never these
+data/*.json
+assets/clients/manifest.json
+
+# asset SOURCES and unused variants
+assets/hero-baghdad.png
+assets/logo.jpg
+assets/logo-icon-light.png
+assets/logo-word-light.png
+assets/logo-full-dark.png
+*.bak
+
+# dev pages
+theme-board.html
+
+# misc
 .DS_Store
 Thumbs.db

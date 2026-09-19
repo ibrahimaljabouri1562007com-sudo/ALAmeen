@@ -6,9 +6,7 @@
   const UP = document.documentElement.dataset.up || '';
   const n  = parseInt(main.dataset.svcN, 10);
 
-  const ready = window.SERVICES ? Promise.resolve(window.SERVICES)
-                                : fetch(UP + 'data/services.json').then(r => r.json());
-  ready.then(list => {
+  Promise.resolve(window.SERVICES || []).then(list => {
     const s = list.find(x => x.n === n);
     if (!s) return;
     const draw = () => {

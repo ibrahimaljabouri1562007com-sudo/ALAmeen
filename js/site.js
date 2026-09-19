@@ -70,9 +70,7 @@
     apply(saved);
     ROOT.classList.add('i18n-ready');
   };
-  if (window.I18N) start(window.I18N);
-  else fetch(UP + 'data/i18n.json').then(r => r.json()).then(start)
-       .catch(() => { ROOT.classList.add('i18n-ready'); });
+  start(window.I18N);   // data/i18n.js sets this before we run
 
   const toggle = document.getElementById('langToggle');
   if (toggle) toggle.addEventListener('click', e => {
@@ -115,8 +113,7 @@
   /* ---------- client logos (manifest-driven; no 404s when none exist) ---------- */
   const slots = document.querySelectorAll('.proof .name[data-logo]');
   if (slots.length) {
-    Promise.resolve(window.CLIENT_LOGOS ||
-      fetch(UP + 'assets/clients/manifest.json').then(r => r.ok ? r.json() : []))
+    Promise.resolve(window.CLIENT_LOGOS || [])
       .then(list => slots.forEach(slot => {
         const src = slot.dataset.logo;
         if (!list.some(f => src.endsWith(f))) return;
@@ -133,8 +130,7 @@
      The route is chosen in data/config.json; nothing is hardcoded here.
      ===================================================================== */
   const form = document.getElementById('consultForm');
-  const cfgReady = window.CFG ? Promise.resolve(window.CFG)
-                               : fetch(UP + 'data/config.json').then(r => r.json());
+  const cfgReady = Promise.resolve(window.CFG || {});
   if (form) cfgReady.then(cfg => {
     const note = document.getElementById('formNote');
     const btn  = form.querySelector('button[type=submit]');
