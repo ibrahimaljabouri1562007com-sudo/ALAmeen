@@ -102,10 +102,15 @@ img{max-width:100%; display:block}
 .hero .veil{ /* a scrim POOLED under the text block, not a gradient from the edge */
   position:absolute; inset:0; z-index:-1;
   background:
-    /* the pool — centred on the text block (right-of-centre in RTL) */
-    radial-gradient(115% 85% at 70% 50%,
-      rgba(23,21,15,.80) 0%, rgba(23,21,15,.66) 32%,
-      rgba(23,21,15,.30) 58%, rgba(23,21,15,.04) 78%, rgba(23,21,15,0) 92%),
+    /* The pool sits where the text actually is. It used to be placed at 70% on the
+       assumption the block sat right-of-centre in Arabic — but the headline measures
+       its centre at 49% in BOTH languages, so the darkest part of the scrim was 21
+       points to the side of the words it was meant to carry, and the last stop cut
+       off at 92% instead of reaching nothing. The phone layout already pooled at 50%
+       and faded to 100%, which is why it read smoother there. */
+    radial-gradient(112% 88% at 50% 48%,
+      rgba(23,21,15,.82) 0%, rgba(23,21,15,.66) 34%,
+      rgba(23,21,15,.32) 62%, rgba(23,21,15,.06) 86%, rgba(23,21,15,0) 100%),
     /* floor + sky settle, keeps the sunset alive */
     linear-gradient(to top, rgba(23,21,15,.55) 0%, rgba(23,21,15,.06) 42%, rgba(23,21,15,.22) 100%),
     /* a whisper over everything so nothing glares */
