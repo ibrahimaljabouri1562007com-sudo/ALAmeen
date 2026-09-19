@@ -241,8 +241,13 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
    already drawn in white needs nothing and sits straight on the band. Which is which is
    measured in build/build_data.py, never assumed. */
 .proof .mark.has-logo{
-  background:#fff; border-radius:2px;
-  padding:9px 13px; width:max-content; max-width:100%;
+  /* Pure white on ink is the harshest pair on the page and the tile read as applied
+     rather than belonging. Marble is the site's own light tone, so the ground now comes
+     from the palette; a gold hairline ties it to the section's rules, and the edge is
+     eased rather than cut. The logo keeps room to breathe instead of being framed. */
+  background:var(--marble); border-radius:3px;
+  padding:14px 18px; width:max-content; max-width:100%;
+  box-shadow:inset 0 0 0 1px rgba(111,85,32,.16), 0 1px 2px rgba(0,0,0,.22);
 }
 .proof .name{max-width:270px; min-width:0}
 /* the slot: holds a logo when one exists, the set name until then */
