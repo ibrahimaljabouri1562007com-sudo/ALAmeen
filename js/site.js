@@ -113,14 +113,28 @@
   /* ---------- client logos (manifest-driven; no 404s when none exist) ---------- */
   const slots = document.querySelectorAll('.proof .name[data-logo]');
   if (slots.length) {
+    // A logo replaces its set name only once the file has actually decoded. The old
+    // code emptied the slot first, so a missing or slow file left a blank gap where a
+    // client's name had been — the one place on this page that must never look broken.
     Promise.resolve(window.CLIENT_LOGOS || [])
       .then(list => slots.forEach(slot => {
         const src = slot.dataset.logo;
-        if (!list.some(f => src.endsWith(f))) return;
-        const img = new Image();
+        if (!list.some(f => src.endsWith(f))) return;          // not supplied yet: keep the name
+        const mark = slot.querySelector('.mark');
+        const img  = new Image();
+        img.className = 'logo-in';
+        img.alt = slot.querySelector('.ar')?.textContent ||
+                  slot.querySelector('.en')?.textContent || '';
         img.src = UP + src;
-        img.alt = slot.querySelector('.ar')?.textContent || '';
-        const m = slot.querySelector('.mark'); m.innerHTML = ''; m.appendChild(img);
+        const show = () => {
+          // reserve the height the name already occupies, so nothing below shifts
+          mark.style.minHeight = Math.max(mark.offsetHeight, img.height ? 0 : 0) + 'px';
+          mark.replaceChildren(img);
+          requestAnimationFrame(() => img.classList.add('in'));
+        };
+        (img.decode ? img.decode() : Promise.resolve()).then(show).catch(() => {
+          if (img.complete && img.naturalWidth) show();          // decode() unsupported
+        });
       }))
       .catch(() => {});
   }
