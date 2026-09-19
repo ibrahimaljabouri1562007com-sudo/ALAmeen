@@ -1,4 +1,4 @@
-/* A service page's ITEMS live in services.json, not in the dictionary — swap them
+/* A service page's ITEMS live in services.js, not in the dictionary — swap them
    whenever the language changes. The page ships Arabic, so it is correct with JS off. */
 (() => {
   const main = document.querySelector('main[data-svc]');

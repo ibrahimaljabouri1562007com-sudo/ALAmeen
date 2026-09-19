@@ -1,7 +1,7 @@
 /* =====================================================================
    AL-AMIN — one script for every page.
    Language engine · contact engine · nav · reveals · back-to-top.
-   Copy lives in data/i18n.json and data/services.json — never in here.
+   Copy lives in data/i18n.js and data/services.js — never in here.
    ===================================================================== */
 (() => {
   'use strict';
@@ -62,7 +62,7 @@
 
   /* ---------- boot ----------
      data/*.js set these globals via <script>, so the site works from a bare folder
-     with no server. fetch is kept only as a fallback if those files are missing. */
+     with no server — no fetch, which file:// would block anyway. */
   const start = d => {
     DICT = d || {};
     let saved = 'ar';
@@ -127,7 +127,7 @@
 
   /* =====================================================================
      CONTACT ENGINE — one form, swappable mail route, honest states.
-     The route is chosen in data/config.json; nothing is hardcoded here.
+     The route is chosen in data/config.js; nothing is hardcoded here.
      ===================================================================== */
   const form = document.getElementById('consultForm');
   const cfgReady = Promise.resolve(window.CFG || {});
