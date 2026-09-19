@@ -271,10 +271,16 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
    in English the Latin mark already says who they are, so showing both is a leak. */
 html[lang="en"] .proof .name .ar{display:none}
 .proof .grp.lead .name .en{font-size:clamp(23px,2.8vw,34px)}
-.proof .grp.lead .name img{max-height:56px}
-.proof .grp.sec .mark{min-height:40px}
+.proof .grp.lead .name img{
+  /* Sized by WIDTH, not height. A fixed height renders a dense wide mark at a fraction
+     of the size it was drawn for — CRBC was landing at 0.21 of its drawn scale and its
+     lettering turned to mush. Giving each mark a target width lets a wide one take the
+     room its text needs, with the height capped so none dominates the row. */
+  width:clamp(180px,26vw,240px); height:auto; max-height:72px;
+}
+.proof .grp.sec .mark{min-height:46px}
 .proof .grp.sec .name .en{font-size:clamp(17px,1.8vw,22px); letter-spacing:.07em}
-.proof .grp.sec .name img{max-height:34px}
+.proof .grp.sec .name img{width:clamp(200px,32vw,300px); height:auto; max-height:64px}
 .proof .grp.sec .name .ar{font-size:14px}
 
 

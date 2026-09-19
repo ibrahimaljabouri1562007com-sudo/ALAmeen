@@ -137,17 +137,6 @@
           mark.replaceChildren(img);
           // a ground only where the artwork cannot be read without one
           if (entry.tile) mark.classList.add('has-logo');
-          // Placement, not alteration: sizing every mark to one HEIGHT makes a 5.7:1
-          // wordmark dominate and a 2.1:1 stacked emblem shrink to nothing. Scale toward
-          // equal optical AREA so they read as peers. The artwork itself is untouched.
-          if (entry.ar) {
-            const base = parseFloat(getComputedStyle(img).maxHeight);
-            if (base) {
-              const REF = 3.6;
-              const k = Math.min(1.55, Math.max(0.85, Math.sqrt(REF / entry.ar)));
-              img.style.maxHeight = (base * k).toFixed(1) + 'px';
-            }
-          }
           requestAnimationFrame(() => img.classList.add('in'));
         };
         (img.decode ? img.decode() : Promise.resolve()).then(show).catch(() => {
