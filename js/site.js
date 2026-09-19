@@ -209,7 +209,12 @@
         if (!to) throw new Error('no destination email');
         const r = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(to), {
           method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ ...payload, _subject: (mail.subject || {})[LANG] || 'Website request' })
+          body: JSON.stringify({
+            ...payload,
+            _subject:  (mail.subject || {})[LANG] || 'Website request',
+            _template: 'table',        // a readable table, not one run-on line
+            _replyto:  payload.email   // Reply in the inbox answers the client directly
+          })
         });
         if (!r.ok) throw new Error('formsubmit ' + r.status);
         // FormSubmit answers 200 even when it did NOT send — an unactivated
