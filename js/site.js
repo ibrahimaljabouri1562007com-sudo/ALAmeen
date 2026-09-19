@@ -132,7 +132,7 @@
         const setAlt = () => { img.alt = (LANG === 'en' ? (nameEn || nameAr) : (nameAr || nameEn)); };
         setAlt();
         document.addEventListener('langchange', setAlt);
-        img.src = UP + src;
+        img.src = UP + src + (entry.v ? '?v=' + entry.v : '');   // content-stamped, like css/js
         const show = () => {
           mark.replaceChildren(img);
           // a ground only where the artwork cannot be read without one
