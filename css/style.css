@@ -15,6 +15,9 @@
   --gold-2:     #D9B65C;   /* highlight */
   --gold-dim:   #8C6E2C;
   --gold-ink:   #6F5520;   /* label gold on marble — passes AA at body size */
+  --plinth:     #FFFFFF;   /* the course the client marks stand on — pure paper,
+                              because several official files ship a white background
+                              of their own and must not show as a brighter patch */
   /* Babylon */
   --lapis:      #1F3A78;   /* Ishtar Gate glazed brick */
   --lapis-2:    #2B4C9B;
@@ -232,19 +235,22 @@ img{max-width:100%; display:block}
 }
 html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must stay joined */
 .proof .grp-label::after{content:""; height:1px; flex:1; background:linear-gradient(to left, rgba(217,182,92,.45), transparent)}
-.proof .names{display:flex; flex-wrap:wrap; gap:22px clamp(26px,4vw,56px); align-items:flex-start}
+/* THE PLINTH — one continuous light course carrying the marks, the way a stone band
+   carries an inscription. Not a box per logo: boxes read as stickers laid on top,
+   a course reads as part of the wall. The dark band and its frieze are kept. */
+.proof .names{
+  display:flex; flex-wrap:wrap; align-items:center;
+  gap:clamp(20px,3vw,44px) clamp(28px,4.5vw,64px);
+  background:var(--plinth);
+  padding:clamp(20px,2.6vw,30px) clamp(22px,3vw,36px);
+  border-radius:2px;
+  box-shadow:0 1px 0 rgba(0,0,0,.30), inset 0 0 0 1px rgba(111,85,32,.10);
+}
+/* the plinth is light, so everything standing on it is inked, not ivory */
+.proof .names .en{color:var(--gold-ink)}
 .proof .name{max-width:270px; min-width:0}
 /* the slot: holds a logo when one exists, the set name until then */
 .proof .mark{display:flex; align-items:center; min-height:52px; max-width:100%}
-/* A plate only goes behind artwork that needs one — dark marks drawn for white paper.
-   A logo whose lettering is already white keeps the dark band, because a plate would
-   erase it, and a file carrying its own background needs nothing added. Which of the
-   three a logo is gets measured in build/build_data.py, never assumed here. */
-.proof .mark.has-logo{
-  background:var(--marble); border-radius:2px;
-  padding:12px 16px; width:max-content; max-width:100%;
-  box-shadow:0 1px 0 rgba(0,0,0,.35);
-}
 .proof .name .en{
   font-family:var(--f-en-display); font-weight:400; color:var(--marble);
   letter-spacing:.06em; line-height:1.2;
@@ -264,16 +270,16 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
 @media (prefers-reduced-motion:reduce){
   .proof .name img.logo-in{transition:none; opacity:1; transform:none}
 }
-.proof .name .ar{display:block; font-size:14.5px; color:var(--on-dark-2); margin-top:8px; line-height:1.6}
+.proof .name .ar{display:block; font-size:14.5px; color:var(--ink); opacity:.78; margin-top:10px; line-height:1.6}
 /* A client's Arabic legal name is the ARABIC edition of that name, not a caption —
    in English the Latin mark already says who they are, so showing both is a leak. */
 html[lang="en"] .proof .name .ar{display:none}
 .proof .grp.lead .name .en{font-size:clamp(23px,2.8vw,34px)}
 .proof .grp.lead .name img{max-height:56px}
 .proof .grp.sec .mark{min-height:40px}
-.proof .grp.sec .name .en{font-size:clamp(17px,1.8vw,22px); color:var(--marble); letter-spacing:.07em}
+.proof .grp.sec .name .en{font-size:clamp(17px,1.8vw,22px); letter-spacing:.07em}
 .proof .grp.sec .name img{max-height:34px}
-.proof .grp.sec .name .ar{font-size:14px; opacity:.85}
+.proof .grp.sec .name .ar{font-size:14px}
 
 
 /* ---------- الخدمات — the nine, as a quiet index ---------- */

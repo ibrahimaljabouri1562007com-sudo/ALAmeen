@@ -135,9 +135,6 @@
         img.src = UP + src;
         const show = () => {
           mark.replaceChildren(img);
-          // the plate is the ARTWORK's requirement, measured at build time: dark marks
-          // need light paper, white marks would be erased by it
-          if (entry.plate) mark.classList.add('has-logo');
           // Placement, not alteration: sizing every mark to one HEIGHT makes a 5.7:1
           // wordmark dominate and a 2.1:1 stacked emblem shrink to nothing. Scale toward
           // equal optical AREA so they read as peers. The artwork itself is untouched.
