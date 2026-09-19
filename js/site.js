@@ -89,16 +89,92 @@
      off into links the visitor cannot see. */
   const burger = document.getElementById('burger');
   const menu   = document.getElementById('menu');
+
+  /* The drawer is BUILT from the bar's own links rather than written a second time in
+     the HTML: one list to keep in step, and the clones carry their data-i18n with them
+     so they follow the language like everything else. It is appended to <body>, not to
+     the header — inside it, the header's stacking context and its backdrop-filter both
+     fight a panel that has to sit above the page. */
+  let drawer = null;
   if (burger && menu) {
+    const veil = document.createElement('div');
+    veil.className = 'drawer-veil';
+
+    drawer = document.createElement('aside');
+    drawer.className = 'drawer';
+    drawer.id = 'drawer';
+    drawer.setAttribute('role', 'dialog');
+    drawer.setAttribute('aria-modal', 'true');
+    drawer.setAttribute('data-i18n-aria', 'nav_menu');
+    drawer.tabIndex = -1;
+    drawer.setAttribute('aria-label', t('nav_menu') || 'القائمة');
+
+    const head = document.createElement('div');
+    head.className = 'drawer-head';
+    const logo = document.createElement('img');
+    logo.className = 'drawer-logo';
+    logo.src = UP + 'assets/logo-full-light.png';   // the ink-on-marble mark, for a light panel
+    logo.alt = '';
+    // the panel covers the button that opened it, so it carries its own way out
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'drawer-close';
+    close.setAttribute('data-i18n-aria', 'nav_close');
+    close.setAttribute('aria-label', t('nav_close') || 'إغلاق');
+    close.innerHTML = '<span></span><span></span>';
+    close.addEventListener('click', () => setOpen(false));
+    head.append(close, logo);
+
+    const rule = document.createElement('div');
+    rule.className = 'drawer-rule';
+
+    const nav = document.createElement('nav');
+    nav.className = 'drawer-nav';
+    const ul = document.createElement('ul');
+    menu.querySelectorAll('a').forEach(a => {
+      const li = document.createElement('li');
+      li.appendChild(a.cloneNode(true));           // keeps href AND data-i18n
+      ul.appendChild(li);
+    });
+    nav.appendChild(ul);
+
+    const foot = document.createElement('div');
+    foot.className = 'drawer-foot';
+    const lang = document.createElement('a');
+    lang.className = 'drawer-lang';
+    lang.href = '#';
+    lang.id = 'drawerLang';
+    const cun = document.createElement('div');
+    cun.className = 'drawer-cuneiform';
+    cun.setAttribute('aria-hidden', 'true');
+    cun.textContent = '𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓';
+    const mean = document.createElement('div');
+    mean.className = 'meander';
+    mean.setAttribute('aria-hidden', 'true');
+    foot.append(lang, cun);
+
+    drawer.append(head, rule, nav, foot, mean);
+    document.body.append(veil, drawer);
+
+    // the panel's own toggle names the other language, exactly like the one in the bar
+    const syncLang = () => { lang.textContent = t('lang_other'); lang.lang = (LANG === 'ar') ? 'en' : 'ar'; };
+    syncLang();
+    document.addEventListener('langchange', syncLang);
+    lang.addEventListener('click', e => { e.preventDefault(); apply(LANG === 'ar' ? 'en' : 'ar'); });
+
+    veil.addEventListener('click', () => setOpen(false));
+
     let lockedAt = 0;                       // where the page was when the menu opened
     // The takeover only exists on narrow screens. Above it the same <nav> is the
     // ordinary inline bar, so nothing here may hide it — marking it inert at every
     // width killed the desktop links outright.
     const takeover = matchMedia('(max-width:860px)');
-    const syncInert = () => menu.toggleAttribute('inert', takeover.matches && !isOpen());
+    // Only the DRAWER is hidden when closed. The bar's own <nav> is the wide-screen
+    // navigation — marking that inert killed the desktop links outright once already.
+    const syncInert = () => drawer.toggleAttribute('inert', !isOpen());
 
     const focusables = () =>
-      [burger, ...menu.querySelectorAll('a[href]')].filter(el => el.offsetParent !== null);
+      [...drawer.querySelectorAll('button, a[href]')].filter(el => el.offsetParent !== null);
 
     const setOpen = open => {
       const body = document.body;
@@ -117,10 +193,9 @@
         window.scrollTo(0, lockedAt);       // land exactly where they left
       }
       burger.setAttribute('aria-expanded', String(open));
-      syncInert();                          // hidden links must not be tabbable
+      syncInert();                          // a closed panel must not be tabbable
       if (open) {
-        const first = menu.querySelector('a[href]');
-        if (first) setTimeout(() => first.focus({ preventScroll: true }), 120);
+        setTimeout(() => drawer.focus({ preventScroll: true }), 220);
       } else {
         burger.focus({ preventScroll: true });
       }
@@ -128,7 +203,7 @@
 
     const isOpen = () => document.body.classList.contains('menu-open');
     burger.addEventListener('click', () => setOpen(!isOpen()));
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    drawer.querySelectorAll('.drawer-nav a').forEach(a => a.addEventListener('click', () => setOpen(false)));
 
     document.addEventListener('keydown', e => {
       if (!isOpen()) return;

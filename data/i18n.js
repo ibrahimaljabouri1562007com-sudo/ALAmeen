@@ -424,5 +424,9 @@ window.I18N = {
   "c_disclaimer_suggested": {
     "ar": "يُرجى عدمُ إرسالِ أيّ معلوماتٍ سرّيةٍ عبر هذا النموذج. إذا كان استفسارُكم يتعلّقُ بمسألةٍ قانونيةٍ ولم تكونوا من عملاءِ المكتبِ حاليًا، فإنّنا نحتاجُ قبلَ قبولِ أيّ تمثيلٍ قانونيٍّ إلى تحديدِ ما إذا كان بإمكاننا مساعدتُكم، والاتفاقِ معكم على شروطِ التعاقد. وإلى حينِ استكمالِ هذه الخطوات لا تنشأُ علاقةُ محامٍ بموكّل، ولا يقعُ علينا التزامٌ بالحفاظِ على سرّيةِ ما تُرسلونه.",
     "en": "Please do not send confidential information through this form. If your enquiry concerns a legal matter and you are not already a client of the firm, we must first determine whether we are able to assist you and agree the terms of engagement with you. Until those steps are complete no lawyer-client relationship exists between us, and we are under no duty to keep confidential the information you send."
+  },
+  "nav_close": {
+    "ar": "إغلاق القائمة",
+    "en": "Close menu"
   }
 };

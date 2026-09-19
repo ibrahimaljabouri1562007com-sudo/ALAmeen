@@ -64,9 +64,17 @@ img{max-width:100%; display:block}
 .nav.solid .brand-icon{height:42px} .nav.solid .brand-word{height:34px}
 .nav-tools{display:flex; align-items:center; gap:14px}
 .burger{display:none; width:40px; height:40px; background:none; border:1px solid rgba(244,239,228,.35); border-radius:2px; cursor:pointer; position:relative}
-.burger span{position:absolute; inset-inline:10px; height:1px; background:var(--marble); transition:transform .35s var(--ease), top .35s var(--ease)}
-.burger span:first-child{top:15px} .burger span:last-child{top:24px}
-.menu-open .burger span:first-child{top:19px; transform:rotate(45deg)} .menu-open .burger span:last-child{top:19px; transform:rotate(-45deg)}
+/* the conventional three rules — a two-line mark reads as a detail, not a menu */
+.burger span{
+  position:absolute; inset-inline:11px; height:1.5px; background:var(--marble);
+  transition:transform .32s var(--ease), top .32s var(--ease), opacity .2s var(--ease);
+}
+.burger span:nth-child(1){top:14px}
+.burger span:nth-child(2){top:20px}
+.burger span:nth-child(3){top:26px}
+.menu-open .burger span:nth-child(1){top:20px; transform:rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){top:20px; transform:rotate(-45deg)}
 .nav ul{display:flex; gap:34px; list-style:none; margin:0; padding:0; font-size:15px}
 .nav ul a{position:relative; padding-block:6px; opacity:.9}
 .nav ul a::after{
@@ -536,54 +544,8 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   .brand-icon{height:40px} .brand-word{height:22px}
   .nav.solid .brand-icon{height:36px} .nav.solid .brand-word{height:20px}
   .lang{padding:5px 10px}
-  /* ---- the takeover ----
-     Was a translucent layer at .97 with the page still scrolling behind it, so the
-     hero ghosted through the links and the background slid while the menu was open.
-     It is now opaque, scroll-locked from JS, and the panel itself is the only thing
-     that moves. */
-  .menu{
-    position:fixed; inset:0; z-index:25;
-    background:var(--ink);
-    display:flex; flex-direction:column; justify-content:center;
-    padding-block:calc(92px + env(safe-area-inset-top,0px)) calc(40px + env(safe-area-inset-bottom,0px));
-    padding-inline:max(var(--gutter), env(safe-area-inset-left,0px));
-    overflow-y:auto; overscroll-behavior:contain;
-    opacity:0; visibility:hidden; transform:translateY(-10px);
-    transition:opacity .34s var(--ease), transform .34s var(--ease), visibility 0s linear .34s;
-  }
-  .menu-open .nav{background:var(--ink)}
-  .menu-open .menu{
-    opacity:1; visibility:visible; transform:none;
-    transition:opacity .34s var(--ease), transform .34s var(--ease), visibility 0s;
-  }
-  /* a ruled list, not a floating stack — the gold hairlines are the same rules the
-     section headings use, so the menu belongs to the page rather than covering it */
-  .menu ul{flex-direction:column; align-items:stretch; gap:0; font-family:var(--f-ar-display)}
-  .menu li{border-block-end:1px solid rgba(217,182,92,.20)}
-  .menu li:first-child{border-block-start:1px solid rgba(217,182,92,.20)}
-  .menu a{
-    display:flex; align-items:center; justify-content:space-between;
-    min-height:64px; padding-inline:4px;
-    font-size:clamp(24px,6.6vw,30px); color:var(--marble);
-    opacity:0; transform:translateY(8px);
-    transition:opacity .4s var(--ease), transform .4s var(--ease), color .25s var(--ease);
-  }
-  /* the links arrive after the panel, in order — the same staged entrance as the hero */
-  .menu-open .menu a{opacity:1; transform:none}
-  .menu-open .menu li:nth-child(1) a{transition-delay:.10s}
-  .menu-open .menu li:nth-child(2) a{transition-delay:.16s}
-  .menu-open .menu li:nth-child(3) a{transition-delay:.22s}
-  .menu-open .menu li:nth-child(4) a{transition-delay:.28s}
-  .menu a::after{
-    content:""; width:7px; height:7px; flex:none;
-    border:1px solid var(--gold-2); transform:rotate(45deg);
-    opacity:.45; transition:opacity .25s var(--ease);
-  }
-  .menu a:hover,.menu a:focus-visible{color:var(--gold-2)}
-  .menu a:hover::after,.menu a:focus-visible::after{opacity:1}
-  /* .menu is a CHILD of the header, so its z-index stacks INSIDE the nav — at 25 it
-     painted over the burger and there was no way to close the takeover by tapping.
-     The brand and the tools sit above it, and stay usable while it is open. */
+  /* the inline bar is for the wide layout only; the phone gets the drawer below */
+  .menu{display:none}
   .nav{z-index:30}
   .brand,.nav-tools{position:relative; z-index:26}
   /* backdrop-filter makes the header a containing block for position:fixed children,
@@ -852,3 +814,125 @@ body.menu-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
   .menu,.menu a{transition-duration:.01ms !important; transform:none !important}
 }
+
+
+/* =====================================================================
+   THE DRAWER — the phone navigation.
+   Not a separate black page: the site stays visible behind a dimmed veil and a
+   marble panel slides in over it, from whichever side the button sits on. The panel
+   is built from the same parts as the rest of the site — marble ground, gold rules,
+   the gold diamond that marks every list on the page, the lapis meander from the
+   column bases, and a line of the cuneiform that runs under the hero. It should read
+   as a page of the same document, not a different one.
+   ===================================================================== */
+.drawer-veil{
+  position:fixed; inset:0; z-index:38;
+  background:rgba(23,21,15,.58);
+  opacity:0; visibility:hidden;
+  transition:opacity .42s var(--ease), visibility 0s linear .42s;
+}
+.menu-open .drawer-veil{opacity:1; visibility:visible; transition:opacity .42s var(--ease), visibility 0s}
+
+.drawer{
+  position:fixed; inset-block:0; inset-inline-end:0; z-index:40;
+  width:min(86vw, 390px);
+  display:flex; flex-direction:column;
+  background:var(--marble);
+  padding-block-start:calc(96px + env(safe-area-inset-top,0px));
+  overflow-y:auto; overscroll-behavior:contain;
+  transition:transform .46s var(--ease), visibility 0s linear .46s;
+  visibility:hidden;
+}
+/* it enters from the edge the button is on, which flips with the language */
+html[dir="rtl"] .drawer{transform:translateX(-100%); box-shadow:18px 0 60px rgba(0,0,0,.45)}
+html[dir="ltr"] .drawer{transform:translateX(100%);  box-shadow:-18px 0 60px rgba(0,0,0,.45)}
+/* the closed state is written per direction, so the open state must be too — a plain
+   .menu-open .drawer is a weaker selector and the panel never left the edge */
+html[dir="rtl"] .menu-open .drawer,
+html[dir="ltr"] .menu-open .drawer{
+  transform:none; visibility:visible;
+  transition:transform .46s var(--ease), visibility 0s;
+}
+
+/* a hairline of gold down the opening edge, like the rule beside every section title */
+.drawer::before{
+  content:""; position:absolute; inset-block:0; inset-inline-start:0; width:1px;
+  background:linear-gradient(to bottom, transparent, var(--gold-dim) 18%, var(--gold-dim) 82%, transparent);
+}
+
+.drawer-head{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+  padding:6px clamp(22px,6vw,30px) 20px;
+}
+.drawer-logo{height:52px; width:auto; display:block; margin-inline-start:auto}
+/* the same rules as the opening button, inked for a marble ground */
+.drawer-close{
+  position:relative; flex:none; width:44px; height:44px; margin-block-start:2px;
+  background:none; border:1px solid rgba(184,146,58,.45); border-radius:2px; cursor:pointer;
+  transition:background .25s var(--ease), border-color .25s var(--ease);
+}
+.drawer-close span{
+  position:absolute; inset-inline:12px; top:21px; height:1.5px; background:var(--gold-ink);
+}
+.drawer-close span:first-child{transform:rotate(45deg)}
+.drawer-close span:last-child{transform:rotate(-45deg)}
+.drawer-close:hover,.drawer-close:focus-visible{background:var(--marble-2); border-color:var(--gold)}
+/* the panel takes focus on open; it is a container, not a control, so it shows no ring */
+.drawer:focus{outline:none}
+.drawer-rule{
+  height:1px; margin:0 clamp(22px,6vw,30px);
+  background:linear-gradient(to left, transparent, rgba(184,146,58,.55), transparent);
+}
+
+.drawer-nav{padding:8px clamp(22px,6vw,30px) 4px}
+.drawer-nav ul{list-style:none; margin:0; padding:0}
+.drawer-nav li + li{border-block-start:1px solid rgba(184,146,58,.22)}
+.drawer-nav a{
+  display:flex; align-items:center; gap:14px;
+  min-height:62px; padding-block:6px;
+  font-family:var(--f-ar-display); font-size:clamp(23px,6vw,27px);
+  color:var(--ink); text-decoration:none;
+  opacity:0; transform:translateY(10px);
+  transition:opacity .45s var(--ease), transform .45s var(--ease), color .25s var(--ease);
+}
+html[lang="en"] .drawer-nav a{font-family:var(--f-en-display); letter-spacing:.02em}
+/* the same gold diamond that marks the record list and the service items */
+.drawer-nav a::before{
+  content:""; flex:none; width:8px; height:8px;
+  background:var(--gold); transform:rotate(45deg);
+  transition:background .25s var(--ease), transform .25s var(--ease);
+}
+.drawer-nav a:hover,.drawer-nav a:focus-visible{color:var(--gold-ink)}
+.drawer-nav a:hover::before,.drawer-nav a:focus-visible::before{background:var(--gold-2); transform:rotate(45deg) scale(1.25)}
+/* the links unfold after the panel, in order, like the hero's staged lines */
+.menu-open .drawer-nav a{opacity:1; transform:none}
+.menu-open .drawer-nav li:nth-child(1) a{transition-delay:.16s}
+.menu-open .drawer-nav li:nth-child(2) a{transition-delay:.22s}
+.menu-open .drawer-nav li:nth-child(3) a{transition-delay:.28s}
+.menu-open .drawer-nav li:nth-child(4) a{transition-delay:.34s}
+
+.drawer-foot{margin-block-start:auto; padding-block-start:26px}
+.drawer-lang{
+  display:inline-flex; align-items:center; gap:10px;
+  margin:0 clamp(22px,6vw,30px) 20px; padding:9px 16px;
+  border:1px solid rgba(184,146,58,.45); border-radius:2px;
+  font-family:var(--f-en-ui); font-size:14px; letter-spacing:.12em;
+  color:var(--gold-ink); text-decoration:none; background:transparent;
+  transition:background .25s var(--ease), color .25s var(--ease);
+}
+.drawer-lang:hover,.drawer-lang:focus-visible{background:var(--marble-2); color:var(--ink)}
+/* a line of the same inscription that runs beneath the hero */
+.drawer-cuneiform{
+  padding:0 clamp(22px,6vw,30px) 16px;
+  font-family:var(--f-cuneiform); font-size:17px; line-height:1.6;
+  color:var(--gold-dim); opacity:.5; direction:ltr;
+  overflow:hidden; white-space:nowrap;
+}
+.drawer .meander{flex:none}
+
+@media (prefers-reduced-motion:reduce){
+  .drawer,.drawer-veil,.drawer-nav a{transition-duration:.01ms !important}
+  .drawer-nav a{opacity:1 !important; transform:none !important}
+}
+/* the drawer is a phone and tablet affordance only */
+@media (min-width:861px){ .drawer,.drawer-veil{display:none} }
