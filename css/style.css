@@ -242,6 +242,9 @@ img{max-width:100%; display:block}
 }
 .proof .name:hover img{opacity:1}
 .proof .name .ar{display:block; font-size:14.5px; color:var(--on-dark-2); margin-top:8px; line-height:1.6}
+/* A client's Arabic legal name is the ARABIC edition of that name, not a caption —
+   in English the Latin mark already says who they are, so showing both is a leak. */
+html[lang="en"] .proof .name .ar{display:none}
 .proof .grp.lead .name .en{font-size:clamp(23px,2.8vw,34px)}
 .proof .grp.lead .name img{max-height:56px}
 .proof .grp.sec .mark{min-height:40px}
