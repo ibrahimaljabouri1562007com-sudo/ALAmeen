@@ -1,12 +1,12 @@
 /* GENERATED from config.json by build/build_data.py — do not edit. */
 window.CFG = {
-  "_note": "The ONLY file to edit for contact details and the mail route. whatsapp = digits only with country code, no + and no spaces (e.g. 9647XXXXXXXXX). maps = a full Google Maps URL. Leave any value empty and its row hides itself.",
+  "_note": "The ONLY file to edit for contact details and the mail route. whatsapp = digits only with country code, no + and no spaces (e.g. 9647XXXXXXXXX). maps = a full Google Maps URL. Leave any value empty and its row hides itself. contact.email is EMPTY on purpose: the firm has no mailbox yet, and a plausible-looking fake address on a law firm site is worse than none.",
   "firm": {
     "ar": "الأمين للمحاماة والاستشارات القانونية",
     "en": "Al-Amin Advocates & Legal Consultants"
   },
   "contact": {
-    "email": "info@alamin-law.iq",
+    "email": "",
     "phone": "",
     "whatsapp": "",
     "city": {
