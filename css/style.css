@@ -224,9 +224,13 @@ img{max-width:100%; display:block}
 .proof .grp{padding-top:clamp(26px,3.4vw,40px)}
 .proof .grp + .grp{padding-top:clamp(26px,3vw,36px)}
 .proof .grp-label{
-  font-family:var(--f-ar-ui); font-size:14px; color:var(--gold-2); margin:0 0 20px;
+  /* this line states WHO the firm represents — it was set as a caption and read like
+     one. It is the claim the whole band exists to make, so it is sized to be read. */
+  font-family:var(--f-ar-ui); font-size:clamp(15px,1.5vw,17px); font-weight:600;
+  color:var(--gold-2); margin:0 0 22px; line-height:1.6;
   display:flex; align-items:center; gap:14px;
 }
+html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must stay joined */
 .proof .grp-label::after{content:""; height:1px; flex:1; background:linear-gradient(to left, rgba(217,182,92,.45), transparent)}
 .proof .names{display:flex; flex-wrap:wrap; gap:22px clamp(26px,4vw,56px); align-items:flex-start}
 .proof .name{max-width:270px; min-width:0}
