@@ -693,7 +693,11 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 .to-top.show{opacity:1; pointer-events:auto; transform:none}
 .to-top:hover{background:var(--gold)}
 .to-top span{
-  width:11px; height:11px; border-top:2px solid var(--gold); border-inline-start:2px solid var(--gold);
+  /* PHYSICAL left border on purpose. This chevron means "up", and up does not mirror —
+     with border-inline-start it became top+right in Arabic and the arrow pointed
+     sideways. Logical properties are for things that follow the reading direction;
+     this one follows gravity. */
+  width:11px; height:11px; border-top:2px solid var(--gold); border-left:2px solid var(--gold);
   transform:rotate(45deg); margin-top:4px; transition:border-color .3s;
 }
 .to-top:hover span{border-color:var(--ink)}
