@@ -212,6 +212,11 @@
           body: JSON.stringify({ ...payload, _subject: (mail.subject || {})[LANG] || 'Website request' })
         });
         if (!r.ok) throw new Error('formsubmit ' + r.status);
+        // FormSubmit answers 200 even when it did NOT send — an unactivated
+        // destination, a rate limit. The truth is in the body, not the status
+        // code, and a false "we received it" is the worst failure this form has.
+        const j = await r.json().catch(() => ({}));
+        if (String(j.success) !== 'true') throw new Error('formsubmit: ' + (j.message || 'not sent'));
         return;
       }
       if (p === 'web3forms') {
@@ -220,6 +225,8 @@
           body: JSON.stringify({ access_key: mail.key, ...payload })
         });
         if (!r.ok) throw new Error('web3forms ' + r.status);
+        const j = await r.json().catch(() => ({}));       // same trap as formsubmit
+        if (j.success === false) throw new Error('web3forms: ' + (j.message || 'not sent'));
         return;
       }
       if (p === 'supabase') {
