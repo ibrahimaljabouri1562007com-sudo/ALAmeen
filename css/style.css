@@ -280,7 +280,11 @@ html[lang="en"] .proof .name .ar{display:none}
 }
 .proof .grp.sec .mark{min-height:46px}
 .proof .grp.sec .name .en{font-size:clamp(17px,1.8vw,22px); letter-spacing:.07em}
-.proof .grp.sec .name img{width:clamp(200px,32vw,300px); height:auto; max-height:64px}
+.proof .grp.sec .name img{
+  /* the cap has to allow for a STACKED mark: CRBC puts its emblem above its name, so
+     capping it at a wordmark's height shrinks its lettering back to mush */
+  width:clamp(200px,32vw,300px); height:auto; max-height:80px;
+}
 .proof .grp.sec .name .ar{font-size:14px}
 
 
