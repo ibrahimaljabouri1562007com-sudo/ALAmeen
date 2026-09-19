@@ -135,7 +135,20 @@
         img.src = UP + src;
         const show = () => {
           mark.replaceChildren(img);
-          mark.classList.add('has-logo');   // the plate only exists behind a real logo
+          // the plate is the ARTWORK's requirement, measured at build time: dark marks
+          // need light paper, white marks would be erased by it
+          if (entry.plate) mark.classList.add('has-logo');
+          // Placement, not alteration: sizing every mark to one HEIGHT makes a 5.7:1
+          // wordmark dominate and a 2.1:1 stacked emblem shrink to nothing. Scale toward
+          // equal optical AREA so they read as peers. The artwork itself is untouched.
+          if (entry.ar) {
+            const base = parseFloat(getComputedStyle(img).maxHeight);
+            if (base) {
+              const REF = 3.6;
+              const k = Math.min(1.55, Math.max(0.85, Math.sqrt(REF / entry.ar)));
+              img.style.maxHeight = (base * k).toFixed(1) + 'px';
+            }
+          }
           requestAnimationFrame(() => img.classList.add('in'));
         };
         (img.decode ? img.decode() : Promise.resolve()).then(show).catch(() => {
