@@ -169,6 +169,13 @@ img{max-width:100%; display:block}
 }
 .frieze .track span{opacity:.85; padding-inline-end:64px}
 @keyframes slide{to{transform:translateX(-50%)}}
+/* On a phone the band is the only thing moving on the screen, and animating a 3300px
+   run of glyphs is a repaint the device pays for continuously — it drifts and stutters.
+   The inscription is carved, not scrolling: below the desktop layout, and on any touch
+   device, it simply sits there. */
+@media (max-width:860px), (pointer:coarse){
+  .frieze .track{animation:none; transform:none}
+}
 .meander{ /* the lapis step pattern from the column bases */
   height:10px; background:
     repeating-linear-gradient(90deg, var(--lapis) 0 14px, transparent 14px 28px) top/100% 4px no-repeat,
