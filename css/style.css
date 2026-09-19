@@ -150,11 +150,16 @@ img{max-width:100%; display:block}
   border-top:3px solid var(--lapis); border-bottom:3px solid var(--lapis);
 }
 .frieze .track{
-  display:flex; gap:64px; white-space:nowrap; padding:14px 0;
+  /* The loop moves -50%, i.e. half the TRACK. With a flex gap the track is
+     span+gap+span, so half of it is span+gap/2 — never a whole tile, and the band
+     jumped 32px every cycle. Carrying the gap inside each span makes the track exactly
+     two tiles, so -50% lands on the seam and the inscription runs unbroken. */
+  display:flex; white-space:nowrap; padding:14px 0;
   font-family:var(--f-cuneiform); font-size:26px; line-height:1; direction:ltr;
   animation:slide 60s linear infinite; width:max-content;
+  will-change:transform;
 }
-.frieze .track span{opacity:.85}
+.frieze .track span{opacity:.85; padding-inline-end:64px}
 @keyframes slide{to{transform:translateX(-50%)}}
 .meander{ /* the lapis step pattern from the column bases */
   height:10px; background:
@@ -531,10 +536,61 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   .brand-icon{height:40px} .brand-word{height:22px}
   .nav.solid .brand-icon{height:36px} .nav.solid .brand-word{height:20px}
   .lang{padding:5px 10px}
-  .menu{position:fixed; inset:0; background:rgba(23,21,15,.97); display:grid; place-items:center; opacity:0; pointer-events:none; transition:opacity .35s var(--ease)}
-  .menu ul{flex-direction:column; align-items:center; gap:28px; font-family:var(--f-ar-display); font-size:30px}
-  .menu-open .menu{opacity:1; pointer-events:auto}
-  .nav{z-index:30} .menu{z-index:25}
+  /* ---- the takeover ----
+     Was a translucent layer at .97 with the page still scrolling behind it, so the
+     hero ghosted through the links and the background slid while the menu was open.
+     It is now opaque, scroll-locked from JS, and the panel itself is the only thing
+     that moves. */
+  .menu{
+    position:fixed; inset:0; z-index:25;
+    background:var(--ink);
+    display:flex; flex-direction:column; justify-content:center;
+    padding-block:calc(92px + env(safe-area-inset-top,0px)) calc(40px + env(safe-area-inset-bottom,0px));
+    padding-inline:max(var(--gutter), env(safe-area-inset-left,0px));
+    overflow-y:auto; overscroll-behavior:contain;
+    opacity:0; visibility:hidden; transform:translateY(-10px);
+    transition:opacity .34s var(--ease), transform .34s var(--ease), visibility 0s linear .34s;
+  }
+  .menu-open .nav{background:var(--ink)}
+  .menu-open .menu{
+    opacity:1; visibility:visible; transform:none;
+    transition:opacity .34s var(--ease), transform .34s var(--ease), visibility 0s;
+  }
+  /* a ruled list, not a floating stack — the gold hairlines are the same rules the
+     section headings use, so the menu belongs to the page rather than covering it */
+  .menu ul{flex-direction:column; align-items:stretch; gap:0; font-family:var(--f-ar-display)}
+  .menu li{border-block-end:1px solid rgba(217,182,92,.20)}
+  .menu li:first-child{border-block-start:1px solid rgba(217,182,92,.20)}
+  .menu a{
+    display:flex; align-items:center; justify-content:space-between;
+    min-height:64px; padding-inline:4px;
+    font-size:clamp(24px,6.6vw,30px); color:var(--marble);
+    opacity:0; transform:translateY(8px);
+    transition:opacity .4s var(--ease), transform .4s var(--ease), color .25s var(--ease);
+  }
+  /* the links arrive after the panel, in order — the same staged entrance as the hero */
+  .menu-open .menu a{opacity:1; transform:none}
+  .menu-open .menu li:nth-child(1) a{transition-delay:.10s}
+  .menu-open .menu li:nth-child(2) a{transition-delay:.16s}
+  .menu-open .menu li:nth-child(3) a{transition-delay:.22s}
+  .menu-open .menu li:nth-child(4) a{transition-delay:.28s}
+  .menu a::after{
+    content:""; width:7px; height:7px; flex:none;
+    border:1px solid var(--gold-2); transform:rotate(45deg);
+    opacity:.45; transition:opacity .25s var(--ease);
+  }
+  .menu a:hover,.menu a:focus-visible{color:var(--gold-2)}
+  .menu a:hover::after,.menu a:focus-visible::after{opacity:1}
+  /* .menu is a CHILD of the header, so its z-index stacks INSIDE the nav — at 25 it
+     painted over the burger and there was no way to close the takeover by tapping.
+     The brand and the tools sit above it, and stay usable while it is open. */
+  .nav{z-index:30}
+  .brand,.nav-tools{position:relative; z-index:26}
+  /* backdrop-filter makes the header a containing block for position:fixed children,
+     and .menu is one of them — so the takeover was trapped inside the bar instead of
+     covering the page. Service pages ship .solid from the first paint, which is why
+     only they broke. The blur buys nothing on a phone; drop it here. */
+  .nav.solid{backdrop-filter:none}
   .hero .inner{padding-top:120px}
 }
 
@@ -722,7 +778,7 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   /* every tappable thing clears 44px — WCAG target size */
   .services-list a,.pills a,.crumbs a,.foot-links a,.menu a,
   .cta,.lang,.ch-v,.ch-map,.all-link,.btn,.to-top,.brand{min-height:44px}
-  .menu a{display:flex; align-items:center; justify-content:center}
+  /* .menu a is laid out by the takeover rules above, which already clear 44px */
   .crumbs a,.ch-v,.ch-map,.all-link,.foot-links a{display:inline-flex; align-items:center}
   .cta{display:inline-flex; align-items:center}
   .lang{display:inline-flex; align-items:center; justify-content:center; padding-inline:16px}
@@ -732,10 +788,7 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   .services-list a:active,.pills a:active{background:var(--marble-2)}
 }
 /* the fold-out menu must never be taller than the screen */
-@media (max-width:860px){
-  .menu{overflow-y:auto; padding-block:96px 40px}
-  .menu ul{gap:22px}
-}
+
 
 /* nothing readable drops below 14px on a phone */
 @media (max-width:560px){
@@ -791,3 +844,11 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 
 /* footer separator — the same middot the hero eyebrow uses, so the site has ONE separator style */
 .foot-copy .dot{color:var(--gold); padding-inline:4px; font-weight:700}
+
+
+/* the scroll lock JS applies; kept here so the page cannot move between the class
+   landing and the style being set */
+body.menu-open{overflow:hidden}
+@media (prefers-reduced-motion:reduce){
+  .menu,.menu a{transition-duration:.01ms !important; transform:none !important}
+}

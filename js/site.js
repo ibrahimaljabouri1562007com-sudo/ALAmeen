@@ -83,14 +83,73 @@
   if (nav && nav.dataset.overHero === 'true') {
     addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 80), { passive: true });
   }
+  /* ---------- the mobile takeover ----------
+     The menu covers the page, so while it is open the page must behave as if it is not
+     there: it must not scroll underneath, Escape must close it, and Tab must not walk
+     off into links the visitor cannot see. */
   const burger = document.getElementById('burger');
-  if (burger) {
-    burger.addEventListener('click', () => {
-      const open = document.body.classList.toggle('menu-open');
-      burger.setAttribute('aria-expanded', open);
+  const menu   = document.getElementById('menu');
+  if (burger && menu) {
+    let lockedAt = 0;                       // where the page was when the menu opened
+    // The takeover only exists on narrow screens. Above it the same <nav> is the
+    // ordinary inline bar, so nothing here may hide it — marking it inert at every
+    // width killed the desktop links outright.
+    const takeover = matchMedia('(max-width:860px)');
+    const syncInert = () => menu.toggleAttribute('inert', takeover.matches && !isOpen());
+
+    const focusables = () =>
+      [burger, ...menu.querySelectorAll('a[href]')].filter(el => el.offsetParent !== null);
+
+    const setOpen = open => {
+      const body = document.body;
+      if (open) {
+        // Pin the page at its current offset rather than only hiding overflow: on iOS
+        // overflow:hidden alone still scrolls and loses the position on close.
+        lockedAt = window.scrollY;
+        body.classList.add('menu-open');
+        body.style.position = 'fixed';
+        body.style.top = (-lockedAt) + 'px';
+        body.style.insetInline = '0';
+        body.style.width = '100%';
+      } else {
+        body.classList.remove('menu-open');
+        body.style.position = body.style.top = body.style.insetInline = body.style.width = '';
+        window.scrollTo(0, lockedAt);       // land exactly where they left
+      }
+      burger.setAttribute('aria-expanded', String(open));
+      syncInert();                          // hidden links must not be tabbable
+      if (open) {
+        const first = menu.querySelector('a[href]');
+        if (first) setTimeout(() => first.focus({ preventScroll: true }), 120);
+      } else {
+        burger.focus({ preventScroll: true });
+      }
+    };
+
+    const isOpen = () => document.body.classList.contains('menu-open');
+    burger.addEventListener('click', () => setOpen(!isOpen()));
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+
+    document.addEventListener('keydown', e => {
+      if (!isOpen()) return;
+      if (e.key === 'Escape') { e.preventDefault(); setOpen(false); return; }
+      if (e.key !== 'Tab') return;
+      const items = focusables();
+      if (!items.length) return;
+      const first = items[0], last = items[items.length - 1];
+      // keep Tab inside the takeover, wrapping at both ends
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
-    document.querySelectorAll('#menu a').forEach(a =>
-      a.addEventListener('click', () => document.body.classList.remove('menu-open')));
+
+    // a rotate back to desktop while the menu is open must not leave the page pinned,
+    // and crossing the breakpoint must hand the links back
+    takeover.addEventListener('change', () => {
+      if (!takeover.matches && isOpen()) setOpen(false);
+      else syncInert();
+    });
+
+    syncInert();
   }
 
   /* ---------- reveals ---------- */
