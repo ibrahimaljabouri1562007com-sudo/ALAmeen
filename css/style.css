@@ -232,25 +232,33 @@ img{max-width:100%; display:block}
 .proof .name{max-width:270px; min-width:0}
 /* the slot: holds a logo when one exists, the set name until then */
 .proof .mark{display:flex; align-items:center; min-height:52px; max-width:100%}
+/* Official marks keep their own colours, so they need the white paper they were drawn
+   for — several carry an opaque white background of their own, and navy on ink is
+   unreadable. The plate gives every brand the same light ground without touching the
+   artwork: the logo is placed, never repainted. */
+.proof .mark.has-logo{
+  background:var(--marble); border-radius:2px;
+  padding:12px 16px; width:max-content; max-width:100%;
+  box-shadow:0 1px 0 rgba(0,0,0,.35);
+}
 .proof .name .en{
   font-family:var(--f-en-display); font-weight:400; color:var(--marble);
   letter-spacing:.06em; line-height:1.2;
 }
-.proof .name img{  /* flattened to one ivory silhouette so 5 brands read as one wall */
-  max-height:46px; width:auto; filter:brightness(0) invert(1); opacity:.86;
+.proof .name img{  /* the official mark, unaltered — no recolouring, no silhouette */
+  max-height:46px; width:auto; opacity:1;
   transition:opacity .3s var(--ease);
-  /* a wide wordmark must give up height rather than escape its column — we do not
-     control what the firm sends, and one 4:1 logo would otherwise break the row */
+  /* containment only: a mark may shrink to fit its column, never be reshaped */
   max-width:100%; object-fit:contain;
 }
 .proof .name:hover img{opacity:1}
 /* the name has been on screen since first paint — the logo fades in over it,
    it does not pop. Same easing and patience as the hero's staged text. */
 .proof .name img.logo-in{opacity:0; transform:translateY(4px); transition:opacity .7s var(--ease), transform .7s var(--ease)}
-.proof .name img.logo-in.in{opacity:.86; transform:none}
-.proof .grp.sec .name img.logo-in.in{opacity:.72}
+.proof .name img.logo-in.in{opacity:1; transform:none}
+
 @media (prefers-reduced-motion:reduce){
-  .proof .name img.logo-in{transition:none; opacity:.86; transform:none}
+  .proof .name img.logo-in{transition:none; opacity:1; transform:none}
 }
 .proof .name .ar{display:block; font-size:14.5px; color:var(--on-dark-2); margin-top:8px; line-height:1.6}
 /* A client's Arabic legal name is the ARABIC edition of that name, not a caption —
@@ -260,7 +268,7 @@ html[lang="en"] .proof .name .ar{display:none}
 .proof .grp.lead .name img{max-height:56px}
 .proof .grp.sec .mark{min-height:40px}
 .proof .grp.sec .name .en{font-size:clamp(16px,1.7vw,21px); color:var(--on-dark-2)}
-.proof .grp.sec .name img{max-height:34px; opacity:.72}
+.proof .grp.sec .name img{max-height:34px}
 .proof .grp.sec .name .ar{font-size:14px; opacity:.85}
 
 

@@ -61,7 +61,25 @@ security guards it. A Web3Forms key would be readable by anyone.
 - [ ] **Disclaimer wording** — the contact form carries a bracketed placeholder for the firm's lawyers
 - [ ] **English review** — the English is a translation, not text the firm supplied
 - [ ] **Contact details** — phone, WhatsApp, address, map URL
-- [ ] **Client logos** — PNGs into `assets/clients/`, listed in the manifest
+- [ ] **FAST Engineering logo** — the only client mark not sourced; it shows as a wordmark until a file exists. Drop it into `assets/clients/` and add the filename to `manifest.json`
+
+## Client logos
+
+Four are in place, taken from official sources and used **unaltered** — no recolouring,
+cropping or background removal:
+
+| Mark | Source |
+|---|---|
+| Shanghai Electric | Wikimedia (SVG) |
+| CCCC | the company's own site, `en.ccccltd.cn` |
+| Jiangxi Construction Engineering Group | the company's own site, `en.jxsjgjt.com` |
+| CRBC | Wikimedia |
+
+Because the files keep their own colours, each sits on a light plate — several carry an
+opaque white background of their own, and navy artwork is unreadable on the dark band.
+A client with no file keeps its typographic name, which is why the band never looks broken.
+
+These are third-party trademarks, shown to identify firms the office actually represents.
 
 ## Content provenance
 

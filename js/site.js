@@ -119,17 +119,23 @@
     Promise.resolve(window.CLIENT_LOGOS || [])
       .then(list => slots.forEach(slot => {
         const src = slot.dataset.logo;
-        if (!list.some(f => src.endsWith(f))) return;          // not supplied yet: keep the name
+        // entries are {f, ar} since the build measures them; plain strings still work
+        const entry = list.find(x => src.endsWith(typeof x === 'string' ? x : x.f));
+        if (!entry || (typeof entry === 'object' && !entry.ar)) return;  // absent: keep the name
         const mark = slot.querySelector('.mark');
         const img  = new Image();
         img.className = 'logo-in';
-        img.alt = slot.querySelector('.ar')?.textContent ||
-                  slot.querySelector('.en')?.textContent || '';
+        // the logo replaces a NAME, so its alt must carry that name in the language
+        // being read — otherwise an English page announces Arabic to a screen reader
+        const nameAr = slot.querySelector('.ar')?.textContent || '';
+        const nameEn = slot.querySelector('.en')?.textContent || '';
+        const setAlt = () => { img.alt = (LANG === 'en' ? (nameEn || nameAr) : (nameAr || nameEn)); };
+        setAlt();
+        document.addEventListener('langchange', setAlt);
         img.src = UP + src;
         const show = () => {
-          // reserve the height the name already occupies, so nothing below shifts
-          mark.style.minHeight = Math.max(mark.offsetHeight, img.height ? 0 : 0) + 'px';
           mark.replaceChildren(img);
+          mark.classList.add('has-logo');   // the plate only exists behind a real logo
           requestAnimationFrame(() => img.classList.add('in'));
         };
         (img.decode ? img.decode() : Promise.resolve()).then(show).catch(() => {
