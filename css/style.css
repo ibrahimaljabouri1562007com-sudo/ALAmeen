@@ -900,12 +900,15 @@ html[dir="ltr"] .menu-open .drawer{
 .drawer-nav a{
   display:flex; align-items:center; gap:14px;
   min-height:62px; padding-block:6px;
-  font-family:var(--f-ar-display); font-size:clamp(23px,6vw,27px);
+  /* navigation is set in the functional family, not the display face — the same rule
+     as the bar. A sans carries more weight than Amiri at the same size, so it sits a
+     step smaller. */
+  font-family:var(--f-ar-ui); font-weight:500; font-size:clamp(20px,5.4vw,24px);
   color:var(--ink); text-decoration:none;
   opacity:0; transform:translateY(10px);
   transition:opacity .45s var(--ease), transform .45s var(--ease), color .25s var(--ease);
 }
-html[lang="en"] .drawer-nav a{font-family:var(--f-en-display); letter-spacing:.02em}
+html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; letter-spacing:.02em}
 /* the same gold diamond that marks the record list and the service items */
 .drawer-nav a::before{
   content:""; flex:none; width:8px; height:8px;
