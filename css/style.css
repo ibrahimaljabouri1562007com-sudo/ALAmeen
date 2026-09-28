@@ -26,9 +26,9 @@
 
   /* type */
   --f-ar-display: "Amiri", "Noto Naskh Arabic", serif;             /* classical Naskh — matches the calligraphic logo */
-  --f-ar-ui:      "IBM Plex Sans Arabic", "Tajawal", system-ui, sans-serif;
+  --f-ar-ui:      "Noto Kufi Arabic", "Tajawal", system-ui, sans-serif;      /* INTERIM stand-in for 29LT Bukra (commercial, 29lt.com) — same geometric-Kufi family; swap this token when licensed */
   --f-en-display: "Cormorant Garamond", "Times New Roman", serif;   /* tall, light, judicial */
-  --f-en-ui:      "IBM Plex Sans", system-ui, sans-serif;
+  --f-en-ui:      "Source Sans 3", system-ui, sans-serif;           /* brand guide: nav, body, forms, captions */
   --f-cuneiform:  "Segoe UI Historic", "Noto Sans Cuneiform", serif;
 
   /* rhythm */
