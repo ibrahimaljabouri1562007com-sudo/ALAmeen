@@ -718,7 +718,7 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 @media (max-width:860px){
   .hero{min-height:100svh}
   .hero .inner{padding-block:clamp(110px,22vh,150px) clamp(70px,12vh,110px); max-width:none}
-  .hero .bg{background-image:url("../assets/hero-baghdad-phone.jpg?v=2"); background-position:center 60%}   /* the columns, not the sky: a wide frame at portrait shows only city */
+  .hero .bg{background-image:url("../assets/hero-baghdad-phone.jpg?v=3"); background-position:center 60%}   /* a column with its cuneiform seal AND the city behind — the desktop message in portrait */
   .hero .veil{background:
     radial-gradient(135% 70% at 50% 46%, rgba(23,21,15,.86) 0%, rgba(23,21,15,.7) 42%,
       rgba(23,21,15,.34) 70%, rgba(23,21,15,.06) 92%, rgba(23,21,15,0) 100%),
