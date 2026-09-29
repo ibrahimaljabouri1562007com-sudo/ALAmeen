@@ -1,7 +1,7 @@
 # الأمين للمحاماة والاستشارات القانونية
 **Al-Amin Advocates & Legal Consultants — Baghdad, Iraq**
 
-🌐 **https://ibrahimaljabouri1562007com-sudo.github.io/ALAmeen/**
+🌐 **https://alaminlegal.com/** (the old `github.io/ALAmeen` address redirects here)
 
 A bilingual (Arabic-first, RTL) website for an Iraqi law firm. Static pages, no server,
 no build step, no dependencies.
