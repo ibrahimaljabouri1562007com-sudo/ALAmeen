@@ -93,26 +93,29 @@ img{max-width:100%; display:block}
   color:var(--on-dark); overflow:hidden; isolation:isolate;
 }
 .hero .bg{
-  /* The court: a colonnade in Iraqi stone with Baghdad alive behind it. Built to the
-     guide's photography page — real afternoon light (no grade), plain stone, the city as
-     context. The one landmark in frame is kept under the text pool, never in the open;
-     in English the image is mirrored so the same holds with the text on the other side.
-     Phones get their own crop of the columns (the wide frame would show only sky and
-     city there). Swap both files for the full-size render when it arrives. */
   position:absolute; inset:0; z-index:-2;
-  background:var(--ink) url("../assets/hero-court.jpg") 88% 62% / auto 114% no-repeat;
+  background:url("../assets/hero-baghdad.jpg") center 40%/cover no-repeat;
+  animation:kenburns 26s var(--ease) both;
+  transform-origin:60% 45%;
 }
-html[dir="ltr"] .hero .bg{transform:scaleX(-1)}
-.hero .veil{
+@keyframes kenburns{from{transform:scale(1.10)} to{transform:scale(1.0)}}
+.hero .veil{ /* a scrim POOLED under the text block, not a gradient from the edge */
   position:absolute; inset:0; z-index:-1;
   background:
-    radial-gradient(112% 88% at var(--px,50%) 50%, rgba(23,21,15,.82) 0%, rgba(23,21,15,.60) 36%,
-      rgba(23,21,15,.28) 64%, rgba(23,21,15,.05) 86%, rgba(23,21,15,0) 100%),
-    linear-gradient(to bottom, rgba(23,21,15,.55), rgba(23,21,15,0) 22%);   /* the bar must hold on bright sky */
+    /* The pool sits where the text actually is. It used to be placed at 70% on the
+       assumption the block sat right-of-centre in Arabic — but the headline measures
+       its centre at 49% in BOTH languages, so the darkest part of the scrim was 21
+       points to the side of the words it was meant to carry, and the last stop cut
+       off at 92% instead of reaching nothing. The phone layout already pooled at 50%
+       and faded to 100%, which is why it read smoother there. */
+    radial-gradient(112% 88% at 50% 48%,
+      rgba(23,21,15,.82) 0%, rgba(23,21,15,.66) 34%,
+      rgba(23,21,15,.32) 62%, rgba(23,21,15,.06) 86%, rgba(23,21,15,0) 100%),
+    /* floor + sky settle, keeps the sunset alive */
+    linear-gradient(to top, rgba(23,21,15,.55) 0%, rgba(23,21,15,.06) 42%, rgba(23,21,15,.22) 100%),
+    /* a whisper over everything so nothing glares */
+    rgba(23,21,15,.14);
 }
-html[dir="ltr"] .hero .veil{--px:30%}
-html[dir="rtl"] .hero .veil{--px:70%}
- to{transform:scale(1.0)}}
 .hero .inner{padding-block:140px 120px; max-width:760px}
 .eyebrow{
   font-family:var(--f-en-display); font-size:clamp(15px,1.25vw,17px); font-weight:500;
@@ -127,8 +130,6 @@ html[dir="rtl"] .hero .veil{--px:70%}
   text-shadow:0 2px 28px rgba(23,21,15,.6), 0 1px 4px rgba(23,21,15,.45);
 }
 .hero h1 em{font-style:normal; color:var(--gold-2)}
-.hero h1.tagline span,.hero h1.tagline em{display:block}   /* the approved line is set as three, each closed with a stop */
-.hero h1.tagline{line-height:1.18}
 .hero p.lead{font-size:clamp(17px,1.4vw,20px); color:rgba(244,239,228,.86); max-width:520px; margin:0 0 38px;
   text-shadow:0 1px 16px rgba(23,21,15,.65), 0 1px 3px rgba(23,21,15,.4)}
 .hero .cta{text-shadow:0 1px 12px rgba(23,21,15,.6)}
@@ -149,7 +150,7 @@ html[dir="rtl"] .hero .veil{--px:70%}
 
 /* scroll hint */
 .scroll-hint{
-  position:absolute; bottom:28px; inset-inline-start:var(--gutter); color:var(--on-dark-2);
+  position:absolute; bottom:28px; inset-inline-end:var(--gutter); color:var(--on-dark-2);
   font-family:var(--f-en-display); font-size:11px; letter-spacing:.3em; text-transform:uppercase;
   display:flex; flex-direction:column; align-items:center; gap:10px;
 }
@@ -539,7 +540,7 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 .spec .lbl{font-family:var(--f-en-ui); font-size:12px; color:var(--on-light-2); letter-spacing:.08em}
 
 @media (prefers-reduced-motion:reduce){
-  .reveal,.scroll-hint::after{animation:none}
+  .hero .bg,.reveal,.scroll-hint::after{animation:none}
   .reveal{opacity:1; transform:none}
 }
 @media (max-width:860px){
@@ -717,8 +718,11 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 @media (max-width:860px){
   .hero{min-height:100svh}
   .hero .inner{padding-block:clamp(110px,22vh,150px) clamp(70px,12vh,110px); max-width:none}
-  .hero .bg{background-image:url("../assets/hero-court-phone.jpg"); background-size:cover; background-position:center}
-  .hero .veil{--px:50%}
+  .hero .veil{background:
+    radial-gradient(135% 70% at 50% 46%, rgba(23,21,15,.86) 0%, rgba(23,21,15,.7) 42%,
+      rgba(23,21,15,.34) 70%, rgba(23,21,15,.06) 92%, rgba(23,21,15,0) 100%),
+    linear-gradient(to top, rgba(23,21,15,.6) 0%, rgba(23,21,15,.1) 44%, rgba(23,21,15,.26) 100%),
+    rgba(23,21,15,.18);}
   .hero p.lead{max-width:none}
   .hero-actions{gap:18px; flex-direction:column; align-items:flex-start}
   .scroll-hint{display:none}
