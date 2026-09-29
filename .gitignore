@@ -30,3 +30,5 @@ theme-board.html
 # misc
 .DS_Store
 Thumbs.db
+# hero photo candidates under review - never shipped from here
+assets/_candidates/
