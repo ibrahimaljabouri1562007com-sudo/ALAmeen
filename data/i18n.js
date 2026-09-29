@@ -29,14 +29,6 @@ window.I18N = {
     "ar": "محاماة واستشارات قانونية · بغداد",
     "en": "Advocates & Legal Consultants · Baghdad"
   },
-  "hero_h1_a": {
-    "ar": "شريكٌ قانونيٌّ",
-    "en": "A trusted"
-  },
-  "hero_h1_b": {
-    "ar": "موثوق",
-    "en": "legal partner"
-  },
   "hero_lead": {
     "ar": "نرافقُ عملاءنا في أعمالهم ومشاريعهم، ونوفّرُ لهم الحمايةَ القانونيةَ التي تُعزّزُ استقرارَ أعمالهم وتدعمُ نجاحهم.",
     "en": "We walk alongside our clients in their business and their projects, and provide the legal protection that strengthens the stability of their work and supports their success."
@@ -52,10 +44,6 @@ window.I18N = {
   "scroll": {
     "ar": "مرّر",
     "en": "Scroll"
-  },
-  "hero_img_alt": {
-    "ar": "أعمدة رخامية تطل على بغداد ودجلة عند الغروب",
-    "en": "Marble columns overlooking Baghdad and the Tigris at sunset"
   },
   "proof_lead": {
     "ar": "الشركات الأجنبية التي يمثّلها مكتبنا قانونيًّا",
@@ -428,5 +416,17 @@ window.I18N = {
   "nav_close": {
     "ar": "إغلاق القائمة",
     "en": "Close menu"
+  },
+  "hero_h1_1": {
+    "ar": "رؤية قانونية.",
+    "en": "Legal Insight."
+  },
+  "hero_h1_2": {
+    "ar": "فهم للأعمال.",
+    "en": "Business Perspective."
+  },
+  "hero_h1_3": {
+    "ar": "حلول متكاملة.",
+    "en": "Integrated Solutions."
   }
 };
