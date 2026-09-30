@@ -957,14 +957,10 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
   transition:background .25s var(--ease), color .25s var(--ease);
 }
 .drawer-lang:hover,.drawer-lang:focus-visible{background:var(--marble-2); color:var(--ink)}
-/* a line of the same inscription that runs beneath the hero */
-.drawer-cuneiform{
-  padding:0 clamp(22px,6vw,30px) 16px;
-  font-family:var(--f-cuneiform); font-size:17px; line-height:1.6;
-  color:var(--gold-dim); opacity:.5; direction:ltr;
-  overflow:hidden; white-space:nowrap;
-}
-.drawer .meander{flex:none}
+/* the crown signature closes the panel (§11) */
+.drawer-sig{display:flex; align-items:center; gap:18px; padding:6px clamp(22px,6vw,30px) 26px}
+.drawer-sig .rule{flex:1; height:1px; background:linear-gradient(to right, transparent, rgba(140,110,44,.5), transparent)}
+.drawer-sig img{height:20px; width:auto; opacity:.95}
 
 @media (prefers-reduced-motion:reduce){
   .drawer,.drawer-veil,.drawer-nav a{transition-duration:.01ms !important}

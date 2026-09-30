@@ -144,16 +144,15 @@
     lang.className = 'drawer-lang';
     lang.href = '#';
     lang.id = 'drawerLang';
-    const cun = document.createElement('div');
-    cun.className = 'drawer-cuneiform';
-    cun.setAttribute('aria-hidden', 'true');
-    cun.textContent = '𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓';
-    const mean = document.createElement('div');
-    mean.className = 'meander';
-    mean.setAttribute('aria-hidden', 'true');
-    foot.append(lang, cun);
+    // the emblem's crown signature closes the panel (§11, 2026-09-30) — the same signature
+    // as the clients band, the mission and the footer; the cuneiform line + meander are gone
+    const sig = document.createElement('div');
+    sig.className = 'drawer-sig';
+    sig.setAttribute('aria-hidden', 'true');
+    sig.innerHTML = '<span class="rule"></span><img src="' + UP + 'assets/pattern-d-crown.png" alt="" width="386" height="79" decoding="async"><span class="rule"></span>';
+    foot.append(lang, sig);
 
-    drawer.append(head, rule, nav, foot, mean);
+    drawer.append(head, rule, nav, foot);
     document.body.append(veil, drawer);
 
     // the panel's own toggle names the other language, exactly like the one in the bar
