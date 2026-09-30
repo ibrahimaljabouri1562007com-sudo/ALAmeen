@@ -1008,7 +1008,11 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
   .consult h2{font-size:30px; line-height:1.4}
   .form input,.form select,.form textarea{font-size:16px}
 
-  /* service pages */
+  /* service pages — the trail on a phone ends at the section: the current page's name
+     wrapped onto its own line and sat 60px above the H1 that says the same words, so it
+     read as a duplicate. The H1 is the page's name; the trail only says where it lives. */
+  .crumbs [aria-current],.crumbs .sep:has(+ [aria-current]){display:none}
+  .crumbs{margin-bottom:24px}
   .svc-head::before{font-size:44px; opacity:.035}
   .svc-head h1{font-size:30px; line-height:1.4}
   .svc-items p{font-size:17px; line-height:1.8}
