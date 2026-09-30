@@ -380,7 +380,7 @@ html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
 .line .yr{font-family:var(--f-en-display); font-weight:300; font-size:44px; line-height:1; color:var(--gold-2); display:block; margin-bottom:14px}
 .line .yr.ar{font-family:var(--f-ar-display); font-size:38px}
 .line .yr small{font-size:14px; letter-spacing:.3em; text-transform:uppercase; color:var(--on-dark-2); margin-inline-start:6px}
-.line h3{font-family:var(--f-ar-display); font-weight:400; font-size:24px; margin:0 0 10px; line-height:1.35}
+.line h3{font-family:var(--f-ar-display); font-weight:500; font-size:24px; margin:0 0 10px; line-height:1.35}
 .line p{margin:0; font-size:15px; color:var(--on-dark-2)}
 .line li:nth-child(2){transition-delay:.1s} .line li:nth-child(3){transition-delay:.2s} .line li:nth-child(4){transition-delay:.3s}
 .vision-here{
