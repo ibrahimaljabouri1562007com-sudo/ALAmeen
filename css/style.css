@@ -398,9 +398,8 @@ html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
 /* ---------- رسالتنا — a quiet marble band right before the ask ---------- */
 .mission{background:var(--marble-2); border-top:1px solid var(--marble-2)}
 .mission-wrap{max-width:900px; margin-inline:auto; text-align:center; position:relative}
-.mission-wrap::before{
-  content:""; display:block; width:56px; height:2px; background:var(--gold); margin:0 auto 26px;
-}
+/* the emblem's crown (Pattern D) as the heading accent, in place of the short gold rule (§8, 2026-09-30) */
+.mission-wrap .crown{display:block; height:22px; width:auto; margin:0 auto 26px; opacity:.95}
 .mission-wrap .ar-label{
   display:block; font-family:var(--f-ar-display); font-size:30px; color:var(--gold-dim);
   margin-bottom:18px; line-height:1;
