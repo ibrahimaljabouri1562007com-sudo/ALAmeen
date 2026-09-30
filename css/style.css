@@ -966,13 +966,20 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
   .proof .names{gap:30px}
   .proof .name .cap-en,.proof .name .ar{margin-top:10px; line-height:1.5}
 
-  /* about */
-  .amin-word{padding:12px 0 0}
+  /* about — two moments, not one column: the NAME (word · short rule · trust line) then,
+     after real air, WHO WE ARE (eyebrow · h2 · paragraph · record). On the phone the two
+     had fused: a full-width gold rule under the word, a gold eyebrow dash 60px later, and
+     a 24px grid gap between them. */
+  .amin-grid{gap:44px}
+  .amin-word{padding:8px 0 0}
   .amin-word .big{font-size:64px}
-  .amin-word .def{font-size:19px; line-height:1.7}
-  .amin-text h2{font-size:28px; line-height:1.45}
-  .amin-text > p:not(.eyebrow):not(.principles-intro){font-size:17px; line-height:1.8}
-  .record li{padding-block:18px; font-size:16px; line-height:1.9}
+  .amin-word .big::after{width:72px; margin-top:16px}
+  .amin-word .def{font-size:18px; line-height:1.75; margin-top:18px}
+  .amin-text .eyebrow{margin-bottom:20px}
+  .amin-text h2{font-size:26px; line-height:1.5; margin-bottom:16px}
+  .amin-text > p:not(.eyebrow):not(.principles-intro){font-size:17px; line-height:1.85; margin-bottom:0}
+  .principles-intro{margin:40px 0 10px}
+  .record li{padding-block:20px; font-size:16px; line-height:1.9}
 
   /* pillars: three equal tracks, each column at 80% of its track, the middle one taller */
   .pillars{gap:24px}
