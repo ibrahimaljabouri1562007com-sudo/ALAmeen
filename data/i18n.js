@@ -428,5 +428,21 @@ window.I18N = {
   "hero_img_alt": {
     "ar": "أعمدة رخامية تطل على بغداد ودجلة عند الغروب",
     "en": "Marble columns overlooking Baghdad and the Tigris at sunset"
+  },
+  "d_email": {
+    "ar": "البريد",
+    "en": "Email"
+  },
+  "d_phone": {
+    "ar": "الهاتف",
+    "en": "Phone"
+  },
+  "d_address": {
+    "ar": "العنوان",
+    "en": "Address"
+  },
+  "sample_tag": {
+    "ar": "(نموذج)",
+    "en": "(sample)"
   }
 };

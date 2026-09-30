@@ -6,23 +6,23 @@ window.CFG = {
     "en": "Al-Amin Advocates & Legal Consultants"
   },
   "contact": {
-    "email": "",
-    "phone": "",
+    "email": "info@alaminlegal.com",
+    "phone": "0770 000 0000",
     "whatsapp": "",
     "city": {
       "ar": "بغداد — العراق",
       "en": "Baghdad — Iraq"
     },
     "address": {
-      "ar": "",
-      "en": ""
+      "ar": "بغداد — الكرادة",
+      "en": "Baghdad — Karrada"
     },
     "phone2": "",
     "hours": {
       "ar": "٩:٠٠ ص – ٥:٠٠ م",
       "en": "9:00 AM – 5:00 PM"
     },
-    "maps": ""
+    "maps": "https://maps.google.com/?q=Baghdad"
   },
   "mail": {
     "_providers": "formsubmit | web3forms | supabase | mailto",

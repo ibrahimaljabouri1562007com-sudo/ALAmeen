@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Kufi+Arabic:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=86309992">
+<link rel="stylesheet" href="css/style.css?v=46ebd328">
 </head>
 <body>
 <!-- Pattern B: the emblem's column redrawn from the guide (also in assets/pattern-b.svg) -->
@@ -166,22 +166,22 @@
       <div class="section-head io">
       <p class="eyebrow" data-i18n="c_eyebrow">الاستشارة</p>
       <h2 data-i18n="c_h2">استشارتُك تبدأُ بكلمة</h2>
-      <p class="sub" data-i18n="c_sub">اكتب لنا ما يشغلُك، ونعودُ إليك في أقربِ وقت.</p>
     </div>
 
       <!-- the firm's direct routes, beside the heading (§9, 2026-09-30). Every value comes from
-           config; a row with no value hides itself (site.js) — no placeholders on the page. -->
+           config; a row with no value hides itself (site.js). Order: email · phone · office (Ibrahim).
+           The «نموذج» tags are placeholders BY ORDER until the firm's real numbers arrive — delete them then. -->
       <ul class="details io">
-        <li class="d-row d-wa"><svg class="dic" aria-hidden="true"><use href="#ic-whatsapp"/></svg><span class="lab" data-i18n="ch_whatsapp">واتساب</span><a class="val" data-cfg="contact.whatsapp" data-cfg-href="https://wa.me/" data-cfg-as="href" target="_blank" rel="noopener"><span data-cfg-show="contact.whatsapp" dir="ltr"></span></a></li>
-        <li class="d-row"><svg class="dic" aria-hidden="true"><use href="#ic-phone"/></svg><span class="lab" data-i18n="ch_call">اتصالٌ هاتفي</span><span class="val"><a dir="ltr" data-cfg="contact.phone" data-cfg-href="tel:"></a><a class="second" dir="ltr" data-cfg="contact.phone2" data-cfg-href="tel:"></a></span></li>
-        <li class="d-row"><svg class="dic" aria-hidden="true"><use href="#ic-mail"/></svg><span class="lab" data-i18n="ch_email">البريدُ الإلكتروني</span><a class="val" dir="ltr" data-cfg="contact.email" data-cfg-href="mailto:"></a></li>
-        <li class="d-row"><svg class="dic" aria-hidden="true"><use href="#ic-pin"/></svg><span class="lab" data-i18n="ch_visit">زيارةُ المكتب</span><span class="val"><span data-cfg="contact.address"></span><span class="note"><span data-cfg="contact.city">بغداد</span> <span class="dot" aria-hidden="true">·</span> <span data-i18n="ch_hours">الأحد – الخميس</span> <span data-cfg="contact.hours"></span></span><a class="map" data-cfg-plain data-cfg-href-only="contact.maps" target="_blank" rel="noopener" data-i18n="ch_directions">الاتجاهات على الخريطة</a></span></li>
+        <li class="d-row"><svg class="dic" aria-hidden="true"><use href="#ic-mail"/></svg><span class="lab" data-i18n="d_email">البريد</span><span class="val"><a dir="ltr" data-cfg="contact.email" data-cfg-href="mailto:"></a></span></li>
+        <li class="d-row"><svg class="dic" aria-hidden="true"><use href="#ic-phone"/></svg><span class="lab" data-i18n="d_phone">الهاتف</span><span class="val"><span class="v-line"><a dir="ltr" data-cfg="contact.phone" data-cfg-href="tel:"></a> <span class="sample" data-i18n="sample_tag">(نموذج)</span></span></span></li>
+        <li class="d-row"><svg class="dic" aria-hidden="true"><use href="#ic-pin"/></svg><span class="lab" data-i18n="d_address">العنوان</span><span class="val"><span class="v-line"><a data-cfg="contact.address" data-cfg-href-only="contact.maps" target="_blank" rel="noopener"></a> <span class="sample" data-i18n="sample_tag">(نموذج)</span></span></span></li>
       </ul>
     </div>
 
     <!-- the form -->
     <div class="form-block io">
-      <h3 class="form-h" data-i18n="c_form_h">أو اكتب لنا</h3>
+      <h3 class="form-h" data-i18n="c_form_h">أو اكتب لنا هنا</h3>
+      <p class="form-sub" data-i18n="c_sub">اكتب لنا ما يشغلُك، ونعودُ إليك في أقربِ وقت.</p>
 
       <!-- the notice sits ABOVE the fields, as plain visible text, never a tick box -->
       <aside class="disclaimer">
@@ -219,9 +219,9 @@
 
 <a class="to-top" id="toTop" href="#top" data-i18n-aria="to_top" aria-label="إلى الأعلى"><span aria-hidden="true"></span></a>
 
-<script src="data/i18n.js?v=8c2919a0"></script>
+<script src="data/i18n.js?v=69c91dd7"></script>
 <script src="data/services.js?v=3771af59"></script>
-<script src="data/config.js?v=c632f939"></script>
+<script src="data/config.js?v=6919dfc1"></script>
 <script src="assets/clients/manifest.js?v=f9e4eef7"></script>
 <script src="js/site.js?v=4841f3bd"></script>
 <script>
