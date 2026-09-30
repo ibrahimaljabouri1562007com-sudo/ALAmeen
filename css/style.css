@@ -585,21 +585,22 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   background:var(--ink); color:var(--on-dark); position:relative; overflow:hidden;
   padding-block:clamp(120px,13vw,180px) clamp(44px,6vw,72px);
 }
-.svc-head::before{
-  content:"𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 ";
-  position:absolute; inset:-20px; font-family:var(--f-cuneiform); font-size:60px; line-height:1.4;
-  color:var(--gold); opacity:.045; direction:ltr; word-break:break-all; pointer-events:none;
+/* the emblem's column (Pattern B) at low contrast in the empty half of the band — the guide's
+   editorial header: the title keeps its measure, the rest of the band is not a void (2026-09-30) */
+.svc-head .pbc{
+  position:absolute; inset-inline-end:-3%; top:-8%; width:clamp(240px,30vw,400px); aspect-ratio:200/300; height:auto;
+  color:var(--marble); opacity:.06; pointer-events:none;
 }
 .svc-head .wrap{position:relative}
 .svc-head h1{
-  font-family:var(--f-ar-display); font-weight:500; margin:0; line-height:1.28;
-  font-size:clamp(30px,4.4vw,56px); max-width:22ch; text-wrap:balance;
+  font-family:var(--f-ar-display); font-weight:500; margin:0; line-height:1.18;
+  font-size:clamp(30px,4.4vw,56px); max-width:26ch; text-wrap:balance;   /* a 26ch measure: the longest title lands on two lines */
 }
-.svc-head .eyebrow{color:var(--gold-2); margin-bottom:18px}
+.svc-head .eyebrow{color:var(--gold-2); margin-bottom:clamp(18px,2vw,26px)}
 /* the service's icon, gentle, alongside the name (§6, 2026-09-30): the guide's thin-outline
    family, warm gold on the dark band, sized to the title's x-height, never a badge */
-.svc-title{display:flex; align-items:center; gap:clamp(14px,1.6vw,22px)}
-.svc-ic{flex:none; width:clamp(28px,3vw,40px); height:clamp(28px,3vw,40px); color:var(--gold-2); opacity:.85}
+.svc-title{display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,22px)}
+.svc-ic{flex:none; width:clamp(28px,3vw,40px); height:clamp(28px,3vw,40px); color:var(--gold-2); opacity:.85; margin-top:clamp(6px,1vw,13px)}   /* sits on the FIRST line */
 .svc-head .eyebrow::before{background:var(--gold-2)}
 
 .svc-edge{height:1px; background:linear-gradient(to right, transparent, rgba(217,182,92,.55), transparent)}   /* replaced the meander (§12) */
@@ -610,6 +611,7 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   font-size:clamp(15px,1.35vw,17px); color:var(--on-dark-2);
   margin-bottom:clamp(30px,3.4vw,44px); line-height:1.6;
 }
+.svc-head .crumbs{margin-bottom:clamp(30px,3.4vw,44px)}
 .crumbs a{
   color:var(--gold-2); border-bottom:1px solid rgba(217,182,92,.4);
   padding-bottom:2px; transition:color .3s, border-color .3s;
@@ -1041,7 +1043,8 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
      read as a duplicate. The H1 is the page's name; the trail only says where it lives. */
   .crumbs [aria-current],.crumbs .sep:has(+ [aria-current]){display:none}
   .crumbs{margin-bottom:24px}
-  .svc-head::before{font-size:44px; opacity:.035}
+  .svc-head .pbc{display:none}   /* the column is a wide-band device */
+  .svc-ic{margin-top:7px}
   .svc-head h1{font-size:30px; line-height:1.4}
   .svc-items p{font-size:17px; line-height:1.8}
 }
