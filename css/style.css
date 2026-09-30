@@ -157,23 +157,23 @@ img{max-width:100%; display:block}
 .scroll-hint::after{content:""; width:1px; height:48px; background:linear-gradient(var(--gold-2), transparent); animation:drip 2.2s infinite}
 @keyframes drip{0%{transform:scaleY(0); transform-origin:top} 50%{transform:scaleY(1); transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0); transform-origin:bottom}}
 
-/* ---------- the frieze: cuneiform band + Ishtar meander ---------- */
-.frieze{
-  background:var(--ink); color:var(--gold); overflow:hidden; position:relative;
-  border-top:3px solid var(--lapis); border-bottom:3px solid var(--lapis);
+/* ---------- the proof band's divider (§3, brand guide V4 Pattern D) ----------
+   The emblem's crown alone (never with the balance) sits centred; a short cuneiform
+   inscription runs out from each side and fades. One material: gold on ink. The lapis
+   meander + bordered frieze it replaced read as two ornaments stacked (2026-09-30). */
+.crown-insc{
+  display:flex; align-items:center; gap:28px; padding:14px var(--gutter) 6px;
+  background:var(--ink); color:var(--gold);
+  direction:ltr;   /* symmetric ornament: physical order, so it reads the same in AR and EN */
 }
-.frieze .track{
-  /* The band does not move, on any device. It ran as a 60s marquee and read as
-     drifting and stuttering rather than as an inscription — which is what it is.
-     If the motion is ever wanted back: each span carries its own trailing space
-     instead of a flex gap, so the track is exactly two tiles and a translateX(-50%)
-     loop lands on the seam. With a flex gap it was span+gap+span, half of that is
-     span+gap/2, never a whole tile, and the glyphs jumped 32px every cycle. */
-  display:flex; white-space:nowrap; padding:14px 0;
-  font-family:var(--f-cuneiform); font-size:26px; line-height:1; direction:ltr;
-  width:max-content;
+.crown-insc img{height:26px; width:auto; opacity:.92; flex:none}
+.crown-insc .row{
+  flex:1; min-width:0; overflow:hidden; white-space:nowrap; direction:ltr;
+  font-family:var(--f-cuneiform); font-size:21px; line-height:1; letter-spacing:.16em; opacity:.62;
 }
-.frieze .track span{opacity:.85; padding-inline-end:64px}
+/* each inscription is solid at the outer edge and fades as it nears the crown */
+.crown-insc .row.l{text-align:left;  -webkit-mask-image:linear-gradient(to left, transparent,#000 55%); mask-image:linear-gradient(to left, transparent,#000 55%)}
+.crown-insc .row.r{text-align:right; -webkit-mask-image:linear-gradient(to right,transparent,#000 55%); mask-image:linear-gradient(to right,transparent,#000 55%)}
 
 .meander{ /* the lapis step pattern from the column bases */
   height:10px; background:
@@ -544,6 +544,9 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   .reveal{opacity:1; transform:none}
 }
 @media (max-width:860px){
+  .crown-insc{gap:16px; padding-top:12px}
+  .crown-insc img{height:18px}
+  .crown-insc .row{font-size:16px; letter-spacing:.1em}
   .burger{display:block}
   .nav{padding-inline:16px}
   .brand{gap:10px}
