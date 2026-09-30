@@ -9,6 +9,7 @@
   --ink-2:      #24211A;
   --marble:     #F4EFE4;   /* ivory marble */
   --marble-2:   #E9E1D1;
+  --stone:#CDC3AE;        /* guide: warm stone — pattern fills, quiet secondary surfaces */
   --sand:       #C9B58E;   /* column shadow tone */
   /* brand metals */
   --gold:       #B8923A;   /* logo gold */
@@ -196,33 +197,15 @@ img{max-width:100%; display:block}
 .pillars-sec{background:var(--marble-2)}
 .pillars-sec .section-head{margin-inline:auto; text-align:center; max-width:640px}
 .pillars-sec .section-head .eyebrow{justify-content:center}
-.pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(22px,4vw,64px); align-items:end}
+.pillars{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(22px,4vw,64px); align-items:end}
 .pillar{position:relative; text-align:center; width:100%; max-width:250px; margin-inline:auto}
 
-/* the column, drawn as the logo draws it: 3 stepped bars · gold flutes · 3 stepped bars */
-.pillar .col{display:block}
-.pillar .cap,.pillar .base{display:flex; flex-direction:column; align-items:center; gap:4px}
-.pillar .cap i,.pillar .base i{display:block; height:7px; background:var(--ink); border-radius:1px}
-/* capital steps INWARD going down */
-.pillar .cap i:nth-child(1){width:100%; clip-path:polygon(0 0,100% 0,96% 100%,4% 100%)}
-.pillar .cap i:nth-child(2){width:92%;  clip-path:polygon(0 0,100% 0,96% 100%,4% 100%)}
-.pillar .cap i:nth-child(3){width:84%}
-/* base mirrors it, stepping OUTWARD going down */
-.pillar .base i:nth-child(1){width:84%}
-.pillar .base i:nth-child(2){width:92%;  clip-path:polygon(4% 0,96% 0,100% 100%,0 100%)}
-.pillar .base i:nth-child(3){width:100%; clip-path:polygon(4% 0,96% 0,100% 100%,0 100%)}
-/* the fluted gold shaft */
-.pillar .shaft{
-  display:flex; justify-content:center; gap:clamp(4px,.7vw,7px);
-  width:84%; margin:9px auto; height:clamp(170px,21vw,260px);
-}
-.pillar .shaft i{
-  flex:1; background:linear-gradient(90deg,var(--gold-dim) 0%,var(--gold-2) 38%,var(--gold) 72%,var(--gold-dim) 100%);
-  border-radius:1px;
-}
-.pillar:nth-child(2) .shaft{height:clamp(205px,25vw,310px)}   /* the middle column stands taller */
+/* the column = brand guide Pattern B, redrawn from the emblem (stepped crown · four flutes ·
+   tiered foundation) as flat warm-stone shapes: no gold fill, no outline (§5, 2026-09-30) */
+.pillar .pbc{display:block; width:min(100%,190px); height:auto; aspect-ratio:200/300; margin:0 auto; color:var(--stone)}
+.pillar:nth-child(2) .pbc{width:min(100%,220px)}   /* the middle column stands taller */
 .pillar .word{
-  display:block; margin-top:24px; font-family:var(--f-ar-display); font-weight:400;
+  display:block; margin-top:22px; font-family:var(--f-ar-display); font-weight:500;
   font-size:clamp(26px,3.2vw,40px); line-height:1.25; color:var(--ink);
 }
 .pillars.io .pillar{transition-delay:calc(var(--i,0)*.1s)}
@@ -232,9 +215,10 @@ img{max-width:100%; display:block}
   padding-top:clamp(28px,3.5vw,40px); border-top:1px solid rgba(23,21,15,.14);
 }
 @media (max-width:760px){
-  .pillars{grid-template-columns:1fr; gap:34px}
-  .pillar{max-width:210px}
-  .pillar .shaft,.pillar:nth-child(2) .shaft{height:110px}
+  /* three equal tracks: minmax(0,1fr) so a long word (Confidentiality) cannot widen its column */
+  .pillars{grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px}
+  .pillar .pbc,.pillar:nth-child(2) .pbc{width:100%}
+  .pillar .word{font-size:clamp(15px,4.6vw,20px); margin-top:14px}
 }
 
 /* ---------- proof — الخبرة + the two company blocks (on ink, meander-framed) ---------- */
