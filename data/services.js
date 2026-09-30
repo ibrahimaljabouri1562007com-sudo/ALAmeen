@@ -20,7 +20,8 @@ window.SERVICES = [
       "Courts of appeal",
       "The Court of Cassation",
       "Managing and following cases before courts of every degree"
-    ]
+    ],
+    "icon": "dispute"
   },
   {
     "n": 2,
@@ -36,7 +37,8 @@ window.SERVICES = [
       "Registering branches of foreign companies and incorporating national companies",
       "Amending articles of incorporation and internal regulations in accordance with legal procedure",
       "Providing legal consultation to companies, individuals and institutions inside and outside Iraq"
-    ]
+    ],
+    "icon": "corporate"
   },
   {
     "n": 3,
@@ -56,7 +58,8 @@ window.SERVICES = [
       "Issuing tax identification for companies and individuals",
       "Issuing Baghdad Chamber of Commerce identification",
       "Following the legal procedures relating to banking transactions"
-    ]
+    ],
+    "icon": "tax"
   },
   {
     "n": 4,
@@ -72,7 +75,8 @@ window.SERVICES = [
       "Preparing legal feasibility studies for investment projects",
       "Managing and following all matters before the Investment Commission and related bodies",
       "Providing legal and administrative support while completing investment and operating procedures inside Iraq"
-    ]
+    ],
+    "icon": "investment"
   },
   {
     "n": 5,
@@ -92,7 +96,8 @@ window.SERVICES = [
       "Resolving issues and providing solutions across every department of the Directorate of Residency Affairs",
       "Opening the electronic accounts companies use to apply to the Directorate of Residency Affairs, and completing everything related to them",
       "We have a team specialised in issuing entry visas for companies and projects at the Directorate of Residency Affairs, working with professional, advanced and rapid capability through electronic systems that keep pace with an age of speed and avoid errors"
-    ]
+    ],
+    "icon": "regulatory"
   },
   {
     "n": 6,
@@ -114,7 +119,8 @@ window.SERVICES = [
       "Preparing settlement records and releases",
       "Reaching legal solutions before or during disputes",
       "Managing and following arbitration proceedings according to the nature of the dispute, in line with Iraqi and international law"
-    ]
+    ],
+    "icon": "dispute"
   },
   {
     "n": 7,
@@ -136,7 +142,8 @@ window.SERVICES = [
       "Providing legal consultation to individuals and to foreign and national companies",
       "Providing legal opinion and consultation on disputes, contracts and transactions",
       "Providing consultation on cases before the Iraqi courts"
-    ]
+    ],
+    "icon": "counsel"
   },
   {
     "n": 8,
@@ -150,7 +157,8 @@ window.SERVICES = [
     "items_en": [
       "Our office provides legal and administrative representation and follow-up on behalf of companies and individuals before ministries, government departments and official institutions,",
       "as well as representing them before other companies and related entities, and following correspondence, applications, transactions and official procedures on behalf of clients — helping to ease their operations and protect their rights and interests."
-    ]
+    ],
+    "icon": "corporate"
   },
   {
     "n": 9,
@@ -162,6 +170,7 @@ window.SERVICES = [
     "title_en": "Legal Agency and Representation for Foreign Companies",
     "items_en": [
       "Al-Amin Advocates & Legal Consultants undertakes legal agency and representation for a number of foreign companies operating in the Republic of Iraq, under the powers of attorney and legal authorisations granted to the office. It represents the interests of these companies before ministries, departments, government institutions and the related official and unofficial bodies, provides legal support and consultation, and follows their legal and administrative affairs relating to their work and projects inside Iraq."
-    ]
+    ],
+    "icon": "corporate"
   }
 ];

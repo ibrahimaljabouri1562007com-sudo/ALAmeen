@@ -565,10 +565,14 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 }
 .svc-head .wrap{position:relative}
 .svc-head h1{
-  font-family:var(--f-ar-display); font-weight:400; margin:0; line-height:1.28;
+  font-family:var(--f-ar-display); font-weight:500; margin:0; line-height:1.28;
   font-size:clamp(30px,4.4vw,56px); max-width:22ch; text-wrap:balance;
 }
 .svc-head .eyebrow{color:var(--gold-2); margin-bottom:18px}
+/* the service's icon, gentle, alongside the name (§6, 2026-09-30): the guide's thin-outline
+   family, warm gold on the dark band, sized to the title's x-height, never a badge */
+.svc-title{display:flex; align-items:center; gap:clamp(14px,1.6vw,22px)}
+.svc-ic{flex:none; width:clamp(28px,3vw,40px); height:clamp(28px,3vw,40px); color:var(--gold-2); opacity:.85}
 .svc-head .eyebrow::before{background:var(--gold-2)}
 
 /* breadcrumbs */
