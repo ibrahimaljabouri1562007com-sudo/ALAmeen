@@ -940,3 +940,69 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
 }
 /* the drawer is a phone and tablet affordance only */
 @media (min-width:861px){ .drawer,.drawer-veil{display:none} }
+
+/* ======================= PHONE LAYER (≤760px) =======================
+   Engineered for the phone, not scaled down from the desk (2026-09-30).
+   · one type scale: 17 body · 30 H2 · titles at 1.5 line-height (Arabic needs it)
+   · rhythm: 60px outside a section, 24–44px inside it — the interiors were packed
+     at 14–18px while the outsides kept 72px, which read as "crowded"
+   · decoration behind text steps back (watermarks 44px, low opacity)
+   · every row has one job: no trailing gold line in service rows, numbers muted
+   · inputs at 16px — iOS Safari zooms the page on focus below that
+   Sits last in the file so, at equal specificity, it wins. */
+@media (max-width:760px){
+  :root{--gutter:20px}
+  .section{padding-block:60px}
+  .section-head{margin-bottom:36px}
+  .section h2{font-size:30px; line-height:1.4}
+  .section .sub{font-size:17px; line-height:1.7}
+  .hero p.lead{font-size:17px; line-height:1.8}
+
+  /* clients band */
+  .crown-insc .row{font-size:14px; opacity:.5}
+  .proof .inner-wrap{padding-block:44px 52px}
+  .proof .grp{padding-top:28px}
+  .proof .grp-label{font-size:16px; line-height:1.6; margin-bottom:22px}
+  .proof .names{gap:30px}
+  .proof .name .cap-en,.proof .name .ar{margin-top:10px; line-height:1.5}
+
+  /* about */
+  .amin-word{padding:12px 0 0}
+  .amin-word .big{font-size:64px}
+  .amin-word .def{font-size:19px; line-height:1.7}
+  .amin-text h2{font-size:28px; line-height:1.45}
+  .amin-text > p:not(.eyebrow):not(.principles-intro){font-size:17px; line-height:1.8}
+  .record li{padding-block:18px; font-size:16px; line-height:1.9}
+
+  /* pillars: three equal tracks, each column at 80% of its track, the middle one taller */
+  .pillars{gap:24px}
+  .pillar .pbc{width:80%}
+  .pillar:nth-child(2) .pbc{width:92%}
+  .pillar .word{font-size:clamp(15px,4.6vw,19px); margin-top:16px}
+  .pillars-sec .tail{font-size:16px; line-height:1.9; margin-top:44px; padding-top:28px}
+
+  /* services: number + title only; the gold "go" line was a third element in a narrow row */
+  .services-list a{grid-template-columns:auto 1fr; padding:20px 4px; gap:16px}
+  .services-list .go{display:none}
+  html[lang] .services-list .n{font-size:15px; min-width:26px; color:var(--gold-dim)}
+  .services-list .t{font-size:18px; line-height:1.5}
+
+  /* heritage */
+  .heritage::before{font-size:44px; opacity:.035}
+  .line{gap:44px}
+  .line li{padding-top:44px}
+  .line .yr{font-size:34px}
+  .line h3{font-size:22px; line-height:1.45}
+  .line p{font-size:16px; line-height:1.8}
+  .vision-here{margin-top:52px; padding-top:32px}
+  .vision-here p,.mission-wrap p{font-size:19px; line-height:1.9}
+
+  /* contact */
+  .consult h2{font-size:30px; line-height:1.4}
+  .form input,.form select,.form textarea{font-size:16px}
+
+  /* service pages */
+  .svc-head::before{font-size:44px; opacity:.035}
+  .svc-head h1{font-size:30px; line-height:1.4}
+  .svc-items p{font-size:17px; line-height:1.8}
+}
