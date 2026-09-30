@@ -561,8 +561,11 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   .burger{display:block}
   .nav{padding-inline:16px}
   .brand{gap:10px}
-  .brand-icon{height:40px} .brand-word{height:22px}
-  .nav.solid .brand-icon{height:36px} .nav.solid .brand-word{height:20px}
+  /* the wordmark keeps the master's proportion to the icon (desktop 54:44 ≈ 1.23). At 22px the
+     calligraphy band was 12px tall and the English line 3px — the name had shrunk twice as much
+     as the icon. 40:32 restores the ratio and still fits a 360px bar (icon 42 + 10 + word 135). */
+  .brand-icon{height:40px} .brand-word{height:32px}
+  .nav.solid .brand-icon{height:36px} .nav.solid .brand-word{height:29px}
   .lang{padding:5px 10px}
   /* the inline bar is for the wide layout only; the phone gets the drawer below */
   .menu{display:none}
