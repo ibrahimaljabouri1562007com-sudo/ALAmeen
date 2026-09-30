@@ -529,7 +529,12 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 }
 
 /* ---------- footer ---------- */
-.foot{background:var(--marble); padding-top:56px}
+.foot{background:var(--marble); padding-top:0}
+/* the crown signature (Pattern D) opens the footer — the same signature as the clients band and
+   the mission; the page then ends on plain ivory (§10, 2026-09-30) */
+.foot-sig{display:flex; align-items:center; gap:22px; padding:0 var(--gutter); height:56px; margin-bottom:8px}
+.foot-sig .rule{flex:1; height:1px; background:linear-gradient(to right, transparent, rgba(140,110,44,.45), transparent)}
+.foot-sig img{height:22px; width:auto; opacity:.95}
 .foot-grid{display:grid; grid-template-columns:auto 1fr auto; gap:40px; align-items:center; padding-bottom:40px}
 .foot-logo{height:64px; width:auto}
 .foot-links{list-style:none; margin:0; padding:0; display:flex; gap:clamp(16px,2.2vw,28px); justify-content:center; font-size:15px; flex-wrap:wrap}
