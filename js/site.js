@@ -330,8 +330,8 @@
         else { el.removeAttribute('href'); el.hidden = true; }
       });
       // a whole channel card with nothing left in it disappears
-      document.querySelectorAll('.ch').forEach(card => {
-        const alive = [...card.querySelectorAll('.ch-v, .ch-map')].some(e => !e.hidden && e.textContent.trim());
+      document.querySelectorAll('.ch, .d-row').forEach(card => {
+        const alive = [...card.querySelectorAll('.ch-v, .ch-map, .val, .val a, .val span, .map')].some(e => !e.hidden && e.textContent.trim());
         card.classList.toggle('empty', !alive);
       });
     };

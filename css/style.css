@@ -439,9 +439,33 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   border-bottom:1px solid rgba(217,182,92,.4); transition:border-color .3s;
 }
 .ch-map:hover{border-bottom-color:var(--gold-2)}
-/* WhatsApp leads — it is how clients here actually make contact */
-.ch-wa{position:relative}
-.ch-wa .ch-k::after{content:"●"; color:#25D366; font-size:9px; margin-inline-start:8px; vertical-align:middle}
+/* §9 (2026-09-30): the direct routes stand BESIDE the heading — icon · label · value, the
+   block held by one thin gold rule. Guide's dark application: warm-gold outline icons from the
+   same family as the service icons, ivory values, no badges, no brand green. */
+.c-head{
+  display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(32px,5vw,80px); align-items:start;
+  padding-bottom:clamp(30px,4vw,48px); border-bottom:1px solid rgba(244,239,228,.14);
+}
+.c-head .section-head{margin-bottom:0}
+.details{
+  /* ONE grid for all rows (rows are display:contents), so the label column is as wide as the
+     widest label in the current language and every value starts on the same line */
+  list-style:none; margin:14px 0 0; padding-inline:20px 0;
+  border-inline-start:1px solid rgba(217,182,92,.45);
+  display:grid; grid-template-columns:20px max-content 1fr; column-gap:14px; row-gap:18px; align-items:center;
+}
+.d-row{display:contents}
+.d-row.empty{display:none}
+.dic{width:20px; height:20px; color:var(--gold); flex:none}
+.d-row .lab{font-family:var(--f-ar-ui); font-size:13px; font-weight:600; color:var(--gold-2); white-space:nowrap}
+:root[lang="en"] .d-row .lab{font-family:var(--f-en-display); font-size:12px; letter-spacing:.12em; text-transform:uppercase}
+.d-row .val{color:var(--marble); font-size:clamp(17px,1.5vw,19px); line-height:1.6; text-align:start; word-break:break-word; display:flex; flex-direction:column; gap:2px}
+.d-row .val a{color:inherit; align-self:flex-start; border-bottom:1px solid transparent; transition:border-color .3s, color .3s}
+.d-row .val a:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
+.d-row .val .second{font-size:16px; color:var(--on-dark-2)}
+.d-row .val .note{font-size:14px; color:var(--on-dark-2); line-height:1.7}
+.d-row .val .note .dot{color:var(--gold)}
+.d-row .val .map{font-size:14px; color:var(--gold-2); border-bottom:1px solid rgba(217,182,92,.4)}
 
 /* the form */
 .form-block{padding-top:clamp(26px,3vw,38px); max-width:680px}
@@ -1005,6 +1029,8 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
   .vision-here p,.mission-wrap p{font-size:19px; line-height:1.9}
 
   /* contact */
+  .c-head{grid-template-columns:1fr; gap:28px}
+  .details{margin-top:0; column-gap:12px; row-gap:16px}
   .consult h2{font-size:30px; line-height:1.4}
   .form input,.form select,.form textarea{font-size:16px}
 

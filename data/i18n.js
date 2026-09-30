@@ -378,8 +378,8 @@ window.I18N = {
     "en": "Directions on the map"
   },
   "c_form_h": {
-    "ar": "أو اكتب لنا",
-    "en": "Or write to us"
+    "ar": "أو اكتب لنا هنا",
+    "en": "Or write to us here"
   },
   "c_company": {
     "ar": "الشركة أو الجهة",
