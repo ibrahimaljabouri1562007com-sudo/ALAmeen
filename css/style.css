@@ -970,16 +970,16 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
      after real air, WHO WE ARE (eyebrow · h2 · paragraph · record). On the phone the two
      had fused: a full-width gold rule under the word, a gold eyebrow dash 60px later, and
      a 24px grid gap between them. */
-  .amin-grid{gap:44px}
+  .amin-grid{gap:60px}   /* a real pause between the NAME and «من نحن» */
   .amin-word{padding:8px 0 0}
   .amin-word .big{font-size:64px}
   .amin-word .big::after{width:72px; margin-top:16px}
-  .amin-word .def{font-size:18px; line-height:1.75; margin-top:18px}
+  .amin-word .def{font-size:17px; line-height:1.75; margin-top:18px; color:var(--on-light-2)}
   .amin-text .eyebrow{margin-bottom:20px}
   .amin-text h2{font-size:26px; line-height:1.5; margin-bottom:16px}
-  .amin-text > p:not(.eyebrow):not(.principles-intro){font-size:17px; line-height:1.85; margin-bottom:0}
-  .principles-intro{margin:40px 0 10px}
-  .record li{padding-block:20px; font-size:16px; line-height:1.9}
+  .amin-text > p:not(.eyebrow):not(.principles-intro){font-size:16px; line-height:1.85; margin-bottom:0}   /* one step under the heading: hierarchy, not sameness */
+  .principles-intro{margin:56px 0 14px}   /* a second pause before «الخبرة والإنجازات» */
+  .record li{padding-block:20px; font-size:15.5px; line-height:1.9}
 
   /* pillars: three equal tracks, each column at 80% of its track, the middle one taller */
   .pillars{gap:24px}
