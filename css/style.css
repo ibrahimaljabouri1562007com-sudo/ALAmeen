@@ -9,6 +9,7 @@
   --ink-2:      #24211A;
   --marble:     #F4EFE4;   /* ivory marble */
   --marble-2:   #E9E1D1;
+  --stone-2:#E6DECF;      /* warm-stone TINT — quiet secondary surfaces (pillars, mission) */
   --stone:#CDC3AE;        /* guide: warm stone — pattern fills, quiet secondary surfaces */
   --sand:       #C9B58E;   /* column shadow tone */
   /* brand metals */
@@ -17,8 +18,8 @@
   --gold-dim:   #8C6E2C;
   --gold-ink:   #6F5520;   /* label gold on marble — passes AA at body size */
   /* Babylon */
-  --lapis:      #1F3A78;   /* Ishtar Gate glazed brick */
-  --lapis-2:    #2B4C9B;
+  --lapis:      #1F3A78;   /* Ishtar Gate glazed brick — RETIRED from the surfaces (§12, 2026-09-30): the
+  --lapis-2:    #2B4C9B;      guide's four colours only; kept as tokens for history, no rule uses them */
   /* text on dark / on light */
   --on-dark:    var(--marble);
   --on-dark-2:  rgba(244,239,228,.72);
@@ -176,12 +177,7 @@ img{max-width:100%; display:block}
 .crown-insc .row.l{text-align:left;  -webkit-mask-image:linear-gradient(to left, transparent,#000 55%); mask-image:linear-gradient(to left, transparent,#000 55%)}
 .crown-insc .row.r{text-align:right; -webkit-mask-image:linear-gradient(to right,transparent,#000 55%); mask-image:linear-gradient(to right,transparent,#000 55%)}
 
-.meander{ /* the lapis step pattern from the column bases */
-  height:10px; background:
-    repeating-linear-gradient(90deg, var(--lapis) 0 14px, transparent 14px 28px) top/100% 4px no-repeat,
-    repeating-linear-gradient(90deg, transparent 0 14px, var(--lapis) 14px 28px) bottom/100% 4px no-repeat,
-    var(--marble);
-}
+/* .meander (the lapis step pattern) retired in §12 — no element carries it any more */
 
 /* ---------- أعمدة عملنا — three LITERAL columns (الدقة · السرعة · السرية) ---------- */
 .section{padding-block:clamp(72px,9vw,128px)}
@@ -194,7 +190,7 @@ img{max-width:100%; display:block}
 }
 .section .sub{color:var(--on-light-2); font-size:18px; margin:0}
 
-.pillars-sec{background:var(--marble-2)}
+.pillars-sec{background:var(--stone-2)}   /* warm-stone tint (§12) */
 .pillars-sec .section-head{margin-inline:auto; text-align:center; max-width:640px}
 .pillars-sec .section-head .eyebrow{justify-content:center}
 .pillars{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(22px,4vw,64px); align-items:end}
@@ -372,8 +368,8 @@ html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
 .heritage .section-head .eyebrow{color:var(--gold-2)} .heritage .section-head .eyebrow::before{background:var(--gold-2)}
 .line{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:40px; position:relative}
 .line::before{content:""; position:absolute; top:22px; inset-inline:0; height:1px;
-  background:linear-gradient(to left, var(--gold), var(--lapis-2))}
-:root[lang="en"] .line::before{background:linear-gradient(to right, var(--gold), var(--lapis-2))}
+  background:linear-gradient(to left, var(--gold), rgba(217,182,92,.18))}
+:root[lang="en"] .line::before{background:linear-gradient(to right, var(--gold), rgba(217,182,92,.18))}
 .line li{position:relative; padding-top:56px}
 .line li::before{content:""; position:absolute; top:17px; inset-inline-start:0; width:11px; height:11px; background:var(--ink); border:1px solid var(--gold); transform:rotate(45deg)}
 .line li.now::before{background:var(--gold); box-shadow:0 0 0 5px rgba(217,182,92,.14)}
@@ -396,7 +392,7 @@ html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
 @media (max-width:560px){.line{grid-template-columns:1fr; gap:28px} .line::before{display:none}}
 
 /* ---------- رسالتنا — a quiet marble band right before the ask ---------- */
-.mission{background:var(--marble-2); border-top:1px solid var(--marble-2)}
+.mission{background:var(--stone-2); border-top:1px solid var(--stone-2)}   /* warm-stone tint (§12) */
 .mission-wrap{max-width:900px; margin-inline:auto; text-align:center; position:relative}
 /* the emblem's crown (Pattern D) as the heading accent, in place of the short gold rule (§8, 2026-09-30) */
 .mission-wrap .crown{display:block; height:22px; width:auto; margin:0 auto 26px; opacity:.95}
@@ -410,7 +406,7 @@ html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
 }
 
 /* ---------- consult — details first, form second ---------- */
-.consult{background:var(--ink); color:var(--on-dark); border-top:3px solid var(--lapis)}
+.consult{background:var(--ink); color:var(--on-dark); border-top:1px solid rgba(217,182,92,.45)}
 .consult .section-head{max-width:640px}
 .consult h2{font-family:var(--f-ar-display); font-weight:400; font-size:clamp(30px,3.6vw,44px); margin:0 0 14px; line-height:1.3}
 .consult .sub{color:var(--on-dark-2); font-size:18px; margin:0}
@@ -606,6 +602,8 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 .svc-ic{flex:none; width:clamp(28px,3vw,40px); height:clamp(28px,3vw,40px); color:var(--gold-2); opacity:.85}
 .svc-head .eyebrow::before{background:var(--gold-2)}
 
+.svc-edge{height:1px; background:linear-gradient(to right, transparent, rgba(217,182,92,.55), transparent)}   /* replaced the meander (§12) */
+
 /* breadcrumbs */
 .crumbs{
   display:flex; flex-wrap:wrap; align-items:center; gap:12px;
@@ -706,7 +704,7 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 /* ---------- back to top ---------- */
 .to-top{
   position:fixed; inset-inline-end:clamp(16px,2.4vw,32px); bottom:clamp(16px,2.4vw,32px);
-  width:48px; height:48px; border-radius:50%; background:var(--ink); border:1px solid var(--gold);
+  width:48px; height:48px; border-radius:50%; background:transparent; border:1px solid var(--gold);   /* outline family (§12) */
   display:grid; place-items:center; z-index:18;
   opacity:0; pointer-events:none; transform:translateY(10px);
   transition:opacity .35s var(--ease), transform .35s var(--ease), background .3s;

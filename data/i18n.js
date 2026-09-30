@@ -444,5 +444,9 @@ window.I18N = {
   "sample_tag": {
     "ar": "(نموذج)",
     "en": "(sample)"
+  },
+  "meta_desc": {
+    "ar": "مكتب الأمين للمحاماة والاستشارات القانونية — بغداد. مكتب عراقي يقدّم خدمات قانونية متكاملة بخبرة تمتدّ لأكثر من عشر سنوات.",
+    "en": "Al-Amin Advocates & Legal Consultants — Baghdad. An Iraqi office providing integrated legal services with more than ten years of experience."
   }
 };
