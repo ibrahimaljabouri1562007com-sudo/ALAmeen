@@ -41,6 +41,9 @@
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* the canvas behind the page is the footer's ivory, so an overscroll past the footer on a phone
+   shows ivory, never a blank sheet; and the root does not rubber-band where the browser allows it */
+html{background:var(--marble); overscroll-behavior-y:none}
 body{
   margin:0; background:var(--marble); color:var(--on-light);
   font-family:var(--f-ar-ui); font-size:17px; line-height:1.75;
