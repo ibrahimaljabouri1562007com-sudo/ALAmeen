@@ -7,7 +7,7 @@ window.CFG = {
   },
   "contact": {
     "email": "info@alaminlegal.com",
-    "phone": "0770 000 0000",
+    "phone": "+964 781 432 9186",
     "whatsapp": "",
     "city": {
       "ar": "بغداد — العراق",

@@ -306,11 +306,13 @@
       document.querySelectorAll('[data-cfg]').forEach(el => {
         const v = val(dig(el.dataset.cfg));
         const holder = el.closest('.ch') || el;
+        // the shown number keeps its spacing; a tel: link must not contain spaces
+        const link = () => el.dataset.cfgHref + (el.dataset.cfgHref === 'tel:' ? v.replace(/[^\d+]/g, '') : v);
         if (v) {
-          if (el.dataset.cfgAs === 'href') { el.setAttribute('href', el.dataset.cfgHref + v); }
+          if (el.dataset.cfgAs === 'href') { el.setAttribute('href', link()); }
           else {
             el.textContent = v;
-            if (el.dataset.cfgHref) el.setAttribute('href', el.dataset.cfgHref + v);
+            if (el.dataset.cfgHref) el.setAttribute('href', link());
           }
           el.hidden = false;
         } else {
