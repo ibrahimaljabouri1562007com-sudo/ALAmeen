@@ -363,6 +363,16 @@
 
     async function send(payload) {
       const p = mail.provider;
+      if (p === 'worker') {
+        // the firm's own route: Cloudflare Worker -> Microsoft 365 -> info@
+        const r = await fetch(mail.endpoint, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...payload, website: (form.website || {}).value || '' })
+        });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || j.ok !== true) throw new Error('worker ' + r.status + ' ' + (j.error || ''));
+        return;
+      }
       if (p === 'formsubmit') {
         if (!to) throw new Error('no destination email');
         const r = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(to), {

@@ -32,3 +32,6 @@ theme-board.html
 Thumbs.db
 # hero photo candidates under review - never shipped from here
 assets/_candidates/
+
+# form Worker source (deployed with wrangler, never served by Pages)
+forms-worker/

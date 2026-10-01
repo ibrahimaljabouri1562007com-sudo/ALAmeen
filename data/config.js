@@ -1,6 +1,6 @@
 /* GENERATED from config.json by build/build_data.py — do not edit. */
 window.CFG = {
-  "_note": "The ONLY file to edit for contact details and the mail route. whatsapp = digits only with country code, no + and no spaces (e.g. 9647XXXXXXXXX). maps = a full Google Maps URL. Leave any value empty and its row hides itself. contact.email is EMPTY on purpose: the firm has no mailbox yet, and a plausible-looking fake address on a law firm site is worse than none.",
+  "_note": "The ONLY file to edit for contact details and the mail route. whatsapp = digits only with country code, no + and no spaces (e.g. 9647XXXXXXXXX). maps = a full Google Maps URL. Leave any value empty and its row hides itself. contact.email = the firm's real shared mailbox on Microsoft 365 (info@alaminlegal.com).",
   "firm": {
     "ar": "الأمين للمحاماة والاستشارات القانونية",
     "en": "Al-Amin Advocates & Legal Consultants"
@@ -25,11 +25,13 @@ window.CFG = {
     "maps": "https://maps.google.com/?q=Baghdad"
   },
   "mail": {
-    "_providers": "formsubmit | web3forms | supabase | mailto",
+    "_providers": "worker | formsubmit | web3forms | supabase | mailto",
+    "_worker": "the firm's own route: POST to 'endpoint' (Cloudflare Worker alamin-forms) which sends through Microsoft 365 into info@. No third party sees the enquiry.",
+    "endpoint": "https://forms.alaminlegal.com/contact",
     "_formsubmit": "zero signup. Put the destination in contact.email, submit once, then click the confirmation link that arrives at that address. Live from then on.",
     "_web3forms": "paste the access key from web3forms.com into 'key'.",
     "_supabase": "the private route — set url + anonKey + table; the DB trigger mails it. Use this for production: confidential intake never leaves the firm's own store.",
-    "provider": "formsubmit",
+    "provider": "worker",
     "key": "",
     "supabase": {
       "url": "",

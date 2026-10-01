@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Kufi+Arabic:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=3e4ac6a4">
+<link rel="stylesheet" href="css/style.css?v=9ff6ce69">
 </head>
 <body>
 <!-- Pattern B: the emblem's column redrawn from the guide (also in assets/pattern-b.svg) -->
@@ -209,6 +209,7 @@
         <label><span data-i18n="c_phone">الهاتف</span><input name="phone" type="tel" autocomplete="tel" dir="ltr" required></label>
         <label><span><span data-i18n="c_company">الشركة أو الجهة</span> <em class="opt" data-i18n="c_optional">اختياري</em></span><input name="company" type="text" autocomplete="organization"></label>
           <label class="full"><span data-i18n="c_msg">الرسالة</span><textarea name="message" rows="2" required></textarea></label>
+        <label class="hp" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
         <button type="submit" class="btn" data-i18n="c_send">إرسال الطلب</button>
         <p class="form-note" id="formNote" role="status" aria-live="polite" hidden></p>
       </form>
@@ -236,9 +237,9 @@
 
 <script src="data/i18n.js?v=a171f9e7"></script>
 <script src="data/services.js?v=3771af59"></script>
-<script src="data/config.js?v=6919dfc1"></script>
+<script src="data/config.js?v=bbef42b2"></script>
 <script src="assets/clients/manifest.js?v=f9e4eef7"></script>
-<script src="js/site.js?v=e70749f5"></script>
+<script src="js/site.js?v=5de87f2d"></script>
 <script>
   // the nine services on the homepage come from the same data the pages are built from
   (list=>{
