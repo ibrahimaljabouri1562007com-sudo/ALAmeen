@@ -271,8 +271,8 @@
         img.src = UP + src + (entry.v ? '?v=' + entry.v : '');   // content-stamped, like css/js
         const show = () => {
           mark.replaceChildren(img);
-          // a ground only where the artwork cannot be read without one
-          if (entry.tile) mark.classList.add('has-logo');
+          // ONE uniform tile for every mark — a bare logo beside a tiled one read as two systems (2026-10-02)
+          mark.classList.add('has-logo');
           slot.classList.add('has-mark');   // the caption names the logo, so it waits for one
           requestAnimationFrame(() => img.classList.add('in'));
         };

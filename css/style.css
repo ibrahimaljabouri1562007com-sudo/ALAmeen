@@ -243,13 +243,20 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
    already drawn in white needs nothing and sits straight on the band. Which is which is
    measured in build/build_data.py, never assumed. */
 .proof .mark.has-logo{
-  /* Pure white on ink is the harshest pair on the page and the tile read as applied
-     rather than belonging. Marble is the site's own light tone, so the ground now comes
-     from the palette; a gold hairline ties it to the section's rules, and the edge is
-     eased rather than cut. The logo keeps room to breathe instead of being framed. */
+  /* ONE tile for every mark — same size, marble ground, gold hairline: the universal
+     client-wall discipline. The marks rest in grayscale and take their true colour on
+     attention (hover devices only — touch always sees full colour); the artwork itself
+     is never redrawn. */
   background:var(--marble); border-radius:3px;
-  padding:14px 18px; width:max-content; max-width:100%;
+  width:228px; height:96px; max-width:100%;
+  display:flex; align-items:center; justify-content:center;
+  padding:14px 18px; box-sizing:border-box;
   box-shadow:inset 0 0 0 1px rgba(111,85,32,.16), 0 1px 2px rgba(0,0,0,.22);
+}
+.proof .mark.has-logo img{max-height:58px;}
+@media (hover:hover){
+  .proof .mark.has-logo img{filter:grayscale(1); opacity:.82; transition:filter .35s var(--ease), opacity .35s var(--ease);}
+  .proof .name:hover .mark.has-logo img{filter:none; opacity:1;}
 }
 .proof .name{max-width:270px; min-width:0}
 /* the slot: holds a logo when one exists, the set name until then */
