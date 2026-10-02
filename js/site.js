@@ -243,6 +243,18 @@
     top.addEventListener('click', e => { e.preventDefault(); scrollTo({ top: 0, behavior: 'smooth' }); });
   }
 
+  /* the strip under a finger: pro behaviour — a touch PAUSES the drift for a breath,
+     then it continues; never a permanent stop (the :hover pause is mouse-only in CSS). */
+  const lv = document.querySelector('.logo-viewport');
+  if (lv) {
+    let t;
+    const hold = () => { lv.classList.add('hold'); clearTimeout(t); };
+    const release = () => { clearTimeout(t); t = setTimeout(() => lv.classList.remove('hold'), 1000); };
+    lv.addEventListener('touchstart', hold, { passive: true });
+    lv.addEventListener('touchend', release, { passive: true });
+    lv.addEventListener('touchcancel', release, { passive: true });
+  }
+
   /* ---------- client logos (manifest-driven; no 404s when none exist) ---------- */
   const slots = document.querySelectorAll('.proof .name[data-logo]');
   if (slots.length) {

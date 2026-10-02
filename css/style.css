@@ -279,7 +279,8 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
 .logo-viewport::-webkit-scrollbar{display:none}
 .logo-strip{display:flex; width:max-content;}
 .logo-run{display:flex; gap:44px; padding-inline:46px; animation:logo-drift 44s linear infinite;}
-.proof:hover .logo-run{animation-play-state:paused}
+@media (hover:hover){ .proof:hover .logo-run{animation-play-state:paused} }  /* mouse: rest to read */
+.proof .logo-viewport.hold .logo-run{animation-play-state:paused}               /* touch: a finger holds it for a beat, then it walks on */
 @keyframes logo-drift{from{transform:translateX(0)} to{transform:translateX(100%)}}
 .logo-run .name{width:208px; flex:none; text-align:center;}
 .logo-run .mark{justify-content:center;}
@@ -1031,6 +1032,12 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
    · inputs at 16px — iOS Safari zooms the page on focus below that
    Sits last in the file so, at equal specificity, it wins. */
 @media (max-width:760px){
+  /* the hero name line: ONE clean line on a phone — the flank rule yields its width,
+     the type steps down, «الأمين» keeps the lead (2026-10-02) */
+  .hero .eyebrow{font-size:clamp(11px,3.2vw,12.5px); gap:7px; white-space:nowrap; justify-content:flex-start}
+  .hero .eyebrow::before,.hero .eyebrow::after{display:none}
+  .hero .eyebrow .brand-big{font-size:1.4em}
+
   :root{--gutter:20px}
   .section{padding-block:60px}
   .section-head{margin-bottom:36px}
@@ -1099,4 +1106,12 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
   .svc-ic{margin-top:7px}
   .svc-head h1{font-size:30px; line-height:1.4}
   .svc-items p{font-size:17px; line-height:1.8}
+}
+
+/* ── the hero name line on a phone: ONE clean line (2026-10-02) — placed last and at
+   :root[lang] strength because the Arabic type rules otherwise outrank the hero sizing ── */
+@media (max-width:760px){
+  :root[lang] .hero .eyebrow{font-size:12px; gap:7px; white-space:nowrap}
+  :root[lang] .hero .eyebrow::before,:root[lang] .hero .eyebrow::after{display:none}
+  :root[lang] .hero .eyebrow .brand-big{font-size:1.4em}
 }
