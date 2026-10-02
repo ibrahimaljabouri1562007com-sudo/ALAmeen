@@ -1111,7 +1111,10 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
 /* ── the hero name line on a phone: ONE clean line (2026-10-02) — placed last and at
    :root[lang] strength because the Arabic type rules otherwise outrank the hero sizing ── */
 @media (max-width:760px){
-  :root[lang] .hero .eyebrow{display:block; font-size:12px; white-space:nowrap; line-height:1.6}
+  :root[lang] .hero .eyebrow{display:block; white-space:nowrap; line-height:1.6;
+    /* as BIG as the device allows while staying ONE line: the width formula sizes the type
+       to the screen (≈29 character-widths incl. «الأمين» at 1.4em), capped at 15.5px */
+    font-size:clamp(12px, calc((100vw - 32px) / 24), 16px)}
   :root[lang] .hero .eyebrow::before,:root[lang] .hero .eyebrow::after{content:none}
   /* INLINE flow, not flex: «الأمين» shares the SAME baseline as the rest — one straight line,
      and even if it ever wrapped, the lines would stay in استقامة, never a word floating between them */
