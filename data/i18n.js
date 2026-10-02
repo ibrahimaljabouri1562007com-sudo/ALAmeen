@@ -25,6 +25,14 @@ window.I18N = {
     "ar": "الرئيسية",
     "en": "Home"
   },
+  "hero_brand": {
+    "ar": "الأمين",
+    "en": "Al-Amin"
+  },
+  "hero_brand_rest": {
+    "ar": "للمحاماة والاستشارات القانونية · بغداد",
+    "en": "Advocates & Legal Consultants · Baghdad"
+  },
   "hero_eyebrow": {
     "ar": "الأمين للمحاماة والاستشارات القانونية · بغداد",
     "en": "Al-Amin Advocates & Legal Consultants · Baghdad"
