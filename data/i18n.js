@@ -26,8 +26,8 @@ window.I18N = {
     "en": "Home"
   },
   "hero_eyebrow": {
-    "ar": "محاماة واستشارات قانونية · بغداد",
-    "en": "Advocates & Legal Consultants · Baghdad"
+    "ar": "الأمين للمحاماة والاستشارات القانونية — بغداد",
+    "en": "Al-Amin Advocates & Legal Consultants — Baghdad"
   },
   "hero_lead": {
     "ar": "نرافقُ عملاءنا في أعمالهم ومشاريعهم، ونوفّرُ لهم الحمايةَ القانونيةَ التي تُعزّزُ استقرارَ أعمالهم وتدعمُ نجاحهم.",

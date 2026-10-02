@@ -64,8 +64,10 @@ img{max-width:100%; display:block}
 }
 .nav.solid{background:rgba(23,21,15,.92); padding-block:12px; backdrop-filter:blur(6px)}
 .brand{display:flex; align-items:center; gap:14px}
+.brand-lockup{height:74px; width:auto; transition:height .35s var(--ease)}   /* the name FIRST on entry */
 .brand-icon{height:54px; width:auto}
 .brand-word{height:44px; width:auto; opacity:.95}
+.nav.solid .brand-lockup{height:46px}
 .nav.solid .brand-icon{height:42px} .nav.solid .brand-word{height:34px}
 .nav-tools{display:flex; align-items:center; gap:14px}
 .burger{display:none; width:40px; height:40px; background:none; border:1px solid rgba(244,239,228,.35); border-radius:2px; cursor:pointer; position:relative}
@@ -597,7 +599,9 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
   /* the wordmark keeps the master's proportion to the icon (desktop 54:44 ≈ 1.23). At 22px the
      calligraphy band was 12px tall and the English line 3px — the name had shrunk twice as much
      as the icon. 40:32 restores the ratio and still fits a 360px bar (icon 42 + 10 + word 135). */
+  .brand-lockup{height:50px}
   .brand-icon{height:40px} .brand-word{height:32px}
+  .nav.solid .brand-lockup{height:38px}
   .nav.solid .brand-icon{height:36px} .nav.solid .brand-word{height:29px}
   .lang{padding:5px 10px}
   /* the inline bar is for the wide layout only; the phone gets the drawer below */
