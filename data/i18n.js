@@ -82,12 +82,12 @@ window.I18N = {
     "en": "We place our clients' trust at the forefront of our responsibilities."
   },
   "amin_h2": {
-    "ar": "مكتبٌ عراقيٌّ يقدّمُ خدماتٍ قانونيةً متكاملة",
-    "en": "An Iraqi office providing integrated legal services"
+    "ar": "أكثرُ من مكتبِ محاماة: شريكٌ يفهمُ أعمالَكم في العراق",
+    "en": "More than a law office: a partner who understands your business in Iraq"
   },
   "amin_p": {
-    "ar": "يتميّزُ بفريقِ عملٍ محترفٍ وخبرةٍ تمتدُّ لأكثر من عشر سنوات في مجالات تسجيل الشركات والاستشارات القانونية وإدارة القضايا باحترافيةٍ عالية.",
-    "en": "Distinguished by a professional team and more than ten years of experience in company registration, legal consultation and case management, carried out to a high professional standard."
+    "ar": "فريقٌ محترفٌ وخبرةٌ تمتدُّ لأكثر من عشر سنوات في تسجيل الشركات والاستشارات القانونية وإدارة القضايا. نجمعُ بين معرفةِ ما يطلبُهُ القانونُ وفهمِ واقعِ الأعمال في العراق، فنرافقُ عملاءَنا بدعمٍ عمليٍّ متكاملٍ — من التأسيسِ والامتثالِ إلى التشغيلِ اليوميِّ الفعّال.",
+    "en": "A professional team with more than ten years of experience in company registration, legal consultation and case management. We combine knowing what the law requires with understanding how business really works in Iraq — supporting our clients practically, from incorporation and compliance to effective day-to-day operation."
   },
   "record_label": {
     "ar": "الخبرةُ والإنجازات",
@@ -140,6 +140,10 @@ window.I18N = {
   "svc_eyebrow": {
     "ar": "الخدمات القانونية",
     "en": "Legal Services"
+  },
+  "svc_intro": {
+    "ar": "لا نقدّمُ المتطلّباتِ القانونيةَ فحسب: نرافقُ الشركاتِ المحليةَ والأجنبيةَ لتعملَ في السوقِ العراقيةِ بثقةٍ وفاعلية.",
+    "en": "We do not deliver legal requirements alone: we walk with local and foreign companies so they operate in the Iraqi market with confidence and effect."
   },
   "svc_h2": {
     "ar": "الخدماتُ القانونيةُ التي يقدّمها مكتبنا",
