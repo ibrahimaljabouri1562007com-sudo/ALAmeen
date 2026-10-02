@@ -263,7 +263,9 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
 .proof .strip-title{display:flex; align-items:center; gap:20px; font-size:17px; margin-inline:14px;}
 .proof .strip-title::before{content:""; height:1px; flex:1; background:linear-gradient(to right, rgba(217,182,92,.5), transparent);}
 .proof .strip-title::after{content:""; height:1px; flex:1; background:linear-gradient(to left, rgba(217,182,92,.5), transparent);}
-.logo-viewport{position:relative; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -webkit-mask-image:linear-gradient(to left, transparent, #000 90px, #000 calc(100% - 90px), transparent); mask-image:linear-gradient(to left, transparent, #000 90px, #000 calc(100% - 90px), transparent);}
+.logo-viewport{position:relative; overflow:hidden; scrollbar-width:none;
+  /* no manual scroll end — the strip is a pure loop: a swipe on a phone found the content's
+     edge and the band «finished»; the drift itself shows every client, endlessly. */ -webkit-mask-image:linear-gradient(to left, transparent, #000 90px, #000 calc(100% - 90px), transparent); mask-image:linear-gradient(to left, transparent, #000 90px, #000 calc(100% - 90px), transparent);}
 .logo-viewport::-webkit-scrollbar{display:none}
 .logo-strip{display:flex; width:max-content;}
 .logo-run{display:flex; gap:44px; padding-inline:46px; animation:logo-drift 44s linear infinite;}
