@@ -36,3 +36,6 @@ assets/_candidates/
 
 # form Worker source (deployed with wrangler, never served by Pages)
 forms-worker/
+
+# bot-facing brand exports (WhatsApp profile picture etc.) — local only
+bot/

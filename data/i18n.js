@@ -45,6 +45,18 @@ window.I18N = {
     "ar": "مرّر",
     "en": "Scroll"
   },
+  "proof_title": {
+    "ar": "عملاؤنا",
+    "en": "Our Clients"
+  },
+  "rel_rep": {
+    "ar": "يمثّلها مكتبنا قانونيًّا",
+    "en": "Represented by our firm"
+  },
+  "rel_srv": {
+    "ar": "قُدّمت لها خدمات قانونية",
+    "en": "Legal services provided"
+  },
   "proof_lead": {
     "ar": "الشركات الأجنبية التي يمثّلها مكتبنا قانونيًّا",
     "en": "Foreign companies our office represents legally"

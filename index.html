@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Kufi+Arabic:wght@400;500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=10ff6ce69">
+<link rel="stylesheet" href="css/style.css?v=f3feabb3">
 </head>
 <body>
 <!-- Pattern B: the emblem's column redrawn from the guide (also in assets/pattern-b.svg) -->
@@ -76,18 +76,23 @@
     <span class="row r">𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊 𒀭 𒂗 𒆤 𒀀 𒈾 𒁀 𒁉 𒋢 𒌑 𒉿 𒁹 𒐊 𒀸 𒊏 𒄿 𒌓 𒁲 𒈠 𒆠 𒌨 𒋼 𒂊</span>
   </div>
   <div class="wrap inner-wrap">
-    <div class="grp lead io">
-      <p class="grp-label" data-i18n="proof_lead">الشركات الأجنبية التي يمثّلها مكتبنا قانونيًّا</p>
-      <div class="names">
-        <span class="name" data-logo="assets/clients/shanghai-electric.svg"><span class="mark"><span class="en" lang="en">Shanghai Electric</span></span><span class="ar">شركة مجموعة شنغهاي إلكتريك</span><span class="cap-en" lang="en">Shanghai Electric Group Co., Ltd.</span></span>
-        <span class="name" data-logo="assets/clients/cccc.svg"><span class="mark"><span class="en" lang="en">CCCC</span></span><span class="ar">شركة الصين للاتصالات والإنشاءات المحدودة</span><span class="cap-en" lang="en">China Communications Construction Company Ltd.</span></span>
-      </div>
-    </div>
-    <div class="grp sec io">
-      <p class="grp-label" data-i18n="proof_sec">بعض الشركات الأجنبية التي تمّ تقديم الخدمات لها</p>
-      <div class="names">
-        <span class="name" data-logo="assets/clients/jiangxi.png"><span class="mark"><span class="en" lang="en">Jiangxi Construction Engineering Group</span></span><span class="ar">مجموعة جيانغشي لهندسة الإنشاءات</span><span class="cap-en" lang="en">Jiangxi Construction Engineering (Group) Co., Ltd.</span></span>
-        <span class="name" data-logo="assets/clients/crbc.png"><span class="mark"><span class="en" lang="en">CRBC</span></span><span class="ar">شركة الطرق والجسور الصينية</span><span class="cap-en" lang="en">China Road &amp; Bridge Corporation</span></span>
+    <p class="grp-label strip-title io" data-i18n="proof_title">عملاؤنا</p>
+    <!-- ONE slow drifting strip (THE MESSAGE §1): uniform tiles, equal heights, relationship tag per client.
+         The run is duplicated once (aria-hidden) for a seamless loop; reduced-motion gets a still, wrapped grid. -->
+    <div class="logo-viewport io">
+      <div class="logo-strip">
+        <div class="logo-run">
+        <span class="name" data-logo="assets/clients/shanghai-electric.svg"><span class="mark"><span class="en" lang="en">Shanghai Electric</span></span><span class="ar">شركة مجموعة شنغهاي إلكتريك</span><span class="cap-en" lang="en">Shanghai Electric Group Co., Ltd.</span><span class="rel" data-i18n="rel_rep">يمثّلها مكتبنا قانونيًّا</span></span>
+        <span class="name" data-logo="assets/clients/cccc.svg"><span class="mark"><span class="en" lang="en">CCCC</span></span><span class="ar">شركة الصين للاتصالات والإنشاءات المحدودة</span><span class="cap-en" lang="en">China Communications Construction Company Ltd.</span><span class="rel" data-i18n="rel_rep">يمثّلها مكتبنا قانونيًّا</span></span>
+        <span class="name" data-logo="assets/clients/jiangxi.png"><span class="mark"><span class="en" lang="en">Jiangxi Construction Engineering Group</span></span><span class="ar">مجموعة جيانغشي لهندسة الإنشاءات</span><span class="cap-en" lang="en">Jiangxi Construction Engineering (Group) Co., Ltd.</span><span class="rel" data-i18n="rel_srv">قُدّمت لها خدمات قانونية</span></span>
+        <span class="name" data-logo="assets/clients/crbc.png"><span class="mark"><span class="en" lang="en">CRBC</span></span><span class="ar">شركة الطرق والجسور الصينية</span><span class="cap-en" lang="en">China Road &amp; Bridge Corporation</span><span class="rel" data-i18n="rel_srv">قُدّمت لها خدمات قانونية</span></span>
+        </div>
+        <div class="logo-run" aria-hidden="true">
+        <span class="name" data-logo="assets/clients/shanghai-electric.svg"><span class="mark"><span class="en" lang="en">Shanghai Electric</span></span><span class="ar">شركة مجموعة شنغهاي إلكتريك</span><span class="cap-en" lang="en">Shanghai Electric Group Co., Ltd.</span><span class="rel" data-i18n="rel_rep">يمثّلها مكتبنا قانونيًّا</span></span>
+        <span class="name" data-logo="assets/clients/cccc.svg"><span class="mark"><span class="en" lang="en">CCCC</span></span><span class="ar">شركة الصين للاتصالات والإنشاءات المحدودة</span><span class="cap-en" lang="en">China Communications Construction Company Ltd.</span><span class="rel" data-i18n="rel_rep">يمثّلها مكتبنا قانونيًّا</span></span>
+        <span class="name" data-logo="assets/clients/jiangxi.png"><span class="mark"><span class="en" lang="en">Jiangxi Construction Engineering Group</span></span><span class="ar">مجموعة جيانغشي لهندسة الإنشاءات</span><span class="cap-en" lang="en">Jiangxi Construction Engineering (Group) Co., Ltd.</span><span class="rel" data-i18n="rel_srv">قُدّمت لها خدمات قانونية</span></span>
+        <span class="name" data-logo="assets/clients/crbc.png"><span class="mark"><span class="en" lang="en">CRBC</span></span><span class="ar">شركة الطرق والجسور الصينية</span><span class="cap-en" lang="en">China Road &amp; Bridge Corporation</span><span class="rel" data-i18n="rel_srv">قُدّمت لها خدمات قانونية</span></span>
+        </div>
       </div>
     </div>
   </div>
@@ -235,11 +240,11 @@
 
 <a class="to-top" id="toTop" href="#top" data-i18n-aria="to_top" aria-label="إلى الأعلى"><span aria-hidden="true"></span></a>
 
-<script src="data/i18n.js?v=a171f9e7"></script>
+<script src="data/i18n.js?v=f50f7e24"></script>
 <script src="data/services.js?v=3771af59"></script>
 <script src="data/config.js?v=30e8f4cc"></script>
 <script src="assets/clients/manifest.js?v=f9e4eef7"></script>
-<script src="js/site.js?v=4be78bf3"></script>
+<script src="js/site.js?v=ee1e73aa"></script>
 <script>
   // the nine services on the homepage come from the same data the pages are built from
   (list=>{
