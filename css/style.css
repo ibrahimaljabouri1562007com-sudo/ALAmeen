@@ -1151,12 +1151,71 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
   .amin-word .def{font-size:20px}
   :root[lang="en"] .amin-word .big{font-size:clamp(60px,6.6vw,104px)}
 }
-/* phone/tablet: the name sits compactly just above «من نحن» */
+/* phone/tablet (one column): the name keeps its desktop role, a CENTRED monument (word · short gold
+   rule · trust line) that opens the section, then real air, then «من نحن». The old baseline-flex row
+   put the word, the line and the eyebrow on top of each other: three headings fighting (2026-10-04) */
 @media (max-width:900px){
-  .amin-grid{gap:18px}
-  .amin-word{display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 18px; padding:0}
-  .amin-word .big{font-size:52px; line-height:1.1}
-  .amin-word .big::after{display:none}
-  .amin-word .def{margin:0; font-size:17px}
-  :root[lang="en"] .amin-word .big{font-size:52px}
+  .amin-grid{gap:44px}
+  .amin-word{display:block; text-align:center; padding:0}
+  .amin-word .big{font-size:60px; line-height:1.1}
+  .amin-word .big::after{display:block; width:56px; margin:14px auto 0}
+  .amin-word .def{margin:14px auto 0; font-size:16px; line-height:1.8}
+  :root[lang="en"] .amin-word .big{font-size:56px}
+}
+
+/* ════ PHONE CONSISTENCY PASS (2026-10-04) — ONE type scale and ONE rhythm for every section ════
+   Before: 9 body sizes (15–19px), 3 heading sizes (26/30/30), cards 209px tall, client tiles as wide
+   as desktop (208px) drifting at desktop pace. Scale now: H1 38 (guide) · H2 26 · H3 17 · lead 16 ·
+   body 15 · eyebrow 14 · statement 17. Rhythm: section 56 · head→content 28. */
+@media (max-width:760px){
+  .section{padding-block:56px}
+  .section-head{margin-bottom:28px}
+  .nav.solid{background:var(--ink)}   /* opaque on a phone: the gold client tags showed through the 92% bar */
+  :root[lang] .section h2,:root[lang] .amin-text h2,:root[lang] .consult h2{font-size:26px; line-height:1.45}
+  :root[lang] .section .sub,:root[lang] .amin-text > p:not(.eyebrow):not(.principles-intro):not(.amin-cred){font-size:16px; line-height:1.85}
+
+  /* clients: a phone-sized tile, a tighter gap, and a walk you can see (≈36px/s; desktop keeps its own) */
+  .proof .inner-wrap{padding-block:36px 40px}
+  .proof .strip-title{margin-bottom:18px}
+  .logo-run{gap:24px; padding-inline:0 24px; animation-duration:40s}
+  .logo-run .name{width:148px}
+  .logo-run .mark.has-logo{width:148px; height:64px; padding:8px 12px}
+  .proof .mark.has-logo img{max-height:40px}
+  .logo-run .ar,.proof .name .ar{font-size:12.5px; line-height:1.55; margin-top:8px}
+  .logo-run .rel{font-size:10.5px; margin-top:6px; padding:1px 9px}
+  /* English shows the full legal names: a little more width and a tighter line keep them to ≈2–3 lines */
+  html[lang="en"] .logo-run .name{width:164px}
+  html[lang="en"] .proof .logo-run .name.has-mark .cap-en{font-size:12px; line-height:1.45; margin-top:8px; letter-spacing:.02em}
+
+  /* «من نحن»: compact cards, numeral beside the title (one row), not above it */
+  .principles-intro{margin:40px 0 12px; letter-spacing:.16em}   /* the EN caps label fits one line */
+  .add-cards{gap:10px}
+  .add-card{display:grid; grid-template-columns:auto 1fr; column-gap:14px; align-items:baseline; padding:16px 18px}
+  .add-n{font-size:24px; margin:0}
+  .add-card b{font-size:17px; margin:0}
+  :root[lang="en"] .add-card b{font-size:19px}
+  .add-card p{grid-column:1 / -1; margin-top:6px; font-size:15px; line-height:1.8}
+  .amin-text > p.amin-cred{margin-top:24px; font-size:15px; line-height:1.85}
+
+  /* services: one quiet line per row where the title allows */
+  .services-list a{padding:15px 2px; gap:14px}
+  :root[lang] .services-list .t{font-size:16.5px; line-height:1.55}
+
+  /* pillars */
+  .pillars-sec .tail{font-size:15px; line-height:1.9; margin-top:36px; padding-top:24px}
+
+  /* heritage + vision + mission: statements at 17, details at 15 */
+  .line{gap:32px}
+  .line li{padding-top:32px}
+  .line .yr{font-size:30px}
+  .line .yr.ar{font-size:30px}
+  :root[lang] .line h3{font-size:17px; line-height:1.5}
+  .line p{font-size:15px; line-height:1.8}
+  .vision-here{margin-top:40px; padding-top:28px}
+  .vision-here .ar-label,.mission-wrap .ar-label{font-size:24px; margin-bottom:12px}
+  :root[lang] .vision-here p,:root[lang] .mission-wrap p{font-size:17px; line-height:1.9}
+
+  /* contact */
+  .form-h{font-size:21px}
+  .form-sub{font-size:15px}
 }
