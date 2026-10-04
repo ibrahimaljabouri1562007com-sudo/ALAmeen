@@ -431,7 +431,10 @@ html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
   color:var(--gold); font-variant-numeric:oldstyle-nums tabular-nums; margin-bottom:10px}
 .add-card b{display:block; font-family:var(--f-ar-display); font-weight:600; font-size:18px; color:var(--ink); margin-bottom:8px}
 .add-card p{margin:0; font-size:15px; line-height:1.85; color:var(--on-light-2)}
-.amin-text > p.amin-cred{margin-top:30px; font-size:15.5px; line-height:1.9; color:var(--on-light-2)}   /* guide: no paragraph in gold */
+/* the closing proof line: `.amin` raises it over the generic `.amin-text > p:not(…)` margin reset, which had
+   zeroed its gap (0px under the cards). Proximity rule: a separate statement sits clearly farther from the
+   cards than they sit from each other — 16px between cards, 40px before this line (2026-10-04) */
+.amin .amin-text > p.amin-cred{margin:40px 0 0; font-size:15.5px; line-height:1.9; color:var(--on-light-2)}   /* guide: no paragraph in gold */
 :root[lang="en"] .add-card b{font-family:var(--f-en-display); font-size:21px; font-weight:600}
 @media (max-width:900px){.amin-grid{grid-template-columns:1fr; gap:24px}}
 
@@ -1203,7 +1206,7 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
   .add-card b{font-size:17px; margin:0}
   :root[lang="en"] .add-card b{font-size:19px}
   .add-card p{grid-column:1 / -1; margin-top:6px; font-size:15px; line-height:1.8}
-  .amin-text > p.amin-cred{margin-top:24px; font-size:15px; line-height:1.85}
+  .amin .amin-text > p.amin-cred{margin-top:32px; font-size:15px; line-height:1.85}   /* 10px between cards → 32px before the proof line */
 
   /* services: one quiet line per row where the title allows */
   .services-list a{padding:15px 2px; gap:14px}

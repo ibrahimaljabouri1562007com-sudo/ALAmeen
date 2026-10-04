@@ -113,7 +113,7 @@
     head.className = 'drawer-head';
     const logo = document.createElement('img');
     logo.className = 'drawer-logo';
-    logo.src = UP + 'assets/logo-full-light.png';   // the ink-on-marble mark, for a light panel
+    logo.src = UP + 'assets/logo-h-light.svg';   // the ink-on-marble mark, for a light panel
     logo.alt = '';
     // the panel covers the button that opened it, so it carries its own way out
     const close = document.createElement('button');
