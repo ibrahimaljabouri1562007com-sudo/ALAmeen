@@ -1157,3 +1157,22 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
 /* phone: the numbered cards stack, in order 01 → 04 */
 @media (max-width:760px){ .add-cards{grid-template-columns:1fr; gap:12px} .add-n{font-size:32px} }
 
+/* ── «من نحن» · Way 2 (2026-10-04): the name as a monument in ONE THIRD, centred in its column and
+   against the text beside it (no scroll-follow); the text gets two thirds, so the cards get real width ── */
+@media (min-width:901px){
+  .amin-grid{grid-template-columns:minmax(0,1fr) minmax(0,2fr); gap:64px; align-items:center}
+  .amin-word{padding:0; text-align:center; align-self:center}
+  .amin-word .big{font-size:clamp(84px,8.6vw,132px)}
+  .amin-word .big::after{margin-inline:auto}
+  .amin-word .def{font-size:20px}
+  :root[lang="en"] .amin-word .big{font-size:clamp(60px,6.6vw,104px)}
+}
+/* phone/tablet: the name sits compactly just above «من نحن» */
+@media (max-width:900px){
+  .amin-grid{gap:18px}
+  .amin-word{display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 18px; padding:0}
+  .amin-word .big{font-size:52px; line-height:1.1}
+  .amin-word .big::after{display:none}
+  .amin-word .def{margin:0; font-size:17px}
+  :root[lang="en"] .amin-word .big{font-size:52px}
+}
