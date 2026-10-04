@@ -487,7 +487,7 @@ window.I18N = {
   },
   "hero_h1_b": {
     "ar": "ونفهم واقع الأعمال في العراق.",
-    "en": "and we understand the reality of business in Iraq."
+    "en": "and the reality of business in Iraq."
   },
   "hero_img_alt": {
     "ar": "أعمدة رخامية تطل على بغداد ودجلة عند الغروب",

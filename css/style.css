@@ -298,10 +298,13 @@ html[lang="en"] .proof .grp-label{letter-spacing:.02em}   /* Arabic letters must
      edge and the band «finished»; the drift itself shows every client, endlessly. */ -webkit-mask-image:linear-gradient(to left, transparent, #000 90px, #000 calc(100% - 90px), transparent); mask-image:linear-gradient(to left, transparent, #000 90px, #000 calc(100% - 90px), transparent);}
 .logo-viewport::-webkit-scrollbar{display:none}
 .logo-strip{display:flex; width:max-content;}
-.logo-run{display:flex; gap:44px; padding-inline:46px; animation:logo-drift 44s linear infinite;}
+.logo-run{display:flex; gap:44px; padding-inline:0 44px; animation:logo-drift 88s linear infinite;   /* run = the 4 marks twice (≥ the band, so the loop never shows a gap); 88s keeps the original drift speed */}
 @media (hover:hover){ .proof:hover .logo-run{animation-play-state:paused} }  /* mouse: rest to read */
 .proof .logo-viewport.hold .logo-run{animation-play-state:paused}               /* touch: a finger holds it for a beat, then it walks on */
 @keyframes logo-drift{from{transform:translateX(0)} to{transform:translateX(100%)}}
+/* English (ltr): the runs sit left→right, so the loop must travel LEFT — the rtl drift left a gap behind it */
+@keyframes logo-drift-ltr{from{transform:translateX(0)} to{transform:translateX(-100%)}}
+[dir="ltr"] .logo-run{animation-name:logo-drift-ltr}
 .logo-run .name{width:208px; flex:none; text-align:center;}
 .logo-run .mark{justify-content:center;}
 .logo-run .mark.has-logo{width:208px; height:92px; margin-inline:auto;}
