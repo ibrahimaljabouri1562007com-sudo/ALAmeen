@@ -752,6 +752,8 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 :root[lang="en"] .amin-word .big{font-size:clamp(64px,9vw,132px); letter-spacing:-.02em}
 :root[lang="en"] body{font-family:var(--f-en-ui)}
 :root[lang="en"] .hero h1{font-size:clamp(38px,5vw,64px); font-weight:500; letter-spacing:-.012em}   /* guide: H1 56–64 desktop, 38–42 mobile, Medium */
+/* the two beats are spans: `:lang(en)` hands every EN element the UI sans, so they must inherit the H1's serif (2026-10-04) */
+:root[lang="en"] .hero h1 span,:root[lang="en"] .hero h1 em{font-family:inherit}
 :root[lang="en"] .svc-items p,:root[lang="en"] .record li{line-height:1.85}
 /* the toggle names the OTHER language, so it never translates itself */
 .lang{min-width:44px; text-align:center}
