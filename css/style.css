@@ -9,6 +9,7 @@
   --ink-2:      #24211A;
   --marble:     #F4EFE4;   /* ivory marble */
   --marble-2:   #E9E1D1;
+  --ivory:      #FFFDF7;   /* card ground on marble — the guide's numbered cards (p.3) */
   --stone-2:#E6DECF;      /* warm-stone TINT — quiet secondary surfaces (pillars, mission) */
   --stone:#CDC3AE;        /* guide: warm stone — pattern fills, quiet secondary surfaces */
   --sand:       #C9B58E;   /* column shadow tone */
@@ -400,6 +401,16 @@ html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
   content:""; position:absolute; inset-inline-start:0; top:26px;
   width:8px; height:8px; background:var(--gold); transform:rotate(45deg);
 }
+/* «ما نضيفه للأعمال» — the guide's numbered cards (p.3): ivory card, hairline border, gold serif
+   numeral leading each one; the numbers also give the 2×2 its Arabic reading order (01 top-right) */
+.add-cards{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:14px}
+.add-card{background:var(--ivory); border:1px solid rgba(184,146,58,.28); border-radius:4px; padding:20px 22px 22px}
+.add-n{display:block; font-family:var(--f-en-display); font-weight:500; font-size:38px; line-height:1;
+  color:var(--gold); font-variant-numeric:oldstyle-nums tabular-nums; margin-bottom:10px}
+.add-card b{display:block; font-family:var(--f-ar-display); font-weight:600; font-size:18px; color:var(--ink); margin-bottom:8px}
+.add-card p{margin:0; font-size:15px; line-height:1.85; color:var(--on-light-2)}
+.amin-text > p.amin-cred{margin-top:30px; font-size:15.5px; line-height:1.9; color:var(--on-light-2)}   /* guide: no paragraph in gold */
+:root[lang="en"] .add-card b{font-family:var(--f-en-display); font-size:21px; font-weight:600}
 @media (max-width:900px){.amin-grid{grid-template-columns:1fr; gap:24px}}
 
 /* ---------- historic timeline (ours) + رؤيتنا opening beneath it ---------- */
@@ -1120,3 +1131,6 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
      and even if it ever wrapped, the lines would stay in استقامة, never a word floating between them */
   :root[lang] .hero .eyebrow .brand-big{font-size:1.4em; vertical-align:baseline; margin-inline-end:6px}
 }
+
+/* phone: the numbered cards stack, in order 01 → 04 */
+@media (max-width:760px){ .add-cards{grid-template-columns:1fr; gap:12px} .add-n{font-size:32px} }

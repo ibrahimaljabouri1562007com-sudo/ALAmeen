@@ -82,16 +82,52 @@ window.I18N = {
     "en": "We place our clients' trust at the forefront of our responsibilities."
   },
   "amin_h2": {
-    "ar": "أكثرُ من مكتبِ محاماة: شريكٌ يفهمُ أعمالَكم في العراق",
-    "en": "More than a law office: a partner who understands your business in Iraq"
+    "ar": "شريك يفهم واقع الأعمال في العراق",
+    "en": "A partner who understands the reality of business in Iraq"
   },
   "amin_p": {
-    "ar": "فريقٌ محترفٌ وخبرةٌ تمتدُّ لأكثر من عشر سنوات في تسجيل الشركات والاستشارات القانونية وإدارة القضايا. نجمعُ بين معرفةِ ما يطلبُهُ القانونُ وفهمِ واقعِ الأعمال في العراق، فنرافقُ عملاءَنا بدعمٍ عمليٍّ متكاملٍ — من التأسيسِ والامتثالِ إلى التشغيلِ اليوميِّ الفعّال.",
-    "en": "A professional team with more than ten years of experience in company registration, legal consultation and case management. We combine knowing what the law requires with understanding how business really works in Iraq — supporting our clients practically, from incorporation and compliance to effective day-to-day operation."
+    "ar": "نجمع بين الخبرة القانونية والمعرفة العميقة بواقع العراق، لنقدّم استشارات قانونية وإرشادًا يساعد الشركات على فهم بيئة الأعمال المحلية ومتطلبات العمل فيها.",
+    "en": "We combine legal expertise with a deep knowledge of Iraq, offering legal consultation and guidance that help companies understand the local business environment and what operating in it requires."
   },
   "record_label": {
-    "ar": "الخبرةُ والإنجازات",
-    "en": "Record & Recognition"
+    "ar": "ما نضيفه للأعمال",
+    "en": "What we bring to your business"
+  },
+  "add_1_t": {
+    "ar": "المشورة القانونية",
+    "en": "Legal counsel"
+  },
+  "add_1_p": {
+    "ar": "استشارات قانونية تساعد على حماية المصالح ومعالجة المسائل القانونية المرتبطة بالعمل في العراق.",
+    "en": "Legal consultation that protects your interests and resolves the legal matters of doing business in Iraq."
+  },
+  "add_2_t": {
+    "ar": "معرفة بواقع العراق",
+    "en": "Knowledge of Iraq"
+  },
+  "add_2_p": {
+    "ar": "معرفة بالسوق والمؤسسات والممارسات المحلية، تضع المسائل القانونية والتجارية في سياقها الفعلي.",
+    "en": "Knowledge of the market, the institutions and local practice, placing legal and commercial matters in their real context."
+  },
+  "add_3_t": {
+    "ar": "دعم عملي",
+    "en": "Practical support"
+  },
+  "add_3_p": {
+    "ar": "مساندة تربط المشورة بالواقع، وتساعد الشركات على التعامل مع تعقيدات العمل في العراق وتجاوز العقبات التي تواجهها.",
+    "en": "Support that ties advice to reality, helping companies handle the complexities of working in Iraq and overcome the obstacles they face."
+  },
+  "add_4_t": {
+    "ar": "خدمة بالعربية والإنجليزية",
+    "en": "Service in Arabic and English"
+  },
+  "add_4_p": {
+    "ar": "نقدّم الاستشارات ونتواصل مع العملاء باللغتين العربية والإنجليزية.",
+    "en": "We advise and communicate with our clients in both Arabic and English."
+  },
+  "amin_cred": {
+    "ar": "خبرة قانونية تتجاوز عشر سنوات، ودرع التميز من نقابة المحامين العراقيين تقديرًا للأداء المهني المتميز.",
+    "en": "More than ten years of legal experience, and the Iraqi Bar Association's Shield of Excellence in recognition of outstanding professional performance."
   },
   "record_1": {
     "ar": "خبرةٌ قانونيةٌ لأكثر من عشر سنوات في العمل في المحاكم باختلاف درجاتها، وخبرةٌ في تقديم الخدمات القانونية والاستشارية.",
