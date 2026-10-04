@@ -1,6 +1,6 @@
 /* GENERATED from config.json by build/build_data.py — do not edit. */
 window.CFG = {
-  "_note": "The ONLY file to edit for contact details and the mail route. whatsapp = digits only with country code, no + and no spaces (e.g. 9647XXXXXXXXX). maps = a full Google Maps URL. Leave any value empty and its row hides itself. contact.email = the firm's real shared mailbox on Microsoft 365 (info@alaminlegal.com).",
+  "_note": "The ONLY file to edit for contact details and the mail route. whatsapp = digits only with country code, no + and no spaces (e.g. 9647XXXXXXXXX). maps = a full Google Maps URL. Leave any value empty and its row hides itself. contact.email = the firm's real shared mailbox on Microsoft 365 (info@alaminlegal.com). contact.address + contact.maps are EMPTY on purpose (2026-10-04, Point 5): the address row stays hidden until the firm sends its real address and Google Maps link.",
   "firm": {
     "ar": "الأمين للمحاماة والاستشارات القانونية",
     "en": "Al-Amin Advocates & Legal Consultants"
@@ -14,15 +14,15 @@ window.CFG = {
       "en": "Baghdad — Iraq"
     },
     "address": {
-      "ar": "بغداد — الكرادة",
-      "en": "Baghdad — Karrada"
+      "ar": "",
+      "en": ""
     },
     "phone2": "",
     "hours": {
       "ar": "٩:٠٠ ص – ٥:٠٠ م",
       "en": "9:00 AM – 5:00 PM"
     },
-    "maps": "https://maps.google.com/?q=Baghdad"
+    "maps": ""
   },
   "mail": {
     "_providers": "worker | formsubmit | web3forms | supabase | mailto",

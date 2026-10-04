@@ -553,20 +553,6 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 }
 :root[lang="en"] .form-h{font-family:var(--f-en-display)}
 
-/* the notice — visible, adjacent, never a tick box */
-.disclaimer{
-  border:1px dashed rgba(217,182,92,.45);           /* dashed = awaiting the firm's own wording */
-  border-inline-start:2px solid var(--gold-dim);
-  padding:16px 20px; background:rgba(244,239,228,.035);
-  margin-bottom:clamp(26px,3vw,36px);
-}
-.disclaimer .dc-k{
-  display:block; font-family:var(--f-ar-ui); font-size:14px; font-weight:600;
-  color:var(--gold-2); margin-bottom:8px;
-}
-:root[lang="en"] .disclaimer .dc-k{font-family:var(--f-en-display); letter-spacing:.2em; text-transform:uppercase; font-size:12px}
-.disclaimer p{margin:0; font-size:14px; line-height:1.9; color:var(--on-dark-2)}
-
 .form{display:grid; grid-template-columns:1fr 1fr; gap:18px 24px}
 /* the label is a quiet caption, not a heading — the field is what matters */
 .form label{display:grid; gap:2px; font-size:14px; color:rgba(244,239,228,.62); align-content:start}
@@ -601,8 +587,6 @@ a.ch-v:hover{border-bottom-color:var(--gold-2); color:var(--gold-2)}
 @media (max-width:640px){
   .channels{grid-template-columns:1fr; gap:22px}
   .form{grid-template-columns:1fr}
-  .disclaimer{padding:14px 16px}
-  .disclaimer p{font-size:14px}
 }
 
 /* ---------- footer ---------- */
