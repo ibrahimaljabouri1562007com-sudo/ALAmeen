@@ -482,12 +482,12 @@ window.I18N = {
     "en": "Al-Amin"
   },
   "hero_h1_a": {
-    "ar": "يعرف القانون،",
-    "en": "knows the law,"
+    "ar": "نعرف القانون،",
+    "en": "We know the law,"
   },
   "hero_h1_b": {
-    "ar": "ويفهم واقع الأعمال في العراق.",
-    "en": "and understands the reality of business in Iraq."
+    "ar": "ونفهم واقع الأعمال في العراق.",
+    "en": "and we understand the reality of business in Iraq."
   },
   "hero_img_alt": {
     "ar": "أعمدة رخامية تطل على بغداد ودجلة عند الغروب",
