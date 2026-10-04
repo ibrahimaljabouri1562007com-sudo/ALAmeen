@@ -38,8 +38,8 @@ window.I18N = {
     "en": "Al-Amin Advocates & Legal Consultants · Baghdad"
   },
   "hero_lead": {
-    "ar": "نرافقُ عملاءنا في أعمالهم ومشاريعهم، ونوفّرُ لهم الحمايةَ القانونيةَ التي تُعزّزُ استقرارَ أعمالهم وتدعمُ نجاحهم.",
-    "en": "We walk alongside our clients in their business and their projects, and provide the legal protection that strengthens the stability of their work and supports their success."
+    "ar": "ننطلق من خبرتنا القانونية ومعرفتنا العميقة ببيئة الأعمال العراقية، لنقدّم للشركات استشارات تتكامل فيها الجوانب القانونية مع التوجيه والدعم العملي، ونساعدها على فهم متطلبات العمل في العراق، واتخاذ قرارات مدروسة، والمضي بأعمالها بثقة.",
+    "en": "We build on our legal expertise and deep knowledge of the Iraqi business environment to give companies advice in which the legal side works hand in hand with practical guidance and support — helping them understand what doing business in Iraq requires, make well-considered decisions, and move forward with confidence."
   },
   "hero_cta": {
     "ar": "اطلب استشارة",
@@ -442,12 +442,12 @@ window.I18N = {
     "en": "Close menu"
   },
   "hero_h1_a": {
-    "ar": "شريكٌ قانونيٌّ",
-    "en": "A trusted"
+    "ar": "خبرة قانونية ومشورة",
+    "en": "Legal expertise and counsel"
   },
   "hero_h1_b": {
-    "ar": "موثوق",
-    "en": "legal partner"
+    "ar": "لأعمالك في العراق",
+    "en": "for your business in Iraq"
   },
   "hero_img_alt": {
     "ar": "أعمدة رخامية تطل على بغداد ودجلة عند الغروب",
