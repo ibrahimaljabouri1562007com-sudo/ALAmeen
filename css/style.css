@@ -1157,8 +1157,13 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
    rule · trust line) that opens the section, then real air, then «من نحن». The old baseline-flex row
    put the word, the line and the eyebrow on top of each other: three headings fighting (2026-10-04) */
 @media (max-width:900px){
-  .amin-grid{gap:44px}
-  .amin-word{display:block; text-align:center; padding:0}
+  /* Option A (2026-10-04): the phone's version of "its own third" = its OWN BAND. The name gets a
+     full-width warm-stone band from the section's top edge (bleeding past the gutters), so it never
+     stacks on «من نحن»: the colour change separates it, the same way every section is separated. */
+  .amin{overflow-x:clip}
+  .amin-grid{gap:48px}
+  .amin-word{display:block; text-align:center; background:var(--stone-2);
+    margin:calc(-1 * clamp(72px,9vw,128px)) calc(50% - 50vw) 0; padding:44px 20px 40px}
   .amin-word .big{font-size:60px; line-height:1.1}
   .amin-word .big::after{display:block; width:56px; margin:14px auto 0}
   .amin-word .def{margin:14px auto 0; font-size:16px; line-height:1.8}
@@ -1171,6 +1176,7 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
    body 15 · eyebrow 14 · statement 17. Rhythm: section 56 · head→content 28. */
 @media (max-width:760px){
   .section{padding-block:56px}
+  .amin-word{margin-top:-56px}   /* the name band starts at the section's top edge (phone padding = 56) */
   .section-head{margin-bottom:28px}
   .nav.solid{background:var(--ink)}   /* opaque on a phone: the gold client tags showed through the 92% bar */
   :root[lang] .section h2,:root[lang] .amin-text h2,:root[lang] .consult h2{font-size:26px; line-height:1.45}
