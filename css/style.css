@@ -65,7 +65,7 @@ img{max-width:100%; display:block}
 }
 .nav.solid{background:rgba(23,21,15,.92); padding-block:12px; backdrop-filter:blur(6px)}
 .brand{display:flex; align-items:center; gap:14px}
-.brand-lockup{height:74px; width:auto; transition:height .35s var(--ease)}   /* the name FIRST on entry */
+.brand-lockup{height:88px; width:auto; transition:height .35s var(--ease)}   /* 88px: the lockup's English line (10.2% of its height) reaches 9px — the smallest comfortable size; larger only weighs the header */
 .brand-icon{height:54px; width:auto}
 .brand-word{height:44px; width:auto; opacity:.95}
 .nav.solid .brand-lockup{height:58px}   /* scrolled: still unmistakably the firm */
@@ -145,7 +145,14 @@ img{max-width:100%; display:block}
   font-size:clamp(38px,5vw,64px); line-height:1.3; text-wrap:balance; letter-spacing:-.005em;
   text-shadow:0 2px 28px rgba(23,21,15,.6), 0 1px 4px rgba(23,21,15,.45);
 }
-.hero h1 em{font-style:normal; color:var(--gold-2); display:block}   /* the slogan: two beats, two lines — the second (business in Iraq) in gold */
+.hero h1 em{font-style:normal; color:inherit; display:block}   /* the slogan's second beat in ivory — gold belongs to the NAME alone (guide p.7: one selective emphasis) */
+.hero h1 .h1-name{
+  /* «الأمين» — bold, in the ALAMIN letters' own measured metallic gold (top → foot), never dimmer than ~5:1 */
+  font-weight:800; text-shadow:none;
+  background:linear-gradient(180deg,#F1CC5F 0%,#D3AD46 55%,#B99331 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 12px rgba(23,21,15,.6));}
+:root[lang="en"] .hero h1 .h1-name{font-weight:600}
 .hero h1{margin-bottom:clamp(30px,3.4vw,44px)}   /* the slogan stands alone now — the air the paragraph used to give */   /* the slogan: two beats, two lines — law, then business in Iraq */
 .hero p.lead{font-size:clamp(17px,1.4vw,20px); color:rgba(244,239,228,.86); max-width:520px; margin:0 0 38px;
   text-shadow:0 1px 16px rgba(23,21,15,.65), 0 1px 3px rgba(23,21,15,.4)}
@@ -1134,3 +1141,9 @@ html[lang="en"] .drawer-nav a{font-family:var(--f-en-ui); font-weight:600; lette
 /* phone: the numbered cards stack, in order 01 → 04 */
 @media (max-width:760px){ .add-cards{grid-template-columns:1fr; gap:12px} .add-n{font-size:32px} }
 
+/* phone: «الأمين يعرف القانون،» holds ONE line — the headline sizes to the screen
+   (measured with the bold name: the beat is ~9.7x its font size wide) */
+@media (max-width:760px){
+  :root[lang="ar"] .hero h1{font-size:clamp(30px, calc((100vw - 36px) / 10.1), 42px)}
+  :root[lang="ar"] .hero h1 .h1-line{white-space:nowrap}
+}
