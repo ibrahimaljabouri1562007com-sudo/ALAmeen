@@ -34,8 +34,8 @@ window.I18N = {
     "en": "Advocates & Legal Consultants · Baghdad"
   },
   "hero_eyebrow": {
-    "ar": "الأمين للمحاماة والاستشارات القانونية · بغداد",
-    "en": "Al-Amin Advocates & Legal Consultants · Baghdad"
+    "ar": "محاماة واستشارات قانونية · بغداد",
+    "en": "Law & Legal Consultancy · Baghdad"
   },
   "hero_lead": {
     "ar": "نجمع بين الخبرة القانونية والفهم العميق لبيئة الأعمال العراقية، لنقدّم لشركتك المشورة والدعم العملي للعمل بثقة في العراق.",
@@ -477,13 +477,17 @@ window.I18N = {
     "ar": "إغلاق القائمة",
     "en": "Close menu"
   },
+  "hero_name": {
+    "ar": "الأمين",
+    "en": "Al-Amin"
+  },
   "hero_h1_a": {
-    "ar": "نعرف القانون،",
-    "en": "We know the law,"
+    "ar": "يعرف القانون،",
+    "en": "knows the law,"
   },
   "hero_h1_b": {
-    "ar": "ونفهم واقع الأعمال في العراق.",
-    "en": "and we understand the reality of business in Iraq."
+    "ar": "ويفهم واقع الأعمال في العراق.",
+    "en": "and understands the reality of business in Iraq."
   },
   "hero_img_alt": {
     "ar": "أعمدة رخامية تطل على بغداد ودجلة عند الغروب",
