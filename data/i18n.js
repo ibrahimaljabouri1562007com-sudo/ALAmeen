@@ -38,8 +38,8 @@ window.I18N = {
     "en": "Al-Amin Advocates & Legal Consultants · Baghdad"
   },
   "hero_lead": {
-    "ar": "ننطلق من خبرتنا القانونية ومعرفتنا العميقة ببيئة الأعمال العراقية، لنقدّم للشركات استشارات تتكامل فيها الجوانب القانونية مع التوجيه والدعم العملي، ونساعدها على فهم متطلبات العمل في العراق، واتخاذ قرارات مدروسة، والمضي بأعمالها بثقة.",
-    "en": "We build on our legal expertise and deep knowledge of the Iraqi business environment to give companies advice in which the legal side works hand in hand with practical guidance and support — helping them understand what doing business in Iraq requires, make well-considered decisions, and move forward with confidence."
+    "ar": "نجمع بين الخبرة القانونية والفهم العميق لبيئة الأعمال العراقية، لنقدّم لشركتك المشورة والدعم العملي للعمل بثقة في العراق.",
+    "en": "We combine legal expertise with a deep understanding of the Iraqi business environment, giving your company the counsel and practical support to operate in Iraq with confidence."
   },
   "hero_cta": {
     "ar": "اطلب استشارة",
