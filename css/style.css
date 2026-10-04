@@ -225,7 +225,7 @@ img{max-width:100%; display:block}
 }
 .section .sub{color:var(--on-light-2); font-size:18px; margin:0}
 
-.pillars-sec{background:var(--stone-2)}   /* warm-stone tint (§12) */
+.pillars-sec{background:var(--marble)}   /* marble since Point 7: services moved above, so the stone tint went with them to keep the bands alternating */
 .pillars-sec .section-head{margin-inline:auto; text-align:center; max-width:640px}
 .pillars-sec .section-head .eyebrow{justify-content:center}
 .pillars{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(22px,4vw,64px); align-items:end}
@@ -377,14 +377,14 @@ html[lang="en"] .proof .grp.sec .name.has-mark .cap-en{font-size:13px}
 
 
 /* ---------- الخدمات — the nine, as a quiet index ---------- */
-.services-sec{background:var(--marble)}
-.services-list{list-style:none; margin:0; padding:0; border-top:1px solid var(--marble-2)}
-.services-list li{border-bottom:1px solid var(--marble-2)}
+.services-sec{background:var(--stone-2)}   /* warm-stone tint (Point 7): it now follows the marble «من نحن», so bands keep alternating */
+.services-list{list-style:none; margin:0; padding:0; border-top:1px solid rgba(23,21,15,.12)}
+.services-list li{border-bottom:1px solid rgba(23,21,15,.12)}
 .services-list a{
   display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:clamp(16px,3vw,36px);
   padding:clamp(16px,2vw,24px) clamp(8px,2vw,20px); transition:background .35s var(--ease), padding .35s var(--ease);
 }
-.services-list a:hover{background:var(--marble-2); padding-inline-start:clamp(18px,3vw,38px)}
+.services-list a:hover{background:var(--marble); padding-inline-start:clamp(18px,3vw,38px)}
 .services-list .n{
   font-family:var(--f-en-display); font-size:clamp(20px,1.9vw,26px); font-weight:500;
   letter-spacing:0; color:var(--gold); min-width:34px;
