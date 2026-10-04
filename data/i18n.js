@@ -82,12 +82,12 @@ window.I18N = {
     "en": "We place our clients' trust at the forefront of our responsibilities."
   },
   "amin_h2": {
-    "ar": "شريك يفهم واقع الأعمال في العراق",
-    "en": "A partner who understands the reality of business in Iraq"
+    "ar": "نجمع الخبرة القانونية بالمعرفة المحلية",
+    "en": "We unite legal expertise with local knowledge"
   },
   "amin_p": {
-    "ar": "نجمع بين الخبرة القانونية والمعرفة العميقة بواقع العراق، لنقدّم استشارات قانونية وإرشادًا يساعد الشركات على فهم بيئة الأعمال المحلية ومتطلبات العمل فيها.",
-    "en": "We combine legal expertise with a deep knowledge of Iraq, offering legal consultation and guidance that help companies understand the local business environment and what operating in it requires."
+    "ar": "نقدّم الاستشارات القانونية والإرشاد العملي للشركات المحلية والأجنبية، ونساعدها على العمل في العراق بثقة ووضوح.",
+    "en": "We provide legal consultation and practical guidance to local and foreign companies, and help them operate in Iraq with confidence and clarity."
   },
   "record_label": {
     "ar": "ما نضيفه للأعمال",
@@ -478,12 +478,12 @@ window.I18N = {
     "en": "Close menu"
   },
   "hero_h1_a": {
-    "ar": "خبرة قانونية ومشورة",
-    "en": "Legal expertise and counsel"
+    "ar": "نعرف القانون،",
+    "en": "We know the law,"
   },
   "hero_h1_b": {
-    "ar": "لأعمالك في العراق",
-    "en": "for your business in Iraq"
+    "ar": "ونفهم واقع الأعمال في العراق.",
+    "en": "and we understand the reality of business in Iraq."
   },
   "hero_img_alt": {
     "ar": "أعمدة رخامية تطل على بغداد ودجلة عند الغروب",
